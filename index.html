@@ -3,329 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cosmas Saidi - Cybersecurity Portfolio | Linux, Reverse Engineering, Binary Exploitation">
-    <meta name="keywords" content="cybersecurity, security engineer, reverse engineering, pwn, binary exploitation">
-    <title>Cosmas Saidi | Cybersecurity Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Cosmas Saidi | Cybersecurity</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0f;
+            color: #e4e4e7;
+            line-height: 1.6;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid #2d2d3d;
+        }
+        h1 { color: #00ff88; font-size: 2.5rem; margin-bottom: 10px; }
+        .subtitle { color: #a1a1aa; }
+        section { padding: 40px 20px; border-bottom: 1px solid #2d2d3d; }
+        h2 { color: #00ff88; margin-bottom: 20px; }
+        .progress-item {
+            background: #12121a;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid #00ff88;
+        }
+        .progress-item.done { border-color: #00ff88; }
+        .progress-item.pending { border-color: #ffcc00; }
+        a { color: #00d4ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .links { display: flex; gap: 20px; justify-content: center; margin-top: 20px; }
+        .btn {
+            background: #00ff88;
+            color: #0a0a0f;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .btn:hover { background: #00d4ff; text-decoration: none; }
+        footer { text-align: center; padding: 30px; color: #71717a; }
+        ul { list-style: none; }
+        li { padding: 8px 0; }
+        li::before { content: "✓ "; color: #00ff88; }
+        .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill {
+            background: #1a1a2e;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <span class="logo-bracket">[</span>
-                <span class="logo-text">CS</span>
-                <span class="logo-bracket">]</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="writeups.html" class="nav-link">Writeups</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+    <header>
+        <h1>[Cosmas Saidi]</h1>
+        <p class="subtitle">Cybersecurity Student | pwn.college Learner</p>
+        <div class="links">
+            <a href="https://github.com/CosmasSaidi" class="btn">GitHub</a>
+            <a href="https://github.com/CosmasSaidi/pwn-college-writeups" class="btn">Writeups</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>About</h2>
+            <p>I'm learning cybersecurity through hands-on practice on pwn.college. Currently focused on Linux fundamentals and working toward binary exploitation.</p>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skills">
+                <span class="skill">Linux</span>
+                <span class="skill">Bash</span>
+                <span class="skill">File Permissions</span>
+                <span class="skill">Shell Scripting</span>
+                <span class="skill">Process Control</span>
+                <span class="skill">Environment Variables</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Training Progress</h2>
+            <p style="color: #a1a1aa; margin-bottom: 15px;">Platform: pwn.college</p>
+            
+            <h3 style="color: #00d4ff; margin: 20px 0 10px;">Linux Luminarium</h3>
+            <ul>
+                <li>File permissions</li>
+                <li>Environment variables</li>
+                <li>Shell scripting basics</li>
+                <li>Command substitution</li>
+                <li>PATH manipulation</li>
+                <li>Piping commands</li>
+                <li>Process control (bg/fg)</li>
+                <li>Privilege escalation concepts</li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="terminal-window">
-                <div class="terminal-header">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
-                    <span class="terminal-title">cosmas@security:~</span>
-                </div>
-                <div class="terminal-body">
-                    <p class="typing-text">
-                        <span class="prompt">$</span> whoami
-                    </p>
-                    <p class="terminal-output">Cosmas Saidi</p>
-                    <p class="typing-text">
-                        <span class="prompt">$</span> cat role.txt
-                    </p>
-                    <p class="terminal-output highlight">Cybersecurity Enthusiast | Security Researcher</p>
-                    <p class="typing-text">
-                        <span class="prompt">$</span> ls skills/
-                    </p>
-                    <p class="terminal-output">
-                        <span class="skill-tag">linux</span>
-                        <span class="skill-tag">reverse-engineering</span>
-                        <span class="skill-tag">binary-exploitation</span>
-                        <span class="skill-tag">python</span>
-                    </p>
-                    <p class="typing-text">
-                        <span class="prompt">$</span> <span class="cursor">_</span>
-                    </p>
-                </div>
+            <h3 style="color: #ffcc00; margin: 20px 0 10px;">Up Next</h3>
+            <div class="progress-item pending">
+                SUID exploitation
             </div>
-            <div class="hero-text">
-                <h1>Cosmas Saidi</h1>
-                <h2>Cybersecurity Professional</h2>
-                <p>Exploring systems at their deepest level through reverse engineering, 
-                   binary exploitation, and security research.</p>
-                <div class="hero-buttons">
-                    <a href="projects.html" class="btn btn-primary">View Projects</a>
-                    <a href="https://github.com/CosmasSaidi" class="btn btn-secondary" target="_blank">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
+            <div class="progress-item pending">
+                Reverse engineering basics
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section class="skills-section" id="skills">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="bracket">&lt;</span>
-                Skills
-                <span class="bracket">/&gt;</span>
-            </h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-linux"></i>
-                    </div>
-                    <h3>Linux Systems</h3>
-                    <p>Deep understanding of Linux internals, system administration, and security hardening.</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%;"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h3>Reverse Engineering</h3>
-                    <p>Binary analysis, disassembly, and decompilation using Ghidra, GDB, and radare2.</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 70%;"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-bug"></i>
-                    </div>
-                    <h3>Binary Exploitation</h3>
-                    <p>Understanding memory corruption, buffer overflows, and exploitation techniques.</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 60%;"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3>Python & Scripting</h3>
-                    <p>Security automation, exploit development with pwntools, and tool creation.</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%;"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Network Security</h3>
-                    <p>Packet analysis, network protocols, and security assessment.</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 65%;"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-terminal"></i>
-                    </div>
-                    <h3>Shell Scripting</h3>
-                    <p>Bash automation, system administration scripts, and security tools.</p>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 75%;"></div>
-                    </div>
-                </div>
+        <section>
+            <h2>Repositories</h2>
+            <div class="progress-item done">
+                <a href="https://github.com/CosmasSaidi/pwn-college-writeups">pwn-college-writeups</a>
+                <p style="color: #a1a1aa; font-size: 0.9rem;">Learning notes and methodology</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Featured Projects -->
-    <section class="featured-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="bracket">&lt;</span>
-                Featured Projects
-                <span class="bracket">/&gt;</span>
-            </h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-folder-open"></i>
-                        <div class="project-links">
-                            <a href="https://github.com/CosmasSaidi/pwn-college-writeups" target="_blank">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>pwn.college Writeups</h3>
-                    <p>Educational writeups documenting my cybersecurity learning journey through pwn.college challenges.</p>
-                    <div class="project-tags">
-                        <span>Security</span>
-                        <span>Linux</span>
-                        <span>Pwn</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-folder-open"></i>
-                        <div class="project-links">
-                            <a href="https://github.com/CosmasSaidi/security-scripts" target="_blank">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>Security Scripts</h3>
-                    <p>Collection of security automation scripts for reconnaissance, analysis, and workflow optimization.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Bash</span>
-                        <span>Automation</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-folder-open"></i>
-                        <div class="project-links">
-                            <a href="https://github.com/CosmasSaidi" target="_blank">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>Binary Analysis Tools</h3>
-                    <p>Custom tools for binary analysis and reverse engineering workflows.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>RE</span>
-                        <span>Tools</span>
-                    </div>
-                </div>
-            </div>
-            <div class="center-button">
-                <a href="projects.html" class="btn btn-primary">View All Projects</a>
-            </div>
-        </div>
-    </section>
+        <section>
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:cosmassaidi2@gmail.com">cosmassaidi2@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/CosmasSaidi">@CosmasSaidi</a></p>
+        </section>
+    </div>
 
-    <!-- Learning Progress -->
-    <section class="progress-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="bracket">&lt;</span>
-                Learning Progress
-                <span class="bracket">/&gt;</span>
-            </h2>
-            <div class="progress-grid">
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <h3>Linux Luminarium</h3>
-                        <span class="progress-percent">60%</span>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: 60%;"></div>
-                    </div>
-                    <p class="progress-description">Mastering Linux fundamentals</p>
-                </div>
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <h3>Reverse Engineering</h3>
-                        <span class="progress-percent">40%</span>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: 40%;"></div>
-                    </div>
-                    <p class="progress-description">Binary analysis & disassembly</p>
-                </div>
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <h3>Binary Exploitation</h3>
-                        <span class="progress-percent">20%</span>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: 20%;"></div>
-                    </div>
-                    <p class="progress-description">Memory corruption & exploitation</p>
-                </div>
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <h3>Web Security</h3>
-                        <span class="progress-percent">10%</span>
-                    </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: 10%;"></div>
-                    </div>
-                    <p class="progress-description">Web vulnerabilities & testing</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-bracket">[</span>
-                    <span class="logo-text">Cosmas Saidi</span>
-                    <span class="logo-bracket">]</span>
-                </div>
-                <div class="footer-links">
-                    <a href="https://github.com/CosmasSaidi" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:cosmassaidi2@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Cosmas Saidi. All rights reserved.</p>
-                <p class="footer-quote">"Understanding systems at their deepest level."</p>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2026 Cosmas Saidi</p>
+        <p style="margin-top: 10px;">Learning cybersecurity one challenge at a time.</p>
     </footer>
-
-    <script>
-        // Mobile Navigation Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu on link click
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 </html>
