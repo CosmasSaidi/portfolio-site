@@ -3,48 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmas Saidi</title>
+    <title>Cosmas Saidi | Cybersecurity</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Courier New', monospace; background: #0a0a0f; color: #e4e4e7; line-height: 1.6; }
-        .container { max-width: 700px; margin: 0 auto; padding: 40px 20px; }
-        h1 { color: #00ff88; margin-bottom: 10px; }
-        h2 { color: #00ff88; margin: 30px 0 15px; border-bottom: 1px solid #2d2d3d; padding-bottom: 5px; }
-        p { margin: 10px 0; }
-        a { color: #00d4ff; }
-        ul { list-style: none; margin: 10px 0; }
-        li { padding: 5px 0; }
-        .muted { color: #71717a; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            color: #e4e4e7;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, rgba(0,255,136,0.05) 0%, transparent 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero h1 span { color: #00ff88; }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a1a1aa;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0,255,136,0.1);
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin: 5px;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        section {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 30px 0;
+        }
+
+        h2 {
+            color: #00ff88;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: #00ff88;
+            border-radius: 2px;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .progress-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 3px solid #00ff88;
+        }
+
+        .progress-card.in-progress { border-left-color: #ffcc00; }
+
+        .progress-card h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .progress-card .status {
+            font-size: 0.85rem;
+            color: #00ff88;
+            margin-bottom: 15px;
+        }
+
+        .progress-card.in-progress .status { color: #ffcc00; }
+
+        .progress-card ul {
+            list-style: none;
+            color: #a1a1aa;
+            font-size: 0.95rem;
+        }
+
+        .progress-card li { padding: 4px 0; }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            background: rgba(0,212,255,0.1);
+            border: 1px solid rgba(0,212,255,0.3);
+            color: #00d4ff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .repo-list { list-style: none; }
+
+        .repo-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            margin: 15px 0;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .repo-item:hover {
+            transform: translateX(5px);
+            background: rgba(0,0,0,0.4);
+        }
+
+        .repo-item a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .repo-item a:hover { text-decoration: underline; }
+
+        .repo-item span {
+            color: #71717a;
+            margin-left: 15px;
+            font-size: 0.9rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 25px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        .contact-item a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .contact-item p {
+            color: #71717a;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #52525b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            section { padding: 25px; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Cosmas Saidi</h1>
-        <p>Computer Science student at Kenyatta University. Learning cybersecurity through pwn.college.</p>
-
-        <h2>Training Progress</h2>
-        <p><strong>Linux Luminarium</strong> — Complete</p>
-        <ul>
-            <li>File permissions, environment variables, shell scripting</li>
-            <li>Process control, piping, PATH manipulation</li>
-        </ul>
-
-        <p><strong>Playing with Programs</strong> — In Progress</p>
-        <ul>
-            <li>Data Dealings (encoding, base64, hex)</li>
-        </ul>
-
-        <h2>Repositories</h2>
-        <ul>
-            <li><a href="https://github.com/CosmasSaidi/pwn-college-writeups">pwn-college-writeups</a> — Learning notes</li>
-            <li><a href="https://github.com/CosmasSaidi/CYBERSECURITY-NOTES">CYBERSECURITY-NOTES</a> — Security concepts</li>
-        </ul>
-
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:cosmassaidi2@gmail.com">cosmassaidi2@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/CosmasSaidi">github.com/CosmasSaidi</a></p>
-
-        <p class="muted" style="margin-top: 40px;">© 2026</p>
+    <div class="hero">
+        <h1>Cosmas <span>Saidi</span></h1>
+        <p>Computer Science student at Kenyatta University, building practical cybersecurity skills through hands-on training.</p>
+        <span class="badge">pwn.college</span>
+        <span class="badge">Security Analyst Path</span>
     </div>
+
+    <div class="container">
+        <section>
+            <h2>Training Progress</h2>
+            <div class="progress-grid">
+                <div class="progress-card">
+                    <h3>Linux Luminarium</h3>
+                    <div class="status">✓ Complete</div>
+                    <ul>
+                        <li>File permissions</li>
+                        <li>Environment variables</li>
+                        <li>Shell scripting</li>
+                        <li>Process control</li>
+                        <li>Piping & redirection</li>
+                        <li>PATH manipulation</li>
+                    </ul>
+                </div>
+                <div class="progress-card in-progress">
+                    <h3>Playing with Programs</h3>
+                    <div class="status">◐ In Progress</div>
+                    <ul>
+                        <li>Data Dealings</li>
+                        <li>Encoding & base64</li>
+                        <li>Hex & obfuscation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <span class="skill">Linux</span>
+                <span class="skill">Bash</span>
+                <span class="skill">Python</span>
+                <span class="skill">File Permissions</span>
+                <span class="skill">Process Management</span>
+                <span class="skill">Shell Scripting</span>
+                <span class="skill">Data Encoding</span>
+                <span class="skill">Reverse Engineering (learning)</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Repositories</h2>
+            <ul class="repo-list">
+                <li class="repo-item">
+                    <a href="https://github.com/CosmasSaidi/pwn-college-writeups">pwn-college-writeups</a>
+                    <span>Challenge methodology and learning notes</span>
+                </li>
+                <li class="repo-item">
+                    <a href="https://github.com/CosmasSaidi/CYBERSECURITY-NOTES">CYBERSECURITY-NOTES</a>
+                    <span>Security concepts and reference material</span>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <p>Email</p>
+                    <a href="mailto:cosmassaidi2@gmail.com">cosmassaidi2@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <p>GitHub</p>
+                    <a href="https://github.com/CosmasSaidi">github.com/CosmasSaidi</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        © 2026 Cosmas Saidi
+    </footer>
 </body>
 </html>
