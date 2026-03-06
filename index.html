@@ -3,135 +3,681 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmas Saidi | Cybersecurity</title>
+    <meta name="description" content="Cosmas Saidi - Cybersecurity Portfolio">
+    <title>Cosmas Saidi | Security Analyst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --border: #1e1e2e;
+            --text-primary: #e4e4e7;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #06b6d4;
+            --accent-hover: #22d3ee;
+            --accent-glow: rgba(6, 182, 212, 0.15);
+            --green: #10b981;
+            --purple: #a78bfa;
+            --orange: #f59e0b;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
         
-        .hero { text-align: center; padding: 60px 20px; border-bottom: 1px solid #21262d; }
-        .hero h1 { font-size: 2.5rem; color: #58a6ff; margin-bottom: 10px; }
-        .hero p { color: #8b949e; max-width: 600px; margin: 0 auto; }
+        html { scroll-behavior: smooth; }
         
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        
-        section { padding: 40px 0; border-bottom: 1px solid #21262d; }
-        h2 { color: #58a6ff; margin-bottom: 20px; font-size: 1.4rem; }
-        
-        .badges { display: flex; gap: 10px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
-        .badge { background: #21262d; border: 1px solid #30363d; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        
-        .card { background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 20px; }
-        .card h3 { color: #c9d1d9; font-size: 1rem; margin-bottom: 8px; }
-        .card p { color: #8b949e; font-size: 0.9rem; margin-bottom: 12px; }
-        .card ul { list-style: none; color: #8b949e; font-size: 0.85rem; }
-        .card li { padding: 3px 0; }
-        .card .status { color: #3fb950; font-size: 0.8rem; }
-        .card .status.progress { color: #d29922; }
-        
-        .topics { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .topic { background: #21262d; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; color: #8b949e; }
-        
-        .repo-link { display: block; background: #21262d; padding: 15px; border-radius: 6px; margin: 10px 0; text-decoration: none; color: #58a6ff; }
-        .repo-link:hover { background: #30363d; }
-        .repo-link span { color: #8b949e; font-size: 0.85rem; display: block; margin-top: 5px; }
-        
-        .contact { display: flex; gap: 30px; flex-wrap: wrap; }
-        .contact a { color: #58a6ff; text-decoration: none; }
-        
-        footer { text-align: center; padding: 30px; color: #484f58; font-size: 0.85rem; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 24px;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            background: var(--accent-glow);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 540px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Skills Section */
+        #skills { background: var(--bg-secondary); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category h3::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list li:last-child { border-bottom: none; }
+
+        .skill-list li::before {
+            content: '›';
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Platforms Section */
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .platform-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .platform-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .platform-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .platform-icon.pwn { background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%); }
+        .platform-icon.thm { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .platform-icon.htb { background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); }
+
+        .platform-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .platform-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .skill-tag {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .modules-learned {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modules-learned h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .module-list {
+            list-style: none;
+        }
+
+        .module-list li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 6px 0;
+        }
+
+        /* Documentation Section */
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .doc-card {
+            display: block;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .doc-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .doc-card h3 {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .doc-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .doc-card .arrow {
+            color: var(--accent);
+            margin-top: 12px;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .doc-card:hover .arrow { transform: translateX(4px); }
+
+        /* Contact Section */
+        #contact {
+            background: var(--bg-secondary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .contact-link:hover { color: var(--accent); }
+
+        .contact-link span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            
+            .hero { padding: 100px 20px 60px; }
+            
+            section { padding: 60px 0; }
+            
+            .skills-grid,
+            .platforms-grid,
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>Cosmas Saidi</h1>
-        <p>Computer Science student at Kenyatta University focused on cybersecurity. Building practical skills through hands-on labs.</p>
-        <div class="badges">
-            <span class="badge">pwn.college</span>
-            <span class="badge">TryHackMe</span>
-            <span class="badge">Hack The Box</span>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">CS://</a>
+            <ul class="nav-links">
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#platforms">Training</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
-    <div class="container">
-        <section>
-            <h2>Training Progress</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Linux Luminarium</h3>
-                    <p class="status">Complete</p>
-                    <ul>
-                        <li>File permissions</li>
-                        <li>Environment variables</li>
-                        <li>Process control</li>
-                        <li>Shell scripting</li>
-                        <li>PATH manipulation</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Playing with Programs</h3>
-                    <p class="status progress">In Progress</p>
-                    <ul>
-                        <li>Data Dealings</li>
-                        <li>Encoding (base64, hex)</li>
-                        <li>Obfuscation concepts</li>
-                    </ul>
-                </div>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Security Analyst</span>
+            <h1>Cosmas Saidi</h1>
+            <p class="hero-subtitle">Building practical cybersecurity skills</p>
+            <p class="hero-desc">Computer Science student at Kenyatta University. Focused on Linux security, privilege escalation, and penetration testing fundamentals.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/CosmasSaidi" class="btn btn-primary">View GitHub</a>
+                <a href="#skills" class="btn btn-secondary">See My Skills</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>Security Notes</h2>
-            <div class="grid">
-                <div class="card">
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <p>Core competencies developed through hands-on practice</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
                     <h3>Linux Security</h3>
-                    <div class="topics">
-                        <span class="topic">Permissions</span>
-                        <span class="topic">Processes</span>
-                        <span class="topic">Users</span>
-                        <span class="topic">Environment</span>
-                    </div>
+                    <ul class="skill-list">
+                        <li>File permissions and ownership</li>
+                        <li>Process management and signals</li>
+                        <li>User and group administration</li>
+                        <li>Environment variable manipulation</li>
+                        <li>PATH exploitation techniques</li>
+                    </ul>
                 </div>
-                <div class="card">
+                <div class="skill-category">
                     <h3>Enumeration</h3>
-                    <div class="topics">
-                        <span class="topic">System info</span>
-                        <span class="topic">SUID binaries</span>
-                        <span class="topic">Credentials</span>
-                    </div>
+                    <ul class="skill-list">
+                        <li>System information gathering</li>
+                        <li>SUID/SGID binary discovery</li>
+                        <li>Credential hunting</li>
+                        <li>Service and process analysis</li>
+                        <li>File system reconnaissance</li>
+                    </ul>
                 </div>
-                <div class="card">
+                <div class="skill-category">
+                    <h3>Shell Scripting</h3>
+                    <ul class="skill-list">
+                        <li>Bash automation</li>
+                        <li>Command substitution</li>
+                        <li>Pipes and redirection</li>
+                        <li>Text processing (grep, awk, sed)</li>
+                        <li>Script-based enumeration</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
                     <h3>Methodology</h3>
-                    <div class="topics">
-                        <span class="topic">Linux privesc</span>
-                        <span class="topic">Checklists</span>
+                    <ul class="skill-list">
+                        <li>Linux privilege escalation</li>
+                        <li>Systematic enumeration checklists</li>
+                        <li>Data encoding (base64, hex)</li>
+                        <li>Binary analysis fundamentals</li>
+                        <li>Security documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="platforms">
+        <div class="container">
+            <div class="section-header">
+                <h2>Training Platforms</h2>
+                <p>Hands-on learning from industry-recognized platforms</p>
+            </div>
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon pwn">P</div>
+                        <span class="platform-name">pwn.college</span>
+                    </div>
+                    <div class="platform-skills">
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Binary</span>
+                        <span class="skill-tag">CTF</span>
+                    </div>
+                    <div class="modules-learned">
+                        <h4>Modules Covered</h4>
+                        <ul class="module-list">
+                            <li>Linux Luminarium - File permissions, processes, shell scripting</li>
+                            <li>Playing with Programs - Data encoding, program interaction</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon thm">T</div>
+                        <span class="platform-name">TryHackMe</span>
+                    </div>
+                    <div class="platform-skills">
+                        <span class="skill-tag">Pentesting</span>
+                        <span class="skill-tag">CTF</span>
+                        <span class="skill-tag">Learning</span>
+                    </div>
+                    <div class="modules-learned">
+                        <h4>Focus Areas</h4>
+                        <ul class="module-list">
+                            <li>Linux fundamentals and privilege escalation</li>
+                            <li>Enumeration and reconnaissance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon htb">H</div>
+                        <span class="platform-name">Hack The Box</span>
+                    </div>
+                    <div class="platform-skills">
+                        <span class="skill-tag">Labs</span>
+                        <span class="skill-tag">Machines</span>
+                        <span class="skill-tag">Real-world</span>
+                    </div>
+                    <div class="modules-learned">
+                        <h4>Focus Areas</h4>
+                        <ul class="module-list">
+                            <li>Practical penetration testing</li>
+                            <li>Machine exploitation</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>Repositories</h2>
-            <a href="https://github.com/CosmasSaidi/pwn-college-writeups" class="repo-link">
-                pwn-college-writeups
-                <span>Learning notes from pwn.college challenges</span>
-            </a>
-            <a href="https://github.com/CosmasSaidi/CYBERSECURITY-NOTES" class="repo-link">
-                CYBERSECURITY-NOTES
-                <span>Security concepts, enumeration, methodology</span>
-            </a>
-        </section>
-
-        <section>
-            <h2>Contact</h2>
-            <div class="contact">
-                <a href="mailto:cosmassaidi2@gmail.com">cosmassaidi2@gmail.com</a>
-                <a href="https://github.com/CosmasSaidi">github.com/CosmasSaidi</a>
+    <section id="docs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Documentation</h2>
+                <p>Technical notes and learning writeups</p>
             </div>
-        </section>
-    </div>
+            <div class="docs-grid">
+                <a href="https://github.com/CosmasSaidi/CYBERSECURITY-NOTES" class="doc-card">
+                    <h3>Security Notes</h3>
+                    <p>Linux security fundamentals, enumeration techniques, privilege escalation methodology</p>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="https://github.com/CosmasSaidi/pwn-college-writeups" class="doc-card">
+                    <h3>Training Writeups</h3>
+                    <p>Detailed learning notes from pwn.college modules and challenges</p>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="https://github.com/CosmasSaidi" class="doc-card">
+                    <h3>GitHub Profile</h3>
+                    <p>All repositories and projects</p>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <footer>© 2026 Cosmas Saidi</footer>
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Open to security internships, collaboration on security projects, and connecting with other security professionals.</p>
+                    <div class="contact-links">
+                        <a href="mailto:cosmassaidi2@gmail.com" class="contact-link">
+                            <span>✉</span> cosmassaidi2@gmail.com
+                        </a>
+                        <a href="https://github.com/CosmasSaidi" class="contact-link">
+                            <span>⌘</span> github.com/CosmasSaidi
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-extra">
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">
+                        Currently pursuing Computer Science at Kenyatta University with a focus on cybersecurity. Building skills in Linux security, penetration testing, and security analysis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Cosmas Saidi. Built with purpose.</p>
+    </footer>
 </body>
 </html>
