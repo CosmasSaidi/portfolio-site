@@ -2134,6 +2134,65 @@ export PATH="/my/dir:$PATH" <span class="code-comment"># Prepend to PATH</span><
                         </div>
                     </div>
                 </div>
+
+                <!-- Web Security -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">🌐</div>
+                            <h3>Web Security</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Tools & Commands</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">curl</span>
+                                <span class="tool-tag">netcat</span>
+                                <span class="tool-tag">dirb</span>
+                                <span class="tool-tag">Python requests</span>
+                                <span class="tool-tag">Browser DevTools</span>
+                                <span class="tool-tag">SIEM</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
+                            <div class="doc-section">
+                                <h5>Why It Matters</h5>
+                                <p>Web applications are primary attack targets. Understanding HTTP, enumeration, and both offensive and defensive workflows is essential.</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>HTTP & Enumeration</h5>
+                                <pre><span class="code-comment"># Raw HTTP with netcat</span>
+nc target.com 80
+GET / HTTP/1.1
+Host: target.com
+
+<span class="code-comment"># Curl requests</span>
+curl -v http://target.com
+curl -H "Host: admin.target.com" http://ip
+
+<span class="code-comment"># Directory enumeration</span>
+dirb http://target.com</pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Offensive Skills</h5>
+                                <p>• Directory brute forcing to find hidden endpoints<br>
+                                • HTTP status code analysis (200, 301, 404)<br>
+                                • Host header manipulation for virtual host discovery<br>
+                                • Business logic vulnerability identification</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Defensive Skills</h5>
+                                <p>• SIEM alert triage and investigation<br>
+                                • SOC incident response workflow<br>
+                                • IP blocking and rate limiting<br>
+                                • WAF rule tuning to block enumeration patterns</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
