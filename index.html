@@ -1396,6 +1396,81 @@ command < file            <span class="code-comment"># Read input from file</spa
                             </div>
                         </div>
 
+                        <!-- Web Fundamentals -->
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <div class="writeup-title">
+                                    <h4>Web Fundamentals (Talking Web)</h4>
+                                    <span class="writeup-badge web">Web</span>
+                                </div>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <div class="writeup-body">
+                                    <div class="writeup-section">
+                                        <h5>Goal</h5>
+                                        <p>Understand HTTP communication, manual request crafting, and how clients interact with web servers.</p>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>HTTP Request Structure</h5>
+                                        <pre>GET /path HTTP/1.1
+Host: example.com
+
+<span class="code-comment"># Parts:</span>
+<span class="code-comment"># GET = HTTP method</span>
+<span class="code-comment"># /path = Resource requested</span>
+<span class="code-comment"># HTTP/1.1 = Protocol version</span>
+<span class="code-comment"># Host = Target domain</span></pre>
+                                        <p>Important: Headers use <code>:</code> not <code>=</code>. Empty line must end every request.</p>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Tools Used</h5>
+                                        <pre><span class="code-comment"># Netcat - raw HTTP requests</span>
+nc challenge.localhost 80
+GET / HTTP/1.1
+Host: challenge.localhost
+
+<span class="code-comment"># Curl - quick HTTP interaction</span>
+curl http://target.com/path
+curl -H "Host: example.com" http://target.com
+curl -v http://target.com  <span class="code-comment"># Debug mode</span>
+
+<span class="code-comment"># Python requests</span>
+import requests
+headers = {"Host": "example.com"}
+r = requests.get("http://target.com", headers=headers)
+print(r.text)</pre>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Host Header & Virtual Hosts</h5>
+                                        <ul>
+                                            <li>Multiple domains can share one IP address</li>
+                                            <li>Server routes requests based on Host header</li>
+                                            <li>Wrong Host = 404 Not Found</li>
+                                            <li>Virtual host enumeration discovers hidden subdomains</li>
+                                        </ul>
+                                        <pre><span class="code-comment"># Virtual host enumeration</span>
+ffuf -H "Host: FUZZ.target.com" -u http://10.10.10.10</pre>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Concepts Learned</h5>
+                                        <ul>
+                                            <li>HTTP request structure (method, path, version, headers)</li>
+                                            <li>Manual HTTP crafting with netcat</li>
+                                            <li>Path-based routing</li>
+                                            <li>Host header behavior and virtual hosting</li>
+                                            <li>Extracting data from response headers</li>
+                                            <li>Debugging with curl -v</li>
+                                        </ul>
+                                    </div>
+                                    <div class="security-note">
+                                        <h6>⚠ Security Lesson</h6>
+                                        <p>Understanding raw HTTP is essential for web exploitation. Host header manipulation can access hidden virtual hosts. Response headers often contain sensitive information not visible in the page body.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Data Dealings -->
                         <div class="writeup-item">
                             <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
@@ -2012,6 +2087,56 @@ fg %1                   <span class="code-comment"># Bring to foreground</span>
 kill PID                <span class="code-comment"># Graceful termination</span>
 kill -9 PID             <span class="code-comment"># Force kill</span>
 lsof -i :80             <span class="code-comment"># What's using port 80</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Security -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">🌐</div>
+                            <h3>Web Security & HTTP</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Tools & Commands</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">curl</span>
+                                <span class="tool-tag">netcat</span>
+                                <span class="tool-tag">python requests</span>
+                                <span class="tool-tag">ffuf</span>
+                                <span class="tool-tag">burpsuite</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
+                            <div class="doc-section">
+                                <h5>Why It Matters</h5>
+                                <p>Understanding raw HTTP is essential for web exploitation, bug bounties, and penetration testing.</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>HTTP Request Structure</h5>
+                                <pre>GET /path HTTP/1.1
+Host: example.com
+
+<span class="code-comment"># Headers use : not =</span>
+<span class="code-comment"># Empty line ends request</span></pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Commands</h5>
+                                <pre>nc target.com 80           <span class="code-comment"># Raw HTTP</span>
+curl -v http://target.com  <span class="code-comment"># Debug mode</span>
+curl -H "Host: x" http://y <span class="code-comment"># Custom header</span></pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Security Applications</h5>
+                                <p><strong>Virtual host enumeration:</strong> Discover hidden subdomains via Host header<br>
+                                <strong>Response headers:</strong> May leak sensitive info<br>
+                                <strong>Manual testing:</strong> Bypass client-side restrictions</p>
                             </div>
                         </div>
                     </div>
