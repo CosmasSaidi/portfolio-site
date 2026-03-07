@@ -970,6 +970,9 @@
                     <p class="hero-text">
                         Welcome to my cybersecurity documentation hub. Here I document my journey through hands-on security training platforms, CTF challenges, and practical labs. This portfolio represents real skills acquired through offensive security practice—from Linux fundamentals to privilege escalation techniques.
                     </p>
+                    <p class="hero-text">
+                        Every writeup and note represents practical, lab-validated learning from pwn.college, Hack The Box, and TryHackMe across offensive and defensive workflows.
+                    </p>
 
                     <div class="hero-links">
                         <a href="#knowledge" class="hero-link primary">Explore Knowledge Base</a>
@@ -1007,6 +1010,11 @@
                         <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">cat /etc/mission</span></div>
                         <div class="terminal-line"><span class="output">Building offensive security skills</span></div>
                         <div class="terminal-line"><span class="output">through hands-on practice and CTFs</span></div>
+                        <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">cat latest_training.txt</span></div>
+                        <div class="terminal-line"><span class="output">• TryHackMe: Offensive Security Intro</span></div>
+                        <div class="terminal-line"><span class="output">• TryHackMe: Defensive Security Intro</span></div>
+                        <div class="terminal-line"><span class="output">• Enumeration + SIEM response workflow</span></div>
+                        <div class="terminal-line"><span class="output">• Controls: IP block, rate limit, WAF rules</span></div>
                         <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">_</span></div>
                     </div>
                 </div>
@@ -1388,81 +1396,6 @@ command < file            <span class="code-comment"># Read input from file</spa
                             </div>
                         </div>
 
-                        <!-- HTTP Basics -->
-                        <div class="writeup-item">
-                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
-                                <div class="writeup-title">
-                                    <h4>HTTP Basics</h4>
-                                    <span class="writeup-badge web">Web</span>
-                                </div>
-                                <span class="writeup-toggle">›</span>
-                            </div>
-                            <div class="writeup-content">
-                                <div class="writeup-body">
-                                    <div class="writeup-section">
-                                        <h5>Goal</h5>
-                                        <p>Understand HTTP communication, manual request crafting, and how clients interact with web servers.</p>
-                                    </div>
-                                    <div class="writeup-section">
-                                        <h5>HTTP Request Structure</h5>
-                                        <pre>GET /path HTTP/1.1
-Host: example.com
-
-<span class="code-comment"># Parts:</span>
-<span class="code-comment"># GET = HTTP method</span>
-<span class="code-comment"># /path = Resource requested</span>
-<span class="code-comment"># HTTP/1.1 = Protocol version</span>
-<span class="code-comment"># Host = Target domain</span></pre>
-                                        <p>Important: Headers use <code>:</code> not <code>=</code>. Empty line must end every request.</p>
-                                    </div>
-                                    <div class="writeup-section">
-                                        <h5>Tools Used</h5>
-                                        <pre><span class="code-comment"># Netcat - raw HTTP requests</span>
-nc challenge.localhost 80
-GET / HTTP/1.1
-Host: challenge.localhost
-
-<span class="code-comment"># Curl - quick HTTP interaction</span>
-curl http://target.com/path
-curl -H "Host: example.com" http://target.com
-curl -v http://target.com  <span class="code-comment"># Debug mode</span>
-
-<span class="code-comment"># Python requests</span>
-import requests
-headers = {"Host": "example.com"}
-r = requests.get("http://target.com", headers=headers)
-print(r.text)</pre>
-                                    </div>
-                                    <div class="writeup-section">
-                                        <h5>Host Header & Virtual Hosts</h5>
-                                        <ul>
-                                            <li>Multiple domains can share one IP address</li>
-                                            <li>Server routes requests based on Host header</li>
-                                            <li>Wrong Host = 404 Not Found</li>
-                                            <li>Virtual host enumeration discovers hidden subdomains</li>
-                                        </ul>
-                                        <pre><span class="code-comment"># Virtual host enumeration</span>
-ffuf -H "Host: FUZZ.target.com" -u http://10.10.10.10</pre>
-                                    </div>
-                                    <div class="writeup-section">
-                                        <h5>Concepts Learned</h5>
-                                        <ul>
-                                            <li>HTTP request structure (method, path, version, headers)</li>
-                                            <li>Manual HTTP crafting with netcat</li>
-                                            <li>Path-based routing</li>
-                                            <li>Host header behavior and virtual hosting</li>
-                                            <li>Extracting data from response headers</li>
-                                            <li>Debugging with curl -v</li>
-                                        </ul>
-                                    </div>
-                                    <div class="security-note">
-                                        <h6>⚠ Security Lesson</h6>
-                                        <p>Understanding raw HTTP is essential for web exploitation. Host header manipulation can access hidden virtual hosts. Response headers often contain sensitive information not visible in the page body.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Data Dealings -->
                         <div class="writeup-item">
                             <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
@@ -1545,6 +1478,10 @@ base64.b64decode("aGVsbG8=")</pre>
                             <div class="writeup-content">
                                 <div class="writeup-body">
                                     <div class="writeup-section">
+                                        <h5>Overview</h5>
+                                        <p>After gaining access, enumeration reveals escalation paths and valuable data. This is the foundation of post-exploitation.</p>
+                                    </div>
+                                    <div class="writeup-section">
                                         <h5>System Information</h5>
                                         <pre>uname -a                  <span class="code-comment"># Kernel version</span>
 cat /etc/os-release       <span class="code-comment"># OS details</span>
@@ -1613,6 +1550,10 @@ grep -r "password" /etc/ 2>/dev/null</pre>
                             </div>
                             <div class="writeup-content">
                                 <div class="writeup-body">
+                                    <div class="writeup-section">
+                                        <h5>Overview</h5>
+                                        <p>User accounts and privileges are primary targets. Understanding user management helps identify misconfigurations and escalation paths.</p>
+                                    </div>
                                     <div class="writeup-section">
                                         <h5>Commands</h5>
                                         <pre><span class="code-comment"># User information</span>
@@ -1713,17 +1654,17 @@ cat /etc/resolv.conf      <span class="code-comment"># DNS servers</span></pre>
                             <div class="platform-icon thm">THM</div>
                             <div class="platform-details">
                                 <h3>TryHackMe</h3>
-                                <p>Web Security • Linux Privilege Escalation</p>
+                                <p>Offensive Security Intro • Defensive Security Intro</p>
                             </div>
                         </div>
                         <div class="platform-toggle">+</div>
                     </div>
                     <div class="platform-content">
-                        <!-- Web Security -->
+                        <!-- Offensive + Defensive Security Intro -->
                         <div class="writeup-item">
                             <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
                                 <div class="writeup-title">
-                                    <h4>Web Application Security</h4>
+                                    <h4>Offensive & Defensive Security Intro</h4>
                                     <span class="writeup-badge web">Web</span>
                                 </div>
                                 <span class="writeup-toggle">›</span>
@@ -1731,29 +1672,43 @@ cat /etc/resolv.conf      <span class="code-comment"># DNS servers</span></pre>
                             <div class="writeup-content">
                                 <div class="writeup-body">
                                     <div class="writeup-section">
-                                        <h5>Skills Practiced</h5>
+                                        <h5>Scenario</h5>
+                                        <p>Used directory enumeration against FakeBank, identified hidden functionality, then switched to SOC response to investigate and mitigate active web discovery activity.</p>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Offensive Workflow</h5>
                                         <ul>
-                                            <li>Understanding web authentication mechanisms</li>
-                                            <li>Inspecting web application behavior</li>
-                                            <li>Identifying insecure access control mechanisms</li>
-                                            <li>Observing URL parameter manipulation</li>
+                                            <li>Ran <code>dirb http://fakebank.thm</code> with common wordlist-based endpoint discovery</li>
+                                            <li>Interpreted HTTP status codes (<code>200</code>, <code>301</code>, <code>404</code>) during brute forcing</li>
+                                            <li>Discovered hidden endpoints such as <code>/bank-deposit</code> and <code>/images</code></li>
+                                            <li>Validated a business logic weakness by performing an unauthorized deposit action</li>
                                         </ul>
                                     </div>
                                     <div class="writeup-section">
-                                        <h5>Concepts Learned</h5>
+                                        <h5>Defensive Workflow</h5>
                                         <ul>
-                                            <li>Insecure Direct Object Reference (IDOR)</li>
-                                            <li>Authentication and authorization concepts</li>
-                                            <li>Web application attack surface</li>
-                                            <li>Basic web vulnerability discovery</li>
+                                            <li>Investigated a SIEM alert categorized as <strong>Web Discovery Attack</strong></li>
+                                            <li>Identified attacker source IP: <code>32.122.195.63</code></li>
+                                            <li>Blocked source IP for 24 hours as immediate containment</li>
+                                            <li>Applied rate limiting and updated WAF rules to reduce recurrence risk</li>
                                         </ul>
                                     </div>
                                     <div class="writeup-section">
                                         <h5>Tools Used</h5>
                                         <ul>
+                                            <li>dirb</li>
                                             <li>Web browser</li>
-                                            <li>Developer tools (page source inspection)</li>
-                                            <li>Burp Suite (proxy)</li>
+                                            <li>Linux terminal</li>
+                                            <li>SOC dashboard / SIEM interface</li>
+                                        </ul>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Core Skills Gained</h5>
+                                        <ul>
+                                            <li>Web enumeration and hidden endpoint discovery</li>
+                                            <li>Business logic vulnerability recognition</li>
+                                            <li>SIEM-based threat investigation</li>
+                                            <li>Incident response and layered defensive controls</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -2067,56 +2022,6 @@ fg %1                   <span class="code-comment"># Bring to foreground</span>
 kill PID                <span class="code-comment"># Graceful termination</span>
 kill -9 PID             <span class="code-comment"># Force kill</span>
 lsof -i :80             <span class="code-comment"># What's using port 80</span></pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Web Security -->
-                <div class="skill-card">
-                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
-                        <div class="skill-info">
-                            <div class="skill-icon">🌐</div>
-                            <h3>Web Security & HTTP</h3>
-                        </div>
-                        <span class="skill-toggle">+</span>
-                    </div>
-                    <div class="skill-content">
-                        <div class="tools-section">
-                            <div class="tools-label">Tools & Commands</div>
-                            <div class="tools-grid">
-                                <span class="tool-tag">curl</span>
-                                <span class="tool-tag">netcat</span>
-                                <span class="tool-tag">python requests</span>
-                                <span class="tool-tag">ffuf</span>
-                                <span class="tool-tag">burpsuite</span>
-                            </div>
-                        </div>
-                        <div class="skill-docs">
-                            <h4>Documentation</h4>
-                            <div class="doc-section">
-                                <h5>Why It Matters</h5>
-                                <p>Understanding raw HTTP is essential for web exploitation, bug bounties, and penetration testing.</p>
-                            </div>
-                            <div class="doc-section">
-                                <h5>HTTP Request Structure</h5>
-                                <pre>GET /path HTTP/1.1
-Host: example.com
-
-<span class="code-comment"># Headers use : not =</span>
-<span class="code-comment"># Empty line ends request</span></pre>
-                            </div>
-                            <div class="doc-section">
-                                <h5>Commands</h5>
-                                <pre>nc target.com 80           <span class="code-comment"># Raw HTTP</span>
-curl -v http://target.com  <span class="code-comment"># Debug mode</span>
-curl -H "Host: x" http://y <span class="code-comment"># Custom header</span></pre>
-                            </div>
-                            <div class="doc-section">
-                                <h5>Security Applications</h5>
-                                <p><strong>Virtual host enumeration:</strong> Discover hidden subdomains via Host header<br>
-                                <strong>Response headers:</strong> May leak sensitive info<br>
-                                <strong>Manual testing:</strong> Bypass client-side restrictions</p>
                             </div>
                         </div>
                     </div>
