@@ -7,58 +7,37 @@
     <title>Cosmas Saidi | Security Analyst</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0a0a0a;
             --bg-secondary: #0f0f0f;
             --bg-card: #141414;
-            --border: #1a1a1a;
+            --bg-expand: #1a1a1a;
+            --border: #252525;
             --text-primary: #00ff00;
             --text-secondary: #00cc00;
             --text-dim: #008800;
             --text-white: #e0e0e0;
+            --text-gray: #888;
             --accent: #00ff00;
             --accent-red: #ff0040;
             --accent-cyan: #00ffff;
-            --glow: 0 0 20px rgba(0, 255, 0, 0.3);
-            --glow-strong: 0 0 40px rgba(0, 255, 0, 0.5);
+            --accent-purple: #a855f7;
+            --glow: 0 0 15px rgba(0, 255, 0, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         html { scroll-behavior: smooth; }
         
         body {
             font-family: 'JetBrains Mono', monospace;
             background: var(--bg-primary);
-            color: var(--text-primary);
+            color: var(--text-white);
             line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
+            font-size: 14px;
         }
 
-        /* Matrix Rain Background */
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.05;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(0, 255, 0, 0.03) 2px,
-                    rgba(0, 255, 0, 0.03) 4px
-                );
-        }
-
-        /* Scanline Effect */
         .scanlines {
             position: fixed;
             top: 0;
@@ -67,875 +46,1003 @@
             height: 100%;
             pointer-events: none;
             z-index: 1000;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.05), rgba(0,0,0,0.05) 1px, transparent 1px, transparent 2px);
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             background: rgba(10, 10, 10, 0.95);
             border-bottom: 1px solid var(--accent);
-            box-shadow: var(--glow);
             z-index: 100;
             padding: 0 24px;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 60px;
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 1.3rem;
+            font-weight: 600;
+            font-size: 1rem;
             color: var(--accent);
             text-decoration: none;
-            text-shadow: var(--glow);
-            letter-spacing: 2px;
         }
-
-        .logo::before { content: '['; color: var(--accent-red); }
-        .logo::after { content: ']'; color: var(--accent-red); }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 30px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-dim);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            transition: all 0.3s;
-            position: relative;
+            letter-spacing: 1px;
+            transition: color 0.3s;
         }
 
-        .nav-links a:hover { 
+        .nav-links a:hover { color: var(--accent); }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
             color: var(--accent);
-            text-shadow: var(--glow);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .nav-links a::before {
-            content: '> ';
-            opacity: 0;
-            transition: opacity 0.3s;
+        .section-desc {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-bottom: 30px;
         }
 
-        .nav-links a:hover::before { opacity: 1; }
-
-        /* Hero Section */
-        .hero {
+        #intro {
+            padding-top: 120px;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 120px 24px 80px;
-            position: relative;
-            z-index: 1;
         }
 
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
+        .intro-content {
+            max-width: 700px;
         }
 
-        .terminal-window {
+        .intro-terminal {
             background: var(--bg-card);
             border: 1px solid var(--accent);
-            border-radius: 8px;
+            border-radius: 6px;
+            margin-bottom: 30px;
             overflow: hidden;
-            box-shadow: var(--glow-strong);
-            margin-bottom: 40px;
         }
 
         .terminal-header {
             background: #1a1a1a;
-            padding: 12px 16px;
+            padding: 10px 14px;
             display: flex;
-            align-items: center;
-            gap: 8px;
+            gap: 6px;
             border-bottom: 1px solid var(--border);
         }
 
-        .terminal-btn {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
+        .terminal-btn { width: 10px; height: 10px; border-radius: 50%; }
         .terminal-btn.red { background: #ff5f56; }
         .terminal-btn.yellow { background: #ffbd2e; }
         .terminal-btn.green { background: #27ca3f; }
 
-        .terminal-title {
-            color: var(--text-dim);
-            font-size: 0.75rem;
-            margin-left: 12px;
-        }
-
         .terminal-body {
-            padding: 24px;
-            text-align: left;
-            font-size: 0.9rem;
+            padding: 20px;
+            font-size: 0.85rem;
         }
 
-        .terminal-line {
-            margin-bottom: 8px;
-        }
-
+        .terminal-line { margin-bottom: 6px; }
         .prompt { color: var(--accent-cyan); }
-        .command { color: var(--text-primary); }
+        .command { color: var(--accent); }
         .output { color: var(--text-dim); }
-        .highlight { color: var(--accent-red); }
 
-        .typing-container {
-            display: inline-block;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 18px;
-            background: var(--accent);
-            animation: blink 1s infinite;
-            vertical-align: middle;
-            margin-left: 2px;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .hero-roles {
+        .intro-name {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 700;
-            color: var(--accent);
-            text-shadow: var(--glow-strong);
-            margin-bottom: 20px;
-            min-height: 40px;
-        }
-
-        .hero-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 900;
+            font-size: 2rem;
             color: var(--text-white);
-            margin-bottom: 30px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
-        .hero-name span {
+        .intro-name span { color: var(--accent); }
+
+        .intro-roles {
             color: var(--accent);
-            text-shadow: var(--glow-strong);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 20px;
         }
 
-        .btn-primary {
-            background: transparent;
+        .intro-text {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .intro-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .intro-link {
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
             color: var(--accent);
-            border: 2px solid var(--accent);
-            box-shadow: var(--glow);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: all 0.3s;
         }
 
-        .btn-primary:hover {
+        .intro-link:hover {
             background: var(--accent);
             color: var(--bg-primary);
-            box-shadow: var(--glow-strong);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent-red);
-            border: 2px solid var(--accent-red);
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent-red);
-            color: var(--bg-primary);
-            box-shadow: 0 0 30px rgba(255, 0, 64, 0.5);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            margin-bottom: 60px;
-            text-align: center;
-        }
-
-        .section-header h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-shadow: var(--glow);
-            margin-bottom: 16px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .section-header h2::before { content: '[ '; color: var(--accent-red); }
-        .section-header h2::after { content: ' ]'; color: var(--accent-red); }
-
-        .section-header p {
-            color: var(--text-dim);
-            font-size: 1rem;
-        }
-
-        /* Skills Section */
-        #skills { 
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
         }
 
         .skill-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 32px;
-            position: relative;
+            border-radius: 6px;
             overflow: hidden;
-            transition: all 0.3s;
         }
 
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent);
-            box-shadow: var(--glow);
-        }
-
-        .skill-card:hover::before { opacity: 1; }
-
-        .skill-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .skill-bar {
-            margin-bottom: 16px;
-        }
-
-        .skill-bar-label {
+        .skill-header {
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 6px;
-            font-size: 0.8rem;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .skill-bar-label span:first-child { color: var(--text-white); }
-        .skill-bar-label span:last-child { color: var(--accent); }
+        .skill-header:hover { background: var(--bg-expand); }
 
-        .skill-bar-track {
-            height: 4px;
-            background: var(--border);
-            position: relative;
-            overflow: hidden;
+        .skill-header h3 {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
         }
 
-        .skill-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--accent-cyan));
-            box-shadow: var(--glow);
-            transition: width 1s ease-out;
+        .skill-toggle {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
         }
 
-        /* Tools Section */
-        #tools {
-            background: var(--bg-primary);
+        .skill-card.open .skill-toggle { transform: rotate(45deg); }
+
+        .skill-content {
+            display: none;
+            padding: 0 20px 20px;
+            border-top: 1px solid var(--border);
         }
 
-        .arsenal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
+        .skill-card.open .skill-content { display: block; }
+
+        .skill-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
         }
 
-        .tool-item {
-            background: var(--bg-card);
+        .tool-tag {
+            background: var(--bg-expand);
+            color: var(--accent-cyan);
+            padding: 4px 10px;
+            font-size: 0.7rem;
             border: 1px solid var(--border);
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s;
         }
 
-        .tool-item:hover {
-            border-color: var(--accent);
-            box-shadow: var(--glow);
-            transform: translateY(-4px);
+        .skill-notes {
+            background: var(--bg-expand);
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 2px solid var(--accent);
+            font-size: 0.8rem;
+            color: var(--text-gray);
         }
 
-        .tool-item span {
+        .skill-notes h4 {
             color: var(--text-white);
-            font-size: 0.85rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
-        /* Platforms Section */
-        #platforms {
-            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        .skill-notes pre {
+            background: var(--bg-primary);
+            padding: 10px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-size: 0.75rem;
+            color: var(--accent);
         }
 
-        .platforms-grid {
+        .skill-notes p {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .kb-platforms {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
         }
 
         .platform-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 32px;
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        .platform-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-cyan), var(--accent-red));
-        }
-
-        .platform-card:hover {
-            border-color: var(--accent);
-            box-shadow: var(--glow);
-            transform: translateY(-4px);
+            border-radius: 6px;
+            overflow: hidden;
         }
 
         .platform-header {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .platform-header:hover { background: var(--bg-expand); }
+
+        .platform-info {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
+            gap: 12px;
         }
 
         .platform-icon {
-            width: 50px;
-            height: 50px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border: 2px solid;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid;
         }
 
-        .platform-icon.pwn { 
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
-        .platform-icon.thm { 
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-        .platform-icon.htb { 
-            border-color: var(--accent-red);
-            color: var(--accent-red);
-        }
+        .platform-icon.pwn { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+        .platform-icon.thm { border-color: var(--accent); color: var(--accent); }
+        .platform-icon.htb { border-color: var(--accent-purple); color: var(--accent-purple); }
 
         .platform-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
             color: var(--text-white);
-            letter-spacing: 1px;
         }
 
-        .platform-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 16px;
+        .platform-toggle {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
         }
 
-        .tag {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .platform-card.open .platform-toggle { transform: rotate(45deg); }
 
-        .platform-modules {
-            margin-top: 20px;
-            padding-top: 20px;
+        .platform-content {
+            display: none;
             border-top: 1px solid var(--border);
         }
 
-        .platform-modules h4 {
+        .platform-card.open .platform-content { display: block; }
+
+        .writeup-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .writeup-item:last-child { border-bottom: none; }
+
+        .writeup-header {
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .writeup-header:hover { background: var(--bg-expand); }
+
+        .writeup-header h4 {
+            font-size: 0.8rem;
+            color: var(--text-white);
+            font-weight: 400;
+        }
+
+        .writeup-toggle {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+        }
+
+        .writeup-item.open .writeup-toggle { transform: rotate(90deg); }
+
+        .writeup-content {
+            display: none;
+            padding: 15px 20px;
+            background: var(--bg-expand);
+        }
+
+        .writeup-item.open .writeup-content { display: block; }
+
+        .writeup-content h5 {
+            color: var(--accent);
             font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-dim);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
+            margin: 15px 0 8px;
         }
 
-        .platform-modules ul {
+        .writeup-content h5:first-child { margin-top: 0; }
+
+        .writeup-content p {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            margin: 5px 0;
+        }
+
+        .writeup-content pre {
+            background: var(--bg-primary);
+            padding: 12px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-size: 0.75rem;
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+
+        .writeup-content ul {
             list-style: none;
+            margin: 8px 0;
         }
 
-        .platform-modules li {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            padding: 6px 0;
-            padding-left: 20px;
+        .writeup-content li {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            padding: 4px 0;
+            padding-left: 15px;
             position: relative;
         }
 
-        .platform-modules li::before {
+        .writeup-content li::before {
             content: '>';
             position: absolute;
             left: 0;
             color: var(--accent);
         }
 
-        /* Contact Section */
-        #contact {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--accent);
-        }
-
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
 
         .contact-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 32px;
+            padding: 20px;
             text-align: center;
-            transition: all 0.3s;
             text-decoration: none;
-            display: block;
+            transition: all 0.3s;
         }
 
         .contact-card:hover {
             border-color: var(--accent);
             box-shadow: var(--glow);
-            transform: translateY(-4px);
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            margin-bottom: 16px;
         }
 
         .contact-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
             color: var(--accent);
+            font-size: 0.8rem;
             margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .contact-card p {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            word-break: break-all;
+            color: var(--text-gray);
+            font-size: 0.75rem;
         }
 
-        /* Footer */
         footer {
-            padding: 40px 24px;
+            padding: 30px 24px;
             text-align: center;
             border-top: 1px solid var(--border);
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-quote {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            font-style: italic;
-            margin-bottom: 16px;
         }
 
         footer p {
             color: var(--text-dim);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+            font-size: 0.7rem;
         }
 
-        /* Glitch Effect */
-        .glitch {
-            position: relative;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .glitch::before {
-            animation: glitch-1 0.3s infinite linear alternate-reverse;
-            color: var(--accent-cyan);
-            z-index: -1;
-        }
-
-        .glitch::after {
-            animation: glitch-2 0.3s infinite linear alternate-reverse;
-            color: var(--accent-red);
-            z-index: -2;
-        }
-
-        @keyframes glitch-1 {
-            0% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 2px); }
-            100% { clip-path: inset(10% 0 70% 0); transform: translate(2px, -2px); }
-        }
-
-        @keyframes glitch-2 {
-            0% { clip-path: inset(60% 0 20% 0); transform: translate(2px, -2px); }
-            100% { clip-path: inset(70% 0 10% 0); transform: translate(-2px, 2px); }
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { padding: 100px 20px 60px; }
-            section { padding: 60px 0; }
-            .skills-grid, .platforms-grid { grid-template-columns: 1fr; }
-            .terminal-body { font-size: 0.75rem; padding: 16px; }
+            .skills-grid, .kb-platforms { grid-template-columns: 1fr; }
+            .intro-name { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="matrix-bg"></div>
     <div class="scanlines"></div>
 
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">COSMAS</a>
+            <a href="#" class="logo">[COSMAS]</a>
             <ul class="nav-links">
+                <li><a href="#intro">About</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="#platforms">Training</a></li>
-                <li><a href="#docs">Docs</a></li>
+                <li><a href="#knowledge">Knowledge Base</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="terminal-window">
-                <div class="terminal-header">
-                    <div class="terminal-btn red"></div>
-                    <div class="terminal-btn yellow"></div>
-                    <div class="terminal-btn green"></div>
-                    <span class="terminal-title">root@kali:~</span>
-                </div>
-                <div class="terminal-body">
-                    <div class="terminal-line">
-                        <span class="prompt">root@kali</span>:<span class="highlight">~</span># <span class="command">whoami</span>
+    <section id="intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-btn red"></div>
+                        <div class="terminal-btn yellow"></div>
+                        <div class="terminal-btn green"></div>
                     </div>
-                    <div class="terminal-line output">cosmas_saidi</div>
-                    <div class="terminal-line">
-                        <span class="prompt">root@kali</span>:<span class="highlight">~</span># <span class="command">cat /etc/profile</span>
-                    </div>
-                    <div class="terminal-line output">ROLE="Security Analyst | Penetration Tester | Red Team Operator | Exploit Developer"</div>
-                    <div class="terminal-line">
-                        <span class="prompt">root@kali</span>:<span class="highlight">~</span># <span class="command">./exploit.sh</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">[*] Initializing...</span><span class="cursor"></span>
+                    <div class="terminal-body">
+                        <div class="terminal-line"><span class="prompt">root@kali:~#</span> <span class="command">whoami</span></div>
+                        <div class="terminal-line"><span class="output">cosmas_saidi</span></div>
+                        <div class="terminal-line"><span class="prompt">root@kali:~#</span> <span class="command">cat /etc/mission</span></div>
+                        <div class="terminal-line"><span class="output">Building expertise in offensive security through hands-on labs and CTFs</span></div>
                     </div>
                 </div>
-            </div>
 
-            <h1 class="hero-name"><span>Cosmas</span> Saidi</h1>
-            
-            <div class="hero-roles" id="roles"></div>
+                <h1 class="intro-name"><span>Cosmas</span> Saidi</h1>
+                <p class="intro-roles">Security Analyst | Penetration Tester | Red Team Operator | Exploit Developer</p>
+                
+                <p class="intro-text">
+                    This is my cybersecurity research and documentation hub. Here I document my learning journey through various security training platforms, capture-the-flag challenges, and hands-on labs. Every writeup and note represents practical skills acquired through real exploitation scenarios.
+                </p>
+                <p class="intro-text">
+                    My focus areas include Linux security fundamentals, privilege escalation techniques, system enumeration, and shell scripting for automation. I believe in learning by doing - each challenge solved adds to my offensive security toolkit.
+                </p>
 
-            <div class="cta-buttons">
-                <a href="https://github.com/CosmasSaidi" class="btn btn-primary">[ View GitHub ]</a>
-                <a href="#contact" class="btn btn-secondary">[ Contact Me ]</a>
+                <div class="intro-links">
+                    <a href="https://github.com/CosmasSaidi" class="intro-link" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/cosmas-saidi-5965212a8" class="intro-link" target="_blank">LinkedIn</a>
+                    <a href="#skills" class="intro-link">View Skills</a>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="skills">
         <div class="container">
-            <div class="section-header">
-                <h2>Skill Matrix</h2>
-                <p>> Core competencies acquired through exploitation and enumeration</p>
-            </div>
+            <h2 class="section-title">Skills Acquired</h2>
+            <p class="section-desc">> Technical competencies with documentation from my notes</p>
+
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>Linux Security</h3>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>File Permissions</span><span>85%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 85%"></div></div>
+                    <div class="skill-header" onclick="toggleCard(this.parentElement)">
+                        <h3>Linux Security</h3>
+                        <span class="skill-toggle">+</span>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>Process Management</span><span>80%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 80%"></div></div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>User Administration</span><span>75%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 75%"></div></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <h3>Privilege Escalation</h3>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>SUID Exploitation</span><span>80%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 80%"></div></div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>PATH Hijacking</span><span>75%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 75%"></div></div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>Credential Hunting</span><span>70%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 70%"></div></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <h3>Enumeration</h3>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>System Recon</span><span>85%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 85%"></div></div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>Service Analysis</span><span>70%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 70%"></div></div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>Network Mapping</span><span>65%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 65%"></div></div>
+                    <div class="skill-content">
+                        <div class="skill-tools">
+                            <span class="tool-tag">chmod</span>
+                            <span class="tool-tag">chown</span>
+                            <span class="tool-tag">ls</span>
+                            <span class="tool-tag">find</span>
+                            <span class="tool-tag">grep</span>
+                            <span class="tool-tag">ps</span>
+                            <span class="tool-tag">top</span>
+                        </div>
+                        <div class="skill-notes">
+                            <h4>Linux Fundamentals</h4>
+                            <p>Linux powers most servers and security tools. Mastery of the command line is essential.</p>
+                            <pre>pwd          # Current directory
+ls -la       # List with permissions
+cat file.txt # View file
+find / -name "*.conf"  # Find files
+id           # Current user/groups</pre>
+                            <h4>File Permissions</h4>
+                            <p>Permissions split into: owner, group, others. Octal: r=4, w=2, x=1</p>
+                            <pre>chmod 755 script.sh   # rwxr-xr-x
+chmod 600 secret.txt  # rw------- (owner only)</pre>
+                            <p><strong>Security:</strong> Misconfigured permissions = unauthorized access. Never use 777 in production.</p>
+                        </div>
                     </div>
                 </div>
+
                 <div class="skill-card">
-                    <h3>Scripting</h3>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>Bash</span><span>80%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 80%"></div></div>
+                    <div class="skill-header" onclick="toggleCard(this.parentElement)">
+                        <h3>System Enumeration</h3>
+                        <span class="skill-toggle">+</span>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>Python</span><span>60%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 60%"></div></div>
+                    <div class="skill-content">
+                        <div class="skill-tools">
+                            <span class="tool-tag">LinPEAS</span>
+                            <span class="tool-tag">netstat</span>
+                            <span class="tool-tag">ss</span>
+                            <span class="tool-tag">ip</span>
+                            <span class="tool-tag">arp</span>
+                            <span class="tool-tag">find</span>
+                        </div>
+                        <div class="skill-notes">
+                            <h4>System Information</h4>
+                            <pre>uname -a            # Kernel version
+cat /etc/os-release # OS details
+hostname            # System name</pre>
+                            <h4>User Enumeration</h4>
+                            <pre>whoami              # Current user
+id                  # UID, GID, groups
+sudo -l             # Sudo permissions
+cat /etc/passwd     # All users</pre>
+                            <h4>Interesting Files</h4>
+                            <pre>find / -perm -4000 2>/dev/null  # SUID binaries
+find / -writable -type d 2>/dev/null  # Writable dirs
+grep -r "password" /etc/ 2>/dev/null  # Credentials</pre>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-label"><span>Automation</span><span>70%</span></div>
-                        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 70%"></div></div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleCard(this.parentElement)">
+                        <h3>Privilege Escalation</h3>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-tools">
+                            <span class="tool-tag">GTFOBins</span>
+                            <span class="tool-tag">LinPEAS</span>
+                            <span class="tool-tag">sudo</span>
+                            <span class="tool-tag">su</span>
+                        </div>
+                        <div class="skill-notes">
+                            <h4>Methodology Checklist</h4>
+                            <pre># 1. User Context
+whoami && id && sudo -l
+
+# 2. SUID Binaries
+find / -perm -4000 2>/dev/null
+
+# 3. Cron Jobs
+cat /etc/crontab
+ls -la /etc/cron.*
+
+# 4. PATH Hijacking
+echo $PATH</pre>
+                            <h4>Common Vectors</h4>
+                            <p>• Misconfigured sudo permissions</p>
+                            <p>• SUID binaries (check GTFOBins)</p>
+                            <p>• Writable scripts in cron</p>
+                            <p>• Credentials in config files</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleCard(this.parentElement)">
+                        <h3>Shell Scripting</h3>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-tools">
+                            <span class="tool-tag">bash</span>
+                            <span class="tool-tag">sh</span>
+                            <span class="tool-tag">awk</span>
+                            <span class="tool-tag">sed</span>
+                            <span class="tool-tag">grep</span>
+                        </div>
+                        <div class="skill-notes">
+                            <h4>Script Basics</h4>
+                            <pre>#!/bin/bash
+echo "Hello"
+VAR=$(command)    # Command substitution
+chmod +x script.sh
+./script.sh</pre>
+                            <h4>Key Concepts</h4>
+                            <p>• Scripts need shebang (#!/bin/bash) to specify interpreter</p>
+                            <p>• Command substitution: $(command) or backticks</p>
+                            <p>• Variables: no $ when assigning, $ when reading</p>
+                            <p><strong>Security:</strong> Always validate input. Never run untrusted scripts with elevated privileges.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleCard(this.parentElement)">
+                        <h3>Environment & PATH</h3>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-tools">
+                            <span class="tool-tag">env</span>
+                            <span class="tool-tag">export</span>
+                            <span class="tool-tag">printenv</span>
+                            <span class="tool-tag">which</span>
+                        </div>
+                        <div class="skill-notes">
+                            <h4>Environment Variables</h4>
+                            <pre>env                    # View all variables
+echo $PATH             # View PATH
+export MYVAR="value"   # Set variable
+printenv               # Print environment</pre>
+                            <h4>PATH Manipulation</h4>
+                            <pre>export PATH=/my/dir:$PATH
+which command          # Find command location</pre>
+                            <p><strong>Security:</strong> PATH is searched left to right. If a privileged script calls commands without full paths, an attacker can hijack execution.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleCard(this.parentElement)">
+                        <h3>Process Management</h3>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-tools">
+                            <span class="tool-tag">ps</span>
+                            <span class="tool-tag">top</span>
+                            <span class="tool-tag">htop</span>
+                            <span class="tool-tag">kill</span>
+                            <span class="tool-tag">jobs</span>
+                        </div>
+                        <div class="skill-notes">
+                            <h4>Process Control</h4>
+                            <pre>command &   # Run in background
+fg          # Bring to foreground
+bg          # Continue in background
+jobs        # List shell jobs
+Ctrl+Z      # Suspend process
+ps aux      # List all processes</pre>
+                            <p><strong>Security:</strong> Background processes can persist after logout. Be aware of orphaned processes.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="tools">
+    <section id="knowledge">
         <div class="container">
-            <div class="section-header">
-                <h2>Tools</h2>
-                <p>> Tools of the trade</p>
-            </div>
-            <div class="arsenal-grid">
-                <div class="tool-item"><span>Kali Linux</span></div>
-                <div class="tool-item"><span>Burp Suite</span></div>
-                <div class="tool-item"><span>Nmap</span></div>
-                <div class="tool-item"><span>Metasploit</span></div>
-                <div class="tool-item"><span>Gobuster</span></div>
-                <div class="tool-item"><span>John</span></div>
-                <div class="tool-item"><span>Hashcat</span></div>
-                <div class="tool-item"><span>LinPEAS</span></div>
-                <div class="tool-item"><span>GTFOBins</span></div>
-                <div class="tool-item"><span>Wireshark</span></div>
-                <div class="tool-item"><span>Netcat</span></div>
-                <div class="tool-item"><span>SQLMap</span></div>
-            </div>
-        </div>
-    </section>
+            <h2 class="section-title">Knowledge Base</h2>
+            <p class="section-desc">> Writeups and solutions from training platforms</p>
 
-    <section id="platforms">
-        <div class="container">
-            <div class="section-header">
-                <h2>Training Grounds</h2>
-                <p>> Where skills are forged</p>
-            </div>
-            <div class="platforms-grid">
+            <div class="kb-platforms">
                 <div class="platform-card">
-                    <div class="platform-header">
-                        <div class="platform-icon pwn">PWN</div>
-                        <span class="platform-name">pwn.college</span>
+                    <div class="platform-header" onclick="toggleCard(this.parentElement)">
+                        <div class="platform-info">
+                            <div class="platform-icon pwn">PWN</div>
+                            <span class="platform-name">pwn.college</span>
+                        </div>
+                        <span class="platform-toggle">+</span>
                     </div>
-                    <div class="platform-tags">
-                        <span class="tag">Binary</span>
-                        <span class="tag">CTF</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                    <div class="platform-modules">
-                        <h4>Modules</h4>
-                        <ul>
-                            <li>Linux Luminarium - Permissions, Processes, Shell</li>
-                            <li>Playing with Programs - Data encoding, Interaction</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <div class="platform-icon thm">THM</div>
-                        <span class="platform-name">TryHackMe</span>
-                    </div>
-                    <div class="platform-tags">
-                        <span class="tag">Pentesting</span>
-                        <span class="tag">Labs</span>
-                        <span class="tag">Learning</span>
-                    </div>
-                    <div class="platform-modules">
-                        <h4>Focus</h4>
-                        <ul>
-                            <li>Linux fundamentals and privilege escalation</li>
-                            <li>Enumeration and reconnaissance paths</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <div class="platform-icon htb">HTB</div>
-                        <span class="platform-name">Hack The Box</span>
-                    </div>
-                    <div class="platform-tags">
-                        <span class="tag">Machines</span>
-                        <span class="tag">Real-world</span>
-                        <span class="tag">Challenges</span>
-                    </div>
-                    <div class="platform-modules">
-                        <h4>Focus</h4>
-                        <ul>
-                            <li>Machine exploitation methodology</li>
-                            <li>Real-world attack simulation</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="platform-content">
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>File Permissions</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Goal</h5>
+                                <p>Understand Linux file permissions and how to modify them.</p>
+                                <h5>Approach</h5>
+                                <ul>
+                                    <li>Used ls -la to view file permissions</li>
+                                    <li>Identified permission bits (rwx for user, group, others)</li>
+                                    <li>Used chmod to change permissions</li>
+                                </ul>
+                                <h5>Commands Used</h5>
+                                <pre>ls -la
+chmod 755 filename
+chmod +x script.sh</pre>
+                                <h5>Concepts Learned</h5>
+                                <ul>
+                                    <li>Permissions split into: owner, group, others</li>
+                                    <li>r=4, w=2, x=1 (octal notation)</li>
+                                    <li>Execute permission needed to run scripts</li>
+                                </ul>
+                                <h5>Security Lesson</h5>
+                                <p>Misconfigured permissions can expose sensitive files. Always use minimum required permissions.</p>
+                            </div>
+                        </div>
 
-    <section id="docs">
-        <div class="container">
-            <div class="section-header">
-                <h2>Documentation</h2>
-                <p>> Notes and writeups</p>
-            </div>
-            <div class="contact-grid">
-                <a href="https://github.com/CosmasSaidi/CYBERSECURITY-NOTES" class="contact-card" target="_blank">
-                    <div class="contact-icon">📝</div>
-                    <h3>Security Notes</h3>
-                    <p>Linux security, enumeration, privilege escalation</p>
-                </a>
-                <a href="https://github.com/CosmasSaidi/cybersecurity-writeups" class="contact-card" target="_blank">
-                    <div class="contact-icon">📚</div>
-                    <h3>Writeups</h3>
-                    <p>Training platform writeups and walkthroughs</p>
-                </a>
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>Environment Variables</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Goal</h5>
+                                <p>Learn how environment variables work and affect program execution.</p>
+                                <h5>Commands Used</h5>
+                                <pre>env
+echo $PATH
+export MYVAR="value"
+printenv</pre>
+                                <h5>Concepts Learned</h5>
+                                <ul>
+                                    <li>Environment variables store system and user settings</li>
+                                    <li>PATH determines where shell looks for commands</li>
+                                    <li>export makes variable available to subprocesses</li>
+                                </ul>
+                                <h5>Security Lesson</h5>
+                                <p>Never store secrets in environment variables visible to other processes. PATH manipulation can be used for privilege escalation.</p>
+                            </div>
+                        </div>
+
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>Shell Scripting</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Goal</h5>
+                                <p>Learn basic shell scripting for automation.</p>
+                                <h5>Commands Used</h5>
+                                <pre>#!/bin/bash
+echo "Hello"
+VAR=$(command)
+chmod +x script.sh
+./script.sh</pre>
+                                <h5>Concepts Learned</h5>
+                                <ul>
+                                    <li>Scripts need shebang line to specify interpreter</li>
+                                    <li>Command substitution: $(command) or backticks</li>
+                                    <li>Scripts need execute permission to run</li>
+                                </ul>
+                                <h5>Security Lesson</h5>
+                                <p>Always validate input in scripts. Avoid running untrusted scripts with elevated privileges.</p>
+                            </div>
+                        </div>
+
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>Process Control</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Goal</h5>
+                                <p>Learn to manage processes in Linux.</p>
+                                <h5>Commands Used</h5>
+                                <pre>command &
+fg
+bg
+jobs
+Ctrl+Z
+ps aux</pre>
+                                <h5>Concepts Learned</h5>
+                                <ul>
+                                    <li>& runs command in background</li>
+                                    <li>Ctrl+Z suspends current process</li>
+                                    <li>fg brings background job to foreground</li>
+                                    <li>jobs lists current shell jobs</li>
+                                </ul>
+                                <h5>Security Lesson</h5>
+                                <p>Background processes can persist after logout. Use nohup for persistent processes.</p>
+                            </div>
+                        </div>
+
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>PATH Manipulation</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Goal</h5>
+                                <p>Understand how PATH affects command execution.</p>
+                                <h5>Commands Used</h5>
+                                <pre>echo $PATH
+export PATH=/my/dir:$PATH
+which command</pre>
+                                <h5>Concepts Learned</h5>
+                                <ul>
+                                    <li>PATH is searched left to right for commands</li>
+                                    <li>First match is executed</li>
+                                    <li>Prepending vs appending to PATH matters</li>
+                                </ul>
+                                <h5>Security Lesson</h5>
+                                <p>PATH manipulation is a classic privilege escalation technique. If a privileged script calls commands without full paths, an attacker can hijack execution.</p>
+                            </div>
+                        </div>
+
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>Piping & Redirection</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Goal</h5>
+                                <p>Learn stdin/stdout redirection and piping between commands.</p>
+                                <h5>Commands Used</h5>
+                                <pre>command > file      # Redirect output to file
+command >> file     # Append to file
+command < file      # Read input from file
+cmd1 | cmd2         # Pipe output to next command
+2>&1                # Redirect stderr to stdout</pre>
+                                <h5>Concepts Learned</h5>
+                                <ul>
+                                    <li>Pipes connect stdout of one command to stdin of another</li>
+                                    <li>Redirection controls where output goes</li>
+                                    <li>Useful for chaining tools together</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header" onclick="toggleCard(this.parentElement)">
+                        <div class="platform-info">
+                            <div class="platform-icon thm">THM</div>
+                            <span class="platform-name">TryHackMe</span>
+                        </div>
+                        <span class="platform-toggle">+</span>
+                    </div>
+                    <div class="platform-content">
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>Linux Fundamentals</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Focus Areas</h5>
+                                <ul>
+                                    <li>Basic navigation and file operations</li>
+                                    <li>Understanding the Linux filesystem hierarchy</li>
+                                    <li>User permissions and file ownership</li>
+                                    <li>Package management basics</li>
+                                </ul>
+                                <h5>Key Commands</h5>
+                                <pre>cd /path        # Navigate
+ls -la          # List files
+cat/head/tail   # View files
+grep "pattern"  # Search
+find / -name    # Find files</pre>
+                            </div>
+                        </div>
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>Linux Privilege Escalation</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Methodology</h5>
+                                <ul>
+                                    <li>Check sudo permissions with sudo -l</li>
+                                    <li>Search for SUID binaries</li>
+                                    <li>Review cron jobs for weak scripts</li>
+                                    <li>Check for credentials in config files</li>
+                                </ul>
+                                <h5>Tools Used</h5>
+                                <pre>LinPEAS        # Automated enumeration
+GTFOBins       # Binary exploitation reference
+sudo -l        # Check sudo rights
+find -perm     # Find special permissions</pre>
+                            </div>
+                        </div>
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>Enumeration</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>System Enumeration</h5>
+                                <pre>uname -a        # Kernel info
+cat /etc/passwd # Users
+cat /etc/shadow # Password hashes
+netstat -tuln   # Network connections
+ps aux          # Running processes</pre>
+                                <h5>Network Enumeration</h5>
+                                <pre>ip a            # Interfaces
+arp -a          # ARP cache
+cat /etc/hosts  # Host mappings</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-header" onclick="toggleCard(this.parentElement)">
+                        <div class="platform-info">
+                            <div class="platform-icon htb">HTB</div>
+                            <span class="platform-name">Hack The Box</span>
+                        </div>
+                        <span class="platform-toggle">+</span>
+                    </div>
+                    <div class="platform-content">
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>Machine Methodology</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Approach</h5>
+                                <ul>
+                                    <li>Initial enumeration with nmap</li>
+                                    <li>Service-specific enumeration</li>
+                                    <li>Exploitation of identified vulnerabilities</li>
+                                    <li>Privilege escalation to root</li>
+                                </ul>
+                                <h5>Common Tools</h5>
+                                <pre>nmap            # Port scanning
+gobuster        # Directory brute-force
+burpsuite       # Web proxy
+metasploit      # Exploitation framework
+netcat          # Network connections</pre>
+                            </div>
+                        </div>
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <h4>Real-World Attack Simulation</h4>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <h5>Focus Areas</h5>
+                                <ul>
+                                    <li>Realistic penetration testing scenarios</li>
+                                    <li>Active Directory environments</li>
+                                    <li>Web application vulnerabilities</li>
+                                    <li>Post-exploitation techniques</li>
+                                </ul>
+                                <h5>Learning Outcomes</h5>
+                                <p>Practical experience with real-world attack vectors and defensive evasion techniques.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2>Contact</h2>
-                <p>> Ready for collaboration</p>
-            </div>
+            <h2 class="section-title">Contact</h2>
+            <p class="section-desc">> Connect for collaboration and opportunities</p>
+
             <div class="contact-grid">
                 <a href="https://www.linkedin.com/in/cosmas-saidi-5965212a8" class="contact-card" target="_blank">
-                    <div class="contact-icon">💼</div>
                     <h3>LinkedIn</h3>
                     <p>Cosmas Saidi</p>
                 </a>
                 <a href="mailto:cosmassaidi2@gmail.com" class="contact-card">
-                    <div class="contact-icon">📧</div>
                     <h3>Email</h3>
                     <p>cosmassaidi2@gmail.com</p>
                 </a>
                 <a href="https://github.com/CosmasSaidi" class="contact-card" target="_blank">
-                    <div class="contact-icon">⌨️</div>
                     <h3>GitHub</h3>
                     <p>CosmasSaidi</p>
                 </a>
@@ -944,44 +1051,17 @@
     </section>
 
     <footer>
-        <p class="footer-quote">"The quieter you become, the more you are able to hear."</p>
-        <p>© 2026 COSMAS SAIDI // ALL SYSTEMS OPERATIONAL</p>
+        <p>"The quieter you become, the more you are able to hear." // © 2026 Cosmas Saidi</p>
     </footer>
 
     <script>
-        // Typing animation for roles
-        const roles = ['Security Analyst', 'Penetration Tester', 'Red Team Operator', 'Exploit Developer'];
-        let roleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const rolesElement = document.getElementById('roles');
-
-        function typeRole() {
-            const currentRole = roles[roleIndex];
-            
-            if (isDeleting) {
-                rolesElement.textContent = currentRole.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                rolesElement.textContent = currentRole.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && charIndex === currentRole.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                roleIndex = (roleIndex + 1) % roles.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(typeRole, typeSpeed);
+        function toggleCard(card) {
+            card.classList.toggle('open');
         }
 
-        typeRole();
+        function toggleWriteup(item) {
+            item.classList.toggle('open');
+        }
     </script>
 </body>
 </html>
