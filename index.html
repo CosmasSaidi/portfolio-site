@@ -1010,11 +1010,10 @@
                         <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">cat /etc/mission</span></div>
                         <div class="terminal-line"><span class="output">Building offensive security skills</span></div>
                         <div class="terminal-line"><span class="output">through hands-on practice and CTFs</span></div>
-                        <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">cat latest_training.txt</span></div>
-                        <div class="terminal-line"><span class="output">• TryHackMe: Offensive Security Intro</span></div>
-                        <div class="terminal-line"><span class="output">• TryHackMe: Defensive Security Intro</span></div>
-                        <div class="terminal-line"><span class="output">• Enumeration + SIEM response workflow</span></div>
-                        <div class="terminal-line"><span class="output">• Controls: IP block, rate limit, WAF rules</span></div>
+                        <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">ls ./skills</span></div>
+                        <div class="terminal-line"><span class="output">linux_security  enumeration  web_security  scripting</span></div>
+                        <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">cat ./platforms</span></div>
+                        <div class="terminal-line"><span class="output">pwn.college | TryHackMe | HackTheBox</span></div>
                         <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">_</span></div>
                     </div>
                 </div>
@@ -1038,7 +1037,6 @@
                             <div class="platform-icon pwn">PWN</div>
                             <div class="platform-details">
                                 <h3>pwn.college</h3>
-                                <p>Linux Luminarium • Playing with Programs</p>
                             </div>
                         </div>
                         <div class="platform-toggle">+</div>
@@ -1450,6 +1448,75 @@ base64.b64decode("aGVsbG8=")</pre>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- HTTP Basics -->
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <div class="writeup-title">
+                                    <h4>HTTP Basics</h4>
+                                    <span class="writeup-badge web">Web</span>
+                                </div>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <div class="writeup-body">
+                                    <div class="writeup-section">
+                                        <h5>Goal</h5>
+                                        <p>Understand HTTP communication, manual request crafting, and how clients interact with web servers.</p>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>My Approach</h5>
+                                        <ul>
+                                            <li>Sent raw HTTP requests using <code>netcat</code></li>
+                                            <li>Used <code>curl</code> for quick HTTP interactions</li>
+                                            <li>Automated requests with Python <code>requests</code> library</li>
+                                            <li>Understood Host header for virtual host routing</li>
+                                        </ul>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Commands Used</h5>
+                                        <pre><span class="code-comment"># Netcat raw HTTP</span>
+nc challenge.localhost 80
+GET / HTTP/1.1
+Host: challenge.localhost
+
+<span class="code-comment"># Curl requests</span>
+curl http://challenge.localhost/pwn
+curl -H "Host: example.com" http://url
+curl -v http://url                    <span class="code-comment"># Verbose output</span>
+
+<span class="code-comment"># Python requests</span>
+import requests
+r = requests.get("http://url", headers={"Host": "target.com"})
+print(r.text)</pre>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>HTTP Request Structure</h5>
+                                        <table>
+                                            <tr><th>Part</th><th>Example</th><th>Purpose</th></tr>
+                                            <tr><td>Method</td><td>GET</td><td>Action to perform</td></tr>
+                                            <tr><td>Path</td><td>/pwn</td><td>Resource requested</td></tr>
+                                            <tr><td>Version</td><td>HTTP/1.1</td><td>Protocol version</td></tr>
+                                            <tr><td>Host</td><td>example.com</td><td>Target virtual host</td></tr>
+                                        </table>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Concepts Learned</h5>
+                                        <ul>
+                                            <li>HTTP request structure (method, path, version, headers)</li>
+                                            <li>Host header determines which virtual host responds</li>
+                                            <li>Manual request crafting with netcat</li>
+                                            <li>Response headers can contain sensitive data</li>
+                                            <li>Virtual host enumeration for subdomain discovery</li>
+                                        </ul>
+                                    </div>
+                                    <div class="security-note">
+                                        <h6>⚠ Security Lesson</h6>
+                                        <p>Understanding raw HTTP is essential for web exploitation. The Host header can be manipulated to access hidden virtual hosts. Response headers often leak sensitive information not visible in page body.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1460,7 +1527,6 @@ base64.b64decode("aGVsbG8=")</pre>
                             <div class="platform-icon htb">HTB</div>
                             <div class="platform-details">
                                 <h3>Hack The Box Academy</h3>
-                                <p>Linux Fundamentals • System Enumeration</p>
                             </div>
                         </div>
                         <div class="platform-toggle">+</div>
@@ -1654,7 +1720,6 @@ cat /etc/resolv.conf      <span class="code-comment"># DNS servers</span></pre>
                             <div class="platform-icon thm">THM</div>
                             <div class="platform-details">
                                 <h3>TryHackMe</h3>
-                                <p>Offensive Security Intro • Defensive Security Intro</p>
                             </div>
                         </div>
                         <div class="platform-toggle">+</div>
