@@ -1476,18 +1476,18 @@ base64.b64decode("aGVsbG8=")</pre>
                                     <div class="writeup-section">
                                         <h5>Commands Used</h5>
                                         <pre><span class="code-comment"># Netcat raw HTTP</span>
-nc challenge.localhost 80
+nc example.com 80
 GET / HTTP/1.1
-Host: challenge.localhost
+Host: example.com
 
 <span class="code-comment"># Curl requests</span>
-curl http://challenge.localhost/pwn
-curl -H "Host: example.com" http://url
-curl -v http://url                    <span class="code-comment"># Verbose output</span>
+curl http://example.com
+curl -H "Host: app.example.com" http://target-ip
+curl -v http://example.com            <span class="code-comment"># Verbose output</span>
 
 <span class="code-comment"># Python requests</span>
 import requests
-r = requests.get("http://url", headers={"Host": "target.com"})
+r = requests.get("http://example.com", headers={"Host": "app.example.com"})
 print(r.text)</pre>
                                     </div>
                                     <div class="writeup-section">
@@ -1495,7 +1495,7 @@ print(r.text)</pre>
                                         <table>
                                             <tr><th>Part</th><th>Example</th><th>Purpose</th></tr>
                                             <tr><td>Method</td><td>GET</td><td>Action to perform</td></tr>
-                                            <tr><td>Path</td><td>/pwn</td><td>Resource requested</td></tr>
+                                            <tr><td>Path</td><td>/resource</td><td>Resource requested</td></tr>
                                             <tr><td>Version</td><td>HTTP/1.1</td><td>Protocol version</td></tr>
                                             <tr><td>Host</td><td>example.com</td><td>Target virtual host</td></tr>
                                         </table>
@@ -1738,23 +1738,23 @@ cat /etc/resolv.conf      <span class="code-comment"># DNS servers</span></pre>
                                 <div class="writeup-body">
                                     <div class="writeup-section">
                                         <h5>Scenario</h5>
-                                        <p>Used directory enumeration against FakeBank, identified hidden functionality, then switched to SOC response to investigate and mitigate active web discovery activity.</p>
+                                        <p>Practiced directory enumeration to discover non-obvious web routes, then shifted to SOC response to investigate and mitigate a web discovery attack pattern.</p>
                                     </div>
                                     <div class="writeup-section">
                                         <h5>Offensive Workflow</h5>
                                         <ul>
-                                            <li>Ran <code>dirb http://fakebank.thm</code> with common wordlist-based endpoint discovery</li>
+                                            <li>Ran <code>dirb http://target-site</code> with common wordlist-based endpoint discovery</li>
                                             <li>Interpreted HTTP status codes (<code>200</code>, <code>301</code>, <code>404</code>) during brute forcing</li>
-                                            <li>Discovered hidden endpoints such as <code>/bank-deposit</code> and <code>/images</code></li>
-                                            <li>Validated a business logic weakness by performing an unauthorized deposit action</li>
+                                            <li>Identified hidden endpoints that were not linked in the main interface</li>
+                                            <li>Recognized business-logic weaknesses caused by missing authorization checks</li>
                                         </ul>
                                     </div>
                                     <div class="writeup-section">
                                         <h5>Defensive Workflow</h5>
                                         <ul>
                                             <li>Investigated a SIEM alert categorized as <strong>Web Discovery Attack</strong></li>
-                                            <li>Identified attacker source IP: <code>32.122.195.63</code></li>
-                                            <li>Blocked source IP for 24 hours as immediate containment</li>
+                                            <li>Correlated suspicious traffic patterns to a single hostile source</li>
+                                            <li>Applied temporary source blocking as immediate containment</li>
                                             <li>Applied rate limiting and updated WAF rules to reduce recurrence risk</li>
                                         </ul>
                                     </div>
