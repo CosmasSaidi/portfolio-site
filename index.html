@@ -1026,7 +1026,7 @@
             <div class="section-header">
                 <p class="section-label">Platform Writeups</p>
                 <h2 class="section-title">Knowledge Base</h2>
-                <p class="section-desc">Hands-on solutions and methodology documentation from cybersecurity training platforms. Expand each section to view detailed writeups.</p>
+                <p class="section-desc">Hands-on concepts and methodology documentation from cybersecurity training platforms. Expand each section to view detailed writeups.</p>
             </div>
 
             <div class="platforms-container">
@@ -1780,6 +1780,62 @@ cat /etc/resolv.conf      <span class="code-comment"># DNS servers</span></pre>
                             </div>
                         </div>
 
+                        <!-- Web Fundamentals -->
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <div class="writeup-title">
+                                    <h4>Web Fundamentals</h4>
+                                    <span class="writeup-badge web">Web</span>
+                                </div>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <div class="writeup-body">
+                                    <div class="writeup-section">
+                                        <h5>Scope</h5>
+                                        <p>Expanded foundation across networking, DNS, HTTP communication, web architecture, and client-side web security concepts.</p>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Networking & DNS Concepts</h5>
+                                        <ul>
+                                            <li>DNS resolution flow and record types: <code>A</code>, <code>MX</code>, <code>TXT</code>, <code>CNAME</code></li>
+                                            <li>Connectivity testing with <code>ping</code> and ICMP metrics (latency, packet loss)</li>
+                                            <li>Network topology models: star, ring, and bus</li>
+                                            <li>OSI 7-layer model for communication and troubleshooting context</li>
+                                        </ul>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Web Communication Concepts</h5>
+                                        <ul>
+                                            <li>HTTP request/response lifecycle and communication flow</li>
+                                            <li>Methods: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code></li>
+                                            <li>Status codes: <code>200</code>, <code>301</code>, <code>403</code>, <code>404</code>, <code>500</code></li>
+                                            <li>Header roles: <code>Host</code>, <code>User-Agent</code>, <code>Authorization</code>, <code>Cookie</code></li>
+                                        </ul>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Client-Side Security Concepts</h5>
+                                        <ul>
+                                            <li>Cookie/session handling fundamentals</li>
+                                            <li>Sensitive data exposure through client-visible source code</li>
+                                            <li>HTML injection risk from unsafe rendering paths</li>
+                                            <li>XSS fundamentals and browser-impact overview</li>
+                                        </ul>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Tools Used</h5>
+                                        <ul>
+                                            <li>nslookup</li>
+                                            <li>ping</li>
+                                            <li>Wireshark</li>
+                                            <li>Burp Suite</li>
+                                            <li>Browser source/dev tools</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Privilege Escalation -->
                         <div class="writeup-item">
                             <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
@@ -2154,6 +2210,10 @@ export PATH="/my/dir:$PATH" <span class="code-comment"># Prepend to PATH</span><
                                 <span class="tool-tag">Python requests</span>
                                 <span class="tool-tag">Browser DevTools</span>
                                 <span class="tool-tag">SIEM</span>
+                                <span class="tool-tag">nslookup</span>
+                                <span class="tool-tag">ping</span>
+                                <span class="tool-tag">Wireshark</span>
+                                <span class="tool-tag">Burp Suite</span>
                             </div>
                         </div>
                         <div class="skill-docs">
@@ -2189,6 +2249,14 @@ dirb http://target.com</pre>
                                 • SOC incident response workflow<br>
                                 • IP blocking and rate limiting<br>
                                 • WAF rule tuning to block enumeration patterns</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Web Fundamentals Added</h5>
+                                <p>• DNS records and query analysis (<code>A</code>, <code>MX</code>, <code>TXT</code>, <code>CNAME</code>)<br>
+                                • Network diagnostics with ICMP and latency interpretation<br>
+                                • OSI layers and network topology understanding<br>
+                                • HTTP headers, cookies, and request/response behavior<br>
+                                • Intro risk models: sensitive data exposure, HTML injection, and XSS</p>
                             </div>
                         </div>
                     </div>
