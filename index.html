@@ -2214,33 +2214,168 @@ lsof -i :80             <span class="code-comment"># What's using port 80</span>
                         <div class="tools-section">
                             <div class="tools-label">Concepts & Tools</div>
                             <div class="tools-grid">
-                                <span class="tool-tag">VMs</span>
-                                <span class="tool-tag">Hypervisors</span>
-                                <span class="tool-tag">Type 1</span>
-                                <span class="tool-tag">Type 2</span>
-                                <span class="tool-tag">Cloud VMs</span>
-                                <span class="tool-tag">SSH</span>
+                                <span class="tool-tag">VirtualBox</span>
+                                <span class="tool-tag">VMware</span>
+                                <span class="tool-tag">Hyper-V</span>
+                                <span class="tool-tag">KVM</span>
+                                <span class="tool-tag">QEMU</span>
+                                <span class="tool-tag">Docker</span>
+                                <span class="tool-tag">Snapshots</span>
                             </div>
                         </div>
                         <div class="skill-docs">
                             <h4>Documentation</h4>
                             <div class="doc-section">
                                 <h5>Why It Matters</h5>
-                                <p>Virtualization enables isolated testing environments, malware analysis, and cloud infrastructure. Essential for security labs and enterprise environments.</p>
+                                <p>Virtualization enables isolated testing environments, malware analysis, and resource optimization. Critical for security labs, CTFs, and enterprise infrastructure.</p>
                             </div>
                             <div class="doc-section">
-                                <h5>Key Concepts</h5>
-                                <p><strong>Virtual Machine:</strong> Software-based computer running inside a host<br>
-                                <strong>Hypervisor Type 1:</strong> Bare-metal, runs directly on hardware<br>
-                                <strong>Hypervisor Type 2:</strong> Runs on top of host OS<br>
-                                <strong>Cloud:</strong> AWS, Azure, GCP for scalable infrastructure</p>
+                                <h5>Virtual Machine Concepts</h5>
+                                <p><strong>VM:</strong> Software-based computer with its own OS running inside a host<br>
+                                <strong>Host:</strong> Physical machine running the hypervisor<br>
+                                <strong>Guest:</strong> Virtual machine running on the host<br>
+                                <strong>Snapshot:</strong> Point-in-time state capture for rollback</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Hypervisor Types</h5>
+                                <pre><span class="code-comment"># Type 1 (Bare-metal)</span>
+- Runs directly on hardware
+- VMware ESXi, Hyper-V, KVM
+- Better performance, enterprise use
+
+<span class="code-comment"># Type 2 (Hosted)</span>
+- Runs on top of host OS
+- VirtualBox, VMware Workstation
+- Easier setup, desktop use</pre>
                             </div>
                             <div class="doc-section">
                                 <h5>Security Use Cases</h5>
-                                <p>• Isolated malware analysis environments<br>
-                                • Snapshot and restore for testing<br>
-                                • Network segmentation for labs<br>
-                                • Cloud instance deployment via SSH</p>
+                                <p>• <strong>Malware Analysis:</strong> Isolate suspicious files from host<br>
+                                • <strong>Penetration Testing:</strong> Attack lab networks safely<br>
+                                • <strong>Snapshot Testing:</strong> Test exploits, restore clean state<br>
+                                • <strong>Network Isolation:</strong> Segmented lab environments<br>
+                                • <strong>Multi-OS Testing:</strong> Run Windows, Linux, Kali simultaneously</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Computing -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">☁️</div>
+                            <h3>Cloud Computing</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Platforms & Tools</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">AWS</span>
+                                <span class="tool-tag">Azure</span>
+                                <span class="tool-tag">Google Cloud</span>
+                                <span class="tool-tag">SSH</span>
+                                <span class="tool-tag">EC2</span>
+                                <span class="tool-tag">S3</span>
+                                <span class="tool-tag">IAM</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
+                            <div class="doc-section">
+                                <h5>Why It Matters</h5>
+                                <p>Most modern infrastructure runs in the cloud. Understanding cloud architecture is essential for security assessments, incident response, and secure deployments.</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Cloud Service Models</h5>
+                                <p><strong>IaaS:</strong> Infrastructure as a Service (VMs, storage, networks)<br>
+                                <strong>PaaS:</strong> Platform as a Service (managed runtime, databases)<br>
+                                <strong>SaaS:</strong> Software as a Service (end-user applications)</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Cloud Resources</h5>
+                                <pre><span class="code-comment"># Common cloud resources</span>
+- Virtual Machines (EC2, Azure VMs)
+- Storage (S3, Blob Storage)
+- Databases (RDS, CosmosDB)
+- Networks (VPC, Virtual Networks)
+- Identity (IAM, Azure AD)
+
+<span class="code-comment"># Remote access</span>
+ssh -i key.pem user@instance-ip</pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Security Considerations</h5>
+                                <p>• <strong>IAM Policies:</strong> Principle of least privilege<br>
+                                • <strong>Security Groups:</strong> Cloud-based firewalls<br>
+                                • <strong>Encryption:</strong> Data at rest and in transit<br>
+                                • <strong>Logging:</strong> CloudTrail, Azure Monitor for audit<br>
+                                • <strong>Misconfigurations:</strong> #1 cloud vulnerability</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OS Security -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">🛡️</div>
+                            <h3>OS Security</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Concepts & Tools</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">Kernel</span>
+                                <span class="tool-tag">User Space</span>
+                                <span class="tool-tag">Firewalls</span>
+                                <span class="tool-tag">Permissions</span>
+                                <span class="tool-tag">Authentication</span>
+                                <span class="tool-tag">Endpoint Security</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
+                            <div class="doc-section">
+                                <h5>Why It Matters</h5>
+                                <p>Operating systems are the foundation of all computing. Understanding OS security is critical for hardening systems, detecting threats, and performing security assessments.</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Kernel vs User Space</h5>
+                                <p><strong>Kernel Space:</strong> Unrestricted hardware access, runs OS core<br>
+                                <strong>User Space:</strong> Restricted permissions, runs applications<br>
+                                <strong>Security Goal:</strong> Prevent user space from accessing kernel directly<br>
+                                <strong>Exploitation:</strong> Kernel exploits grant full system control</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Security Components</h5>
+                                <pre><span class="code-comment"># Authentication</span>
+- Passwords, SSH keys, MFA
+- /etc/passwd, /etc/shadow (Linux)
+- SAM database (Windows)
+
+<span class="code-comment"># Authorization</span>
+- File permissions (rwx)
+- User/group policies
+- sudo, UAC
+
+<span class="code-comment"># Network Security</span>
+- Firewalls (iptables, Windows Firewall)
+- Network segmentation</pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Hardening Checklist</h5>
+                                <p>• <strong>Updates:</strong> Patch vulnerabilities promptly<br>
+                                • <strong>Least Privilege:</strong> Minimal user permissions<br>
+                                • <strong>Firewall:</strong> Block unnecessary ports<br>
+                                • <strong>Logging:</strong> Monitor for suspicious activity<br>
+                                • <strong>Endpoint Protection:</strong> Antivirus, EDR solutions<br>
+                                • <strong>Disable Unused Services:</strong> Reduce attack surface</p>
                             </div>
                         </div>
                     </div>
