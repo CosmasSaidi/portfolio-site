@@ -1889,6 +1889,66 @@ cat /etc/resolv.conf      <span class="code-comment"># DNS servers</span></pre>
                             </div>
                         </div>
 
+                        <!-- Security Fundamentals, Crypto & Recon -->
+                        <div class="writeup-item">
+                            <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
+                                <div class="writeup-title">
+                                    <h4>Security Fundamentals, Crypto & Recon</h4>
+                                    <span class="writeup-badge web">Foundations</span>
+                                </div>
+                                <span class="writeup-toggle">›</span>
+                            </div>
+                            <div class="writeup-content">
+                                <div class="writeup-body">
+                                    <div class="writeup-section">
+                                        <h5>Security Principles</h5>
+                                        <ul>
+                                            <li>CIA triad: confidentiality, integrity, and availability as the basis for evaluating controls</li>
+                                            <li>Encryption as a method for protecting data confidentiality during storage and transmission</li>
+                                            <li>Difference between encryption, encoding, and hashing in security contexts</li>
+                                        </ul>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Cryptography Concepts</h5>
+                                        <ul>
+                                            <li>Symmetric encryption uses a single shared key and is efficient for bulk data protection</li>
+                                            <li>Asymmetric encryption uses public/private key pairs to support secure key exchange</li>
+                                            <li>Modern secure communication often combines both models for performance and security</li>
+                                        </ul>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Reconnaissance & Analysis</h5>
+                                        <ul>
+                                            <li>Packet capture and filtering for DNS, ICMP, and layered protocol inspection</li>
+                                            <li>Service discovery and attack-surface mapping through safe reconnaissance workflows</li>
+                                            <li>Technology fingerprinting using headers, framework indicators, and browser inspection</li>
+                                            <li>Application route discovery concepts for identifying exposed paths and content</li>
+                                        </ul>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Software & Data Concepts</h5>
+                                        <ul>
+                                            <li>Binary and hexadecimal representations for understanding stored and transmitted data</li>
+                                            <li>Encoding formats such as Base64 and URL encoding in web and authentication workflows</li>
+                                            <li>Programming awareness across Python, JavaScript, SQL, and Node.js for security analysis</li>
+                                        </ul>
+                                    </div>
+                                    <div class="writeup-section">
+                                        <h5>Tools Used</h5>
+                                        <ul>
+                                            <li>Wireshark</li>
+                                            <li>Nmap</li>
+                                            <li>WhatWeb</li>
+                                            <li>Gobuster</li>
+                                            <li>Hydra</li>
+                                            <li>curl</li>
+                                            <li>xxd / hexdump / base64</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Privilege Escalation -->
                         <div class="writeup-item">
                             <div class="writeup-header" onclick="toggleWriteup(this.parentElement)">
@@ -2381,6 +2441,63 @@ ssh -i key.pem user@instance-ip</pre>
                     </div>
                 </div>
 
+                <!-- Cryptography -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">🔐</div>
+                            <h3>Cryptography</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Concepts & Standards</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">CIA Triad</span>
+                                <span class="tool-tag">AES</span>
+                                <span class="tool-tag">RSA</span>
+                                <span class="tool-tag">ECC</span>
+                                <span class="tool-tag">TLS</span>
+                                <span class="tool-tag">Base64</span>
+                                <span class="tool-tag">Hashing</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
+                            <div class="doc-section">
+                                <h5>Why It Matters</h5>
+                                <p>Cryptography protects data confidentiality, supports integrity checks, and underpins secure communication protocols used across modern systems.</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Encryption Models</h5>
+                                <pre><span class="code-comment"># Symmetric encryption</span>
+- One shared key for encryption and decryption
+- Fast and efficient for large data volumes
+- Main challenge: secure key distribution
+
+<span class="code-comment"># Asymmetric encryption</span>
+- Public key encrypts, private key decrypts
+- Supports safer key exchange
+- Slower, often combined with symmetric encryption</pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Important Distinctions</h5>
+                                <p><strong>Encryption:</strong> Protects secrecy<br>
+                                <strong>Encoding:</strong> Transforms format for transport or compatibility<br>
+                                <strong>Hashing:</strong> Supports integrity validation and password verification workflows</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Security Relevance</h5>
+                                <p>• TLS combines asymmetric and symmetric cryptography<br>
+                                • Weak key handling breaks otherwise strong encryption<br>
+                                • Encoding should never be confused with encryption<br>
+                                • Integrity controls are critical alongside confidentiality</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Environment Variables -->
                 <div class="skill-card">
                     <div class="skill-header" onclick="toggleSkill(this.parentElement)">
@@ -2440,6 +2557,9 @@ export PATH="/my/dir:$PATH" <span class="code-comment"># Prepend to PATH</span><
                                 <span class="tool-tag">curl</span>
                                 <span class="tool-tag">netcat</span>
                                 <span class="tool-tag">dirb</span>
+                                <span class="tool-tag">Nmap</span>
+                                <span class="tool-tag">WhatWeb</span>
+                                <span class="tool-tag">Gobuster</span>
                                 <span class="tool-tag">Python requests</span>
                                 <span class="tool-tag">Browser DevTools</span>
                                 <span class="tool-tag">SIEM</span>
@@ -2447,6 +2567,7 @@ export PATH="/my/dir:$PATH" <span class="code-comment"># Prepend to PATH</span><
                                 <span class="tool-tag">ping</span>
                                 <span class="tool-tag">Wireshark</span>
                                 <span class="tool-tag">Burp Suite</span>
+                                <span class="tool-tag">Hydra</span>
                             </div>
                         </div>
                         <div class="skill-docs">
@@ -2475,6 +2596,13 @@ dirb http://target.com</pre>
                                 • HTTP status code analysis (200, 301, 404)<br>
                                 • Host header manipulation for virtual host discovery<br>
                                 • Business logic vulnerability identification</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Recon & Fingerprinting Added</h5>
+                                <p>• Service and exposed-port awareness using safe network reconnaissance<br>
+                                • Technology fingerprinting through <code>Server</code> and <code>X-Powered-By</code> headers<br>
+                                • Route and content discovery with wordlist-based enumeration concepts<br>
+                                • Authentication attack awareness and the need for MFA, rate limiting, and monitoring</p>
                             </div>
                             <div class="doc-section">
                                 <h5>Defensive Skills</h5>
