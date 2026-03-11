@@ -2314,108 +2314,157 @@ lsof -i :80             <span class="code-comment"># What's using port 80</span>
                                 <h5>Why It Matters</h5>
                                 <p>Virtualization enables isolated testing environments, malware analysis, and resource optimization. Critical for security labs, CTFs, and enterprise infrastructure.</p>
                             </div>
-                            <div class="doc-section">
-                                <h5>Virtual Machine Concepts</h5>
-                                <p><strong>VM:</strong> Software-based computer with its own OS running inside a host<br>
-                                <strong>Host:</strong> Physical machine running the hypervisor<br>
-                                <strong>Guest:</strong> Virtual machine running on the host<br>
-                                <strong>Snapshot:</strong> Point-in-time state capture for rollback</p>
-                            </div>
-                            <div class="doc-section">
-                                <h5>Hypervisor Types</h5>
-                                <pre><span class="code-comment"># Type 1 (Bare-metal)</span>
-- Runs directly on hardware
-- VMware ESXi, Hyper-V, KVM
-- Better performance, enterprise use
-
-<span class="code-comment"># Type 2 (Hosted)</span>
-- Runs on top of host OS
-- VirtualBox, VMware Workstation
-- Easier setup, desktop use</pre>
-                            </div>
-                            <div class="doc-section">
-                                <h5>Security Use Cases</h5>
-                                <p>• <strong>Malware Analysis:</strong> Isolate suspicious files from host<br>
-                                • <strong>Penetration Testing:</strong> Attack lab networks safely<br>
-                                • <strong>Snapshot Testing:</strong> Test exploits, restore clean state<br>
-                                • <strong>Network Isolation:</strong> Segmented lab environments<br>
-                                • <strong>Multi-OS Testing:</strong> Run Windows, Linux, Kali simultaneously</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cloud Computing -->
-                <div class="skill-card">
-                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
-                        <div class="skill-info">
-                            <div class="skill-icon">☁️</div>
-                            <h3>Cloud Computing</h3>
-                        </div>
-                        <span class="skill-toggle">+</span>
-                    </div>
-                    <div class="skill-content">
-                        <div class="tools-section">
-                            <div class="tools-label">Platforms & Tools</div>
-                            <div class="tools-grid">
-                                <span class="tool-tag">AWS</span>
-                                <span class="tool-tag">Azure</span>
-                                <span class="tool-tag">Google Cloud</span>
-                                <span class="tool-tag">SSH</span>
-                                <span class="tool-tag">EC2</span>
-                                <span class="tool-tag">S3</span>
-                                <span class="tool-tag">IAM</span>
-                            </div>
-                        </div>
-                        <div class="skill-docs">
-                            <h4>Documentation</h4>
-                            <div class="doc-section">
-                                <h5>Why It Matters</h5>
-                                <p>Most modern infrastructure runs in the cloud. Understanding cloud architecture is essential for security assessments, incident response, and secure deployments.</p>
-                            </div>
-                            <div class="doc-section">
-                                <h5>Cloud Service Models</h5>
-                                <p><strong>IaaS:</strong> Infrastructure as a Service (VMs, storage, networks)<br>
-                                <strong>PaaS:</strong> Platform as a Service (managed runtime, databases)<br>
-                                <strong>SaaS:</strong> Software as a Service (end-user applications)</p>
-                            </div>
-                            <div class="doc-section">
-                                <h5>Cloud Resources</h5>
-                                <pre><span class="code-comment"># Common cloud resources</span>
-- Virtual Machines (EC2, Azure VMs)
-- Storage (S3, Blob Storage)
-- Databases (RDS, CosmosDB)
 - Networks (VPC, Virtual Networks)
 - Identity (IAM, Azure AD)
 
-<span class="code-comment"># Remote access</span>
-ssh -i key.pem user@instance-ip</pre>
-                            </div>
-                            <div class="doc-section">
-                                <h5>Security Considerations</h5>
-                                <p>• <strong>IAM Policies:</strong> Principle of least privilege<br>
-                                • <strong>Security Groups:</strong> Cloud-based firewalls<br>
-                                • <strong>Encryption:</strong> Data at rest and in transit<br>
-                                • <strong>Logging:</strong> CloudTrail, Azure Monitor for audit<br>
-                                • <strong>Misconfigurations:</strong> #1 cloud vulnerability</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- OS Security -->
-                <div class="skill-card">
-                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
-                        <div class="skill-info">
-                            <div class="skill-icon">🛡️</div>
+                            <div class="notes-grid">
+                                <div class="notes-item">
+                                    <div class="notes-header" onclick="this.nextElementSibling.classList.toggle('open')">
+                                        <div class="notes-title">
+                                            <h4>Computer Fundamentals & OS Security</h4>
+                                            <span class="notes-type">📝 Notes</span>
+                                            <span class="notes-toggle">Expand</span>
+                                        </div>
+                                    </div>
+                                    <div class="notes-content">
+                                        <div class="notes-body">
+                                            <h5>Hardware Components</h5>
+                                            <table>
+                                                <tr><th>Component</th><th>Function</th></tr>
+                                                <tr><td>CPU</td><td>Executes instructions</td></tr>
+                                                <tr><td>RAM</td><td>Temporary volatile memory</td></tr>
+                                                <tr><td>Storage</td><td>Permanent data storage</td></tr>
+                                                <tr><td>GPU</td><td>Graphics/compute processing</td></tr>
+                                                <tr><td>PSU</td><td>Power supply</td></tr>
+                                                <tr><td>Motherboard</td><td>Component interconnection</td></tr>
+                                            </table>
+                                            <h5>Boot Sequence</h5>
+                                            <ol>
+                                                <li>Power on → BIOS/UEFI → POST → Bootloader → OS → Login</li>
+                                            </ol>
+                                            <h5>Virtualization</h5>
+                                            <ul>
+                                                <li>VM: Software-based computer inside host machine</li>
+                                                <li>Hypervisors: Type 1 (bare-metal), Type 2 (on top of OS)</li>
+                                                <li>Use Cases: Testing, isolation, malware analysis</li>
+                                            </ul>
+                                            <h5>Kernel vs User Space</h5>
+                                            <table>
+                                                <tr><th>Space</th><th>Access</th></tr>
+                                                <tr><td>Kernel</td><td>Full hardware access</td></tr>
+                                                <tr><td>User</td><td>Restricted (applications)</td></tr>
+                                            </table>
+                                            <h5>OS Security Components</h5>
+                                            <ul>
+                                                <li>User accounts & authentication</li>
+                                                <li>File permissions</li>
+                                                <li>Firewalls</li>
+                                                <li>Security updates/patches</li>
+                                            </ul>
+                                            <h5>CLI Quick Reference</h5>
+                                            <pre>pwd          # Current directory
                             <h3>OS Security</h3>
                         </div>
                         <span class="skill-toggle">+</span>
                     </div>
                     <div class="skill-content">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notes-item">
+                                    <div class="notes-header" onclick="this.nextElementSibling.classList.toggle('open')">
+                                        <div class="notes-title">
+                                            <h4>Security Fundamentals, Crypto & Recon</h4>
+                                            <span class="notes-type">📝 Notes</span>
+                                            <span class="notes-toggle">Expand</span>
+                                        </div>
+                                    </div>
+                                    <div class="notes-content">
+                                        <div class="notes-body">
+                                            <h5>CIA Triad</h5>
+                                            <table>
+                                                <tr><th>Principle</th><th>Goal</th></tr>
+                                                <tr><td>Confidentiality</td><td>Prevent unauthorized disclosure</td></tr>
+                                                <tr><td>Integrity</td><td>Prevent tampering or unauthorized modification</td></tr>
+                                                <tr><td>Availability</td><td>Keep systems and services accessible</td></tr>
+                                            </table>
+                                            <h5>Cryptography</h5>
+                                            <table>
+                                                <tr><th>Type</th><th>Keys</th><th>Notes</th><th>Examples</th></tr>
+                                                <tr><td>Symmetric</td><td>One shared key</td><td>Fast, efficient, harder key distribution</td><td>AES, DES</td></tr>
+                                                <tr><td>Asymmetric</td><td>Public/private pair</td><td>Easier key exchange, slower</td><td>RSA, ECC</td></tr>
+                                            </table>
+                                            <ul>
+                                                <li><strong>Encryption:</strong> Protects confidentiality</li>
+                                                <li><strong>Encoding:</strong> Converts data format for transport</li>
+                                                <li><strong>Hashing:</strong> Supports integrity checks and password verification workflows</li>
+                                            </ul>
+                                            <h5>Packet Analysis</h5>
+                                            <p>Common Filters: <code>icmp</code>, <code>dns</code>, <code>http</code></p>
+                                            <ul>
+                                                <li>Frame</li>
+                                                <li>Ethernet</li>
+                                                <li>IP</li>
+                                                <li>TCP/UDP</li>
+                                                <li>DNS / HTTP</li>
+                                            </ul>
+                                            <h5>Reconnaissance</h5>
+                                            <ul>
+                                                <li>Identify live systems</li>
+                                                <li>Discover open ports</li>
+                                                <li>Recognize exposed services</li>
+                                                <li>Reduce unknown attack surface</li>
+                                            </ul>
+                                            <p>Common Tools: <code>nmap</code>, <code>curl</code>, <code>WhatWeb</code>, Browser developer tools</p>
+                                            <h5>Web Enumeration</h5>
+                                            <ul>
+                                                <li>Admin panels</li>
+                                                <li>Login routes</li>
+                                                <li>Upload directories</li>
+                                                <li>Backups</li>
+                                                <li>Static content folders</li>
+                                            </ul>
+                                            <p>Common Tools: <code>Gobuster</code>, <code>curl</code>, Browser inspection</p>
+                                            <h5>Password Attack Awareness</h5>
+                                            <ul>
+                                                <li>Strong password policy</li>
+                                                <li>MFA</li>
+                                                <li>Rate limiting</li>
+                                                <li>Account lockout controls</li>
+                                                <li>Log monitoring and alerting</li>
+                                            </ul>
+                                            <p>Common Tool: <code>Hydra</code> for credential attack simulation in authorized labs</p>
+                                            <h5>Data Representation & Encoding</h5>
+                                            <table>
+                                                <tr><th>Decimal</th><th>Binary</th><th>Character</th></tr>
+                                                <tr><td>65</td><td>01000001</td><td>A</td></tr>
+                                            </table>
+                                            <h5>Useful Commands</h5>
+                                            <pre>echo "Hello" | xxd
                         <div class="tools-section">
                             <div class="tools-label">Concepts & Tools</div>
                             <div class="tools-grid">
+                                            <h5>Programming Fundamentals</h5>
+                                            <ul>
+                                                <li><strong>Python:</strong> Networking automation, scripting, security tooling</li>
+                                                <li><strong>JavaScript:</strong> Browser execution, client-side logic, attack surface</li>
+                                                <li><strong>SQL:</strong> Database queries, injection risk awareness</li>
+                                                <li><strong>Node.js:</strong> Server-side JS, backend structure</li>
+                                            </ul>
+                                            <h5>Pentesting Workflow</h5>
+                                            <ol>
+                                                <li>Reconnaissance</li>
+                                                <li>Scanning</li>
+                                                <li>Enumeration</li>
+                                                <li>Fingerprinting</li>
+                                                <li>Validation</li>
+                                                <li>Reporting</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Add more notes cards for Web Fundamentals, Linux Security, etc. as needed -->
+                            </div>
                                 <span class="tool-tag">Kernel</span>
                                 <span class="tool-tag">User Space</span>
                                 <span class="tool-tag">Firewalls</span>
