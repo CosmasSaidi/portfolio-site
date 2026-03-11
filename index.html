@@ -2498,6 +2498,149 @@ ssh -i key.pem user@instance-ip</pre>
                     </div>
                 </div>
 
+                <!-- Packet Analysis -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">📦</div>
+                            <h3>Packet Analysis</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Tools & Techniques</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">Wireshark</span>
+                                <span class="tool-tag">tcpdump</span>
+                                <span class="tool-tag">tshark</span>
+                                <span class="tool-tag">pcap</span>
+                                <span class="tool-tag">Protocol Analysis</span>
+                                <span class="tool-tag">Traffic Filtering</span>
+                                <span class="tool-tag">Stream Reconstruction</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
+                            <div class="doc-section">
+                                <h5>Why It Matters</h5>
+                                <p>Packet analysis is essential for network troubleshooting, intrusion detection, forensic investigation, and understanding how applications communicate at the protocol level.</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Core Concepts</h5>
+                                <pre><span class="code-comment"># Packet Capture</span>
+Recording raw network traffic into pcap files
+for later analysis and forensic investigation
+
+<span class="code-comment"># Protocol Layers</span>
+Ethernet → IP → TCP/UDP → Application
+Each layer reveals different information
+
+<span class="code-comment"># Deep Packet Inspection</span>
+Examining packet payloads for patterns,
+credentials, or malicious content</pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Wireshark Filters</h5>
+                                <pre>ip.addr == 192.168.1.1    <span class="code-comment"># Filter by IP</span>
+tcp.port == 80            <span class="code-comment"># Filter by port</span>
+http.request.method == GET <span class="code-comment"># HTTP GET requests</span>
+dns                       <span class="code-comment"># DNS traffic only</span>
+tcp.flags.syn == 1        <span class="code-comment"># SYN packets (connections)</span></pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Analysis Techniques</h5>
+                                <p>• <strong>Follow Stream:</strong> Reconstruct full TCP conversations<br>
+                                • <strong>Statistics:</strong> Protocol hierarchy, endpoints, conversations<br>
+                                • <strong>Export Objects:</strong> Extract files transferred over HTTP/FTP<br>
+                                • <strong>Coloring Rules:</strong> Visual identification of traffic types</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Security Applications</h5>
+                                <p>• Detecting unauthorized connections and data exfiltration<br>
+                                • Identifying malware command-and-control traffic<br>
+                                • Investigating security incidents post-breach<br>
+                                • Validating encryption and secure protocol usage</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reconnaissance -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">🔍</div>
+                            <h3>Reconnaissance</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Tools & Techniques</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">Nmap</span>
+                                <span class="tool-tag">WhatWeb</span>
+                                <span class="tool-tag">Gobuster</span>
+                                <span class="tool-tag">WHOIS</span>
+                                <span class="tool-tag">dig</span>
+                                <span class="tool-tag">netcat</span>
+                                <span class="tool-tag">Banner Grabbing</span>
+                                <span class="tool-tag">Port Scanning</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
+                            <div class="doc-section">
+                                <h5>Why It Matters</h5>
+                                <p>Reconnaissance is the first phase of penetration testing—gathering information about targets before exploitation. Better recon means a clearer understanding of the attack surface.</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Passive vs Active</h5>
+                                <pre><span class="code-comment"># Passive Reconnaissance</span>
+Gathering info WITHOUT touching the target
+- WHOIS lookups, DNS records
+- Google dorking, social media
+- Public documentation review
+
+<span class="code-comment"># Active Reconnaissance</span>
+Directly probing the target system
+- Port scanning, service enumeration
+- Web fingerprinting, directory discovery</pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Key Activities</h5>
+                                <pre><span class="code-comment"># Port Scanning</span>
+nmap -sV -sC target      <span class="code-comment"># Service detection</span>
+
+<span class="code-comment"># Web Fingerprinting</span>
+whatweb target           <span class="code-comment"># Detect technologies</span>
+
+<span class="code-comment"># Directory Discovery</span>
+gobuster dir -u target -w wordlist
+
+<span class="code-comment"># Banner Grabbing</span>
+nc target 22             <span class="code-comment"># Read service banners</span></pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Information Gathered</h5>
+                                <p>• <strong>Open Ports:</strong> Which services are exposed<br>
+                                • <strong>Service Versions:</strong> Software and version numbers<br>
+                                • <strong>Technologies:</strong> CMS, frameworks, server software<br>
+                                • <strong>Hidden Content:</strong> Admin panels, backup files, APIs<br>
+                                • <strong>Infrastructure:</strong> Subdomains, IP ranges, hosting</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Ethical Considerations</h5>
+                                <p>• Always have written authorization before scanning<br>
+                                • Understand legal boundaries in your jurisdiction<br>
+                                • Passive recon is generally safer from legal perspective<br>
+                                • Active scanning can trigger IDS/IPS and log entries</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Environment Variables -->
                 <div class="skill-card">
                     <div class="skill-header" onclick="toggleSkill(this.parentElement)">
