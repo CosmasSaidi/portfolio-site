@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Force redeploy: GitHub Pages cache bust -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -689,6 +688,106 @@
             font-size: 0.75rem;
         }
 
+        /* Notes Section */
+        .notes-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .notes-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .notes-item:hover {
+            border-color: var(--border-accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .notes-header:hover { background: var(--bg-expand); }
+
+        .notes-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .notes-title h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        .notes-type {
+            font-size: 0.62rem;
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--accent-cyan);
+        }
+
+        .notes-toggle {
+            margin-left: auto;
+            color: var(--text-dim);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .notes-item.open .notes-toggle { color: var(--accent); }
+
+        .notes-content {
+            display: none;
+            padding: 0 20px 20px;
+        }
+
+        .notes-item.open .notes-content { display: block; }
+
+        .notes-body {
+            border-left: 3px solid var(--accent-cyan);
+            background: var(--bg-expand);
+            border-radius: 6px;
+            padding: 18px;
+        }
+
+        .notes-body p,
+        .notes-body li {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+        }
+
+        .notes-body ul { margin-left: 18px; }
+
+        .notes-body pre {
+            margin-top: 10px;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 12px;
+            color: var(--accent);
+            font-size: 0.74rem;
+            overflow-x: auto;
+        }
+
         /* Skills Section */
         .skills-grid {
             display: grid;
@@ -950,6 +1049,7 @@
             <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#knowledge">Knowledge Base</a></li>
+                <li><a href="#notes">Notes</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#connect">Connect</a></li>
             </ul>
@@ -977,6 +1077,7 @@
 
                     <div class="hero-links">
                         <a href="#knowledge" class="hero-link primary">Explore Knowledge Base</a>
+                        <a href="#notes" class="hero-link">Read Notes</a>
                         <a href="#skills" class="hero-link">View Skills</a>
                         <a href="https://github.com/CosmasSaidi?tab=repositories" class="hero-link" target="_blank">Repositories →</a>
                     </div>
@@ -2015,17 +2116,122 @@ find -perm                <span class="code-comment"># Find special permissions<
                 </div>
             </div>
         </div>
-    <!-- Professional Notes Section -->
-    <!-- Professional Notes Section removed as requested -->
+    </section>
 
     <section id="notes">
-    <!-- Notes section removed as requested -->
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Learning Notes</p>
+                <h2 class="section-title">Operational Notes & Journal</h2>
+                <p class="section-desc">Structured, expandable study notes from foundational concepts to applied security workflows. All content is readable directly on this site.</p>
+            </div>
+
+            <div class="notes-grid">
+                <div class="notes-item">
+                    <div class="notes-header" onclick="toggleNote(this.parentElement)">
+                        <div class="notes-title">
+                            <h4>Foundations: OS, Shell, Linux Workflow</h4>
+                            <span class="notes-type">Core</span>
+                            <span class="notes-toggle">Expand</span>
+                        </div>
+                    </div>
+                    <div class="notes-content">
+                        <div class="notes-body">
+                            <ul>
+                                <li>System model: User → Shell → Kernel → Hardware</li>
+                                <li>Shell practice across Bash/Zsh and command discipline</li>
+                                <li>Linux file operations, permissions, ownership, and process control</li>
+                                <li>Privilege context awareness with <code>sudo</code>, <code>su</code>, and identity checks</li>
+                            </ul>
+                            <pre>ls -la
+chmod 640 notes.txt
+chown user:group notes.txt
+ps aux
+sudo -l</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-item">
+                    <div class="notes-header" onclick="toggleNote(this.parentElement)">
+                        <div class="notes-title">
+                            <h4>Networking, Protocols, and Traffic Analysis</h4>
+                            <span class="notes-type">Network</span>
+                            <span class="notes-toggle">Expand</span>
+                        </div>
+                    </div>
+                    <div class="notes-content">
+                        <div class="notes-body">
+                            <ul>
+                                <li>Client-server communication and packet-level behavior</li>
+                                <li>Protocols: HTTP/HTTPS, DNS, FTP, SMTP/POP3/IMAP, ICMP</li>
+                                <li>Packet inspection with Wireshark and tcpdump</li>
+                                <li>Reconnaissance methodology for host, port, and service visibility</li>
+                            </ul>
+                            <pre>tcpdump -i eth0
+nmap 10.10.10.10
+nmap -sV 10.10.10.10
+nslookup example.com</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-item">
+                    <div class="notes-header" onclick="toggleNote(this.parentElement)">
+                        <div class="notes-title">
+                            <h4>Crypto, Hashing, and Authentication Risk</h4>
+                            <span class="notes-type">Security</span>
+                            <span class="notes-toggle">Expand</span>
+                        </div>
+                    </div>
+                    <div class="notes-content">
+                        <div class="notes-body">
+                            <ul>
+                                <li>CIA triad usage in practical security reasoning</li>
+                                <li>Symmetric vs asymmetric encryption fundamentals</li>
+                                <li>Hashing properties and password storage models</li>
+                                <li>NTLM/NetNTLMv2 exposure patterns and defensive implications</li>
+                            </ul>
+                            <pre>echo "hello" | base64
+echo "aGVsbG8=" | base64 -d
+echo "hello" | xxd</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-item">
+                    <div class="notes-header" onclick="toggleNote(this.parentElement)">
+                        <div class="notes-title">
+                            <h4>Defensive Detection and Remediation Mindset</h4>
+                            <span class="notes-type">Blue Team</span>
+                            <span class="notes-toggle">Expand</span>
+                        </div>
+                    </div>
+                    <div class="notes-content">
+                        <div class="notes-body">
+                            <ul>
+                                <li>Indicators: unusual NTLM flows, suspicious SMB activity, phishing-linked behavior</li>
+                                <li>Triage workflows using packet analysis and SIEM-oriented investigation</li>
+                                <li>Remediation priorities: patching, auth control improvement, egress controls, awareness training</li>
+                                <li>Documentation discipline: methodology only, no direct challenge solutions</li>
+                            </ul>
+                            <pre># detection focus
+- unusual authentication traffic
+- anomalous outbound SMB
+- suspicious endpoint behaviors</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="skills">
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Technical Competencies</p>
-                <h2 class="section-title">Skills Acquired</h2>
-                <p class="section-desc">Core technical skills with documentation from hands-on practice. Each skill includes tools used and practical notes.</p>
+                <h2 class="section-title">Skills Matrix</h2>
+                <p class="section-desc">Professional capability areas developed through lab practice and repeatable methodology.</p>
             </div>
 
             <div class="skills-grid">
@@ -2060,104 +2266,103 @@ find -perm                <span class="code-comment"># Find special permissions<
                                 <h5>Why It Matters</h5>
                                 <p>Linux powers most servers, security tools, and target systems. Mastery of the command line is essential for any security role.</p>
                             </div>
+                            <div class="doc-section">
+                                <h5>Essential Commands</h5>
+                                <pre>pwd                     <span class="code-comment"># Current directory</span>
+ls -la                  <span class="code-comment"># List with permissions</span>
+cd /path                <span class="code-comment"># Change directory</span>
+cat file.txt            <span class="code-comment"># View file</span>
+head -n 20 file         <span class="code-comment"># First 20 lines</span>
+tail -f /var/log/syslog <span class="code-comment"># Follow log in real-time</span>
+grep "pattern" file     <span class="code-comment"># Search in file</span>
+find / -name "*.conf"   <span class="code-comment"># Find files</span>
+id                      <span class="code-comment"># Current user/groups</span></pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>File System Structure</h5>
+                                <p><strong>/etc</strong> - Configuration files (may contain credentials)<br>
+                                <strong>/var/log</strong> - System logs<br>
+                                <strong>/home</strong> - User directories<br>
+                                <strong>/tmp</strong> - Temporary files (often world-writable, common attack vector)<br>
+                                <strong>/root</strong> - Root user home</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Enumeration -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">🔍</div>
+                            <h3>System Enumeration</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Tools & Commands</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">LinPEAS</span>
+                                <span class="tool-tag">netstat</span>
+                                <span class="tool-tag">ss</span>
+                                <span class="tool-tag">ip</span>
+                                <span class="tool-tag">arp</span>
+                                <span class="tool-tag">find</span>
+                                <span class="tool-tag">uname</span>
+                                <span class="tool-tag">whoami</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
+                            <div class="doc-section">
+                                <h5>Why It Matters</h5>
+                                <p>After gaining access, enumeration reveals escalation paths and valuable data. This is the foundation of post-exploitation.</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>System & User Info</h5>
+                                <pre>uname -a                <span class="code-comment"># Kernel version</span>
+cat /etc/os-release     <span class="code-comment"># OS details</span>
+whoami                  <span class="code-comment"># Current user</span>
+id                      <span class="code-comment"># UID, GID, groups</span>
+sudo -l                 <span class="code-comment"># Sudo permissions</span>
+cat /etc/passwd         <span class="code-comment"># All users</span></pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Finding Interesting Files</h5>
+                                <pre>find / -perm -4000 2>/dev/null  <span class="code-comment"># SUID binaries</span>
+find / -writable -type d 2>/dev/null  <span class="code-comment"># Writable dirs</span>
+grep -r "password" /etc/ 2>/dev/null  <span class="code-comment"># Credentials</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Privilege Escalation -->
                 <div class="skill-card">
-                            <div class="notes-grid">
-                                <div class="notes-item">
-                                    <div class="notes-header" onclick="this.nextElementSibling.classList.toggle('open')">
-                                        <div class="notes-title">
-                                            <h4>Security Fundamentals Reference</h4>
-                                            <span class="notes-type">📝 Notes</span>
-                                            <span class="notes-toggle">Expand</span>
-                                        </div>
-                                    </div>
-                                    <div class="notes-content">
-                                        <div class="notes-body">
-                                            <h5>CIA Triad</h5>
-                                            <table>
-                                                <tr><th>Principle</th><th>Goal</th></tr>
-                                                <tr><td>Confidentiality</td><td>Prevent unauthorized disclosure</td></tr>
-                                                <tr><td>Integrity</td><td>Prevent tampering or unauthorized modification</td></tr>
-                                                <tr><td>Availability</td><td>Keep systems and services accessible</td></tr>
-                                            </table>
-                                            <h5>Cryptography</h5>
-                                            <table>
-                                                <tr><th>Type</th><th>Keys</th><th>Notes</th><th>Examples</th></tr>
-                                                <tr><td>Symmetric</td><td>One shared key</td><td>Fast, efficient, harder key distribution</td><td>AES, DES</td></tr>
-                                                <tr><td>Asymmetric</td><td>Public/private pair</td><td>Easier key exchange, slower</td><td>RSA, ECC</td></tr>
-                                            </table>
-                                            <ul>
-                                                <li><strong>Encryption:</strong> Protects confidentiality</li>
-                                                <li><strong>Encoding:</strong> Converts data format for transport</li>
-                                                <li><strong>Hashing:</strong> Supports integrity checks and password verification workflows</li>
-                                            </ul>
-                                            <h5>Packet Analysis</h5>
-                                            <p>Common Filters: <code>icmp</code>, <code>dns</code>, <code>http</code></p>
-                                            <ul>
-                                                <li>Frame</li>
-                                                <li>Ethernet</li>
-                                                <li>IP</li>
-                                                <li>TCP/UDP</li>
-                                                <li>DNS / HTTP</li>
-                                            </ul>
-                                            <h5>Reconnaissance</h5>
-                                            <ul>
-                                                <li>Identify live systems</li>
-                                                <li>Discover open ports</li>
-                                                <li>Recognize exposed services</li>
-                                                <li>Reduce unknown attack surface</li>
-                                            </ul>
-                                            <p>Common Tools: <code>nmap</code>, <code>curl</code>, <code>WhatWeb</code>, Browser developer tools</p>
-                                            <h5>Web Enumeration</h5>
-                                            <ul>
-                                                <li>Admin panels</li>
-                                                <li>Login routes</li>
-                                                <li>Upload directories</li>
-                                                <li>Backups</li>
-                                                <li>Static content folders</li>
-                                            </ul>
-                                            <p>Common Tools: <code>Gobuster</code>, <code>curl</code>, Browser inspection</p>
-                                            <h5>Password Attack Awareness</h5>
-                                            <ul>
-                                                <li>Strong password policy</li>
-                                                <li>MFA</li>
-                                                <li>Rate limiting</li>
-                                                <li>Account lockout controls</li>
-                                                <li>Log monitoring and alerting</li>
-                                            </ul>
-                                            <p>Common Tool: <code>Hydra</code> for credential attack simulation in authorized labs</p>
-                                            <h5>Data Representation & Encoding</h5>
-                                            <table>
-                                                <tr><th>Decimal</th><th>Binary</th><th>Character</th></tr>
-                                                <tr><td>65</td><td>01000001</td><td>A</td></tr>
-                                            </table>
-                                            <h5>Useful Commands</h5>
-                                            <pre>echo "Hello" | xxd
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">⚡</div>
+                            <h3>Privilege Escalation</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Tools & Commands</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">GTFOBins</span>
+                                <span class="tool-tag">LinPEAS</span>
+                                <span class="tool-tag">sudo</span>
+                                <span class="tool-tag">su</span>
+                                <span class="tool-tag">cron</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
                             <div class="doc-section">
                                 <h5>Methodology</h5>
                                 <pre><span class="code-comment"># 1. User Context</span>
-                                            <h5>Programming Fundamentals</h5>
-                                            <ul>
-                                                <li><strong>Python:</strong> Networking automation, scripting, security tooling</li>
-                                                <li><strong>JavaScript:</strong> Browser execution, client-side logic, attack surface</li>
-                                                <li><strong>SQL:</strong> Database queries, injection risk awareness</li>
-                                                <li><strong>Node.js:</strong> Server-side JS, backend structure</li>
-                                            </ul>
-                                            <h5>Pentesting Workflow</h5>
-                                            <ol>
-                                                <li>Reconnaissance</li>
-                                                <li>Scanning</li>
-                                                <li>Enumeration</li>
-                                                <li>Fingerprinting</li>
-                                                <li>Validation</li>
-                                                <li>Reporting</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Additional notes cards for Computer Fundamentals, Web Fundamentals, Linux Security, etc. can be added here -->
-                            </div>
 whoami && id && sudo -l
 
 <span class="code-comment"># 2. SUID Binaries</span>
@@ -2294,157 +2499,108 @@ lsof -i :80             <span class="code-comment"># What's using port 80</span>
                                 <h5>Why It Matters</h5>
                                 <p>Virtualization enables isolated testing environments, malware analysis, and resource optimization. Critical for security labs, CTFs, and enterprise infrastructure.</p>
                             </div>
+                            <div class="doc-section">
+                                <h5>Virtual Machine Concepts</h5>
+                                <p><strong>VM:</strong> Software-based computer with its own OS running inside a host<br>
+                                <strong>Host:</strong> Physical machine running the hypervisor<br>
+                                <strong>Guest:</strong> Virtual machine running on the host<br>
+                                <strong>Snapshot:</strong> Point-in-time state capture for rollback</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Hypervisor Types</h5>
+                                <pre><span class="code-comment"># Type 1 (Bare-metal)</span>
+- Runs directly on hardware
+- VMware ESXi, Hyper-V, KVM
+- Better performance, enterprise use
+
+<span class="code-comment"># Type 2 (Hosted)</span>
+- Runs on top of host OS
+- VirtualBox, VMware Workstation
+- Easier setup, desktop use</pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Security Use Cases</h5>
+                                <p>• <strong>Malware Analysis:</strong> Isolate suspicious files from host<br>
+                                • <strong>Penetration Testing:</strong> Attack lab networks safely<br>
+                                • <strong>Snapshot Testing:</strong> Test exploits, restore clean state<br>
+                                • <strong>Network Isolation:</strong> Segmented lab environments<br>
+                                • <strong>Multi-OS Testing:</strong> Run Windows, Linux, Kali simultaneously</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Computing -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">☁️</div>
+                            <h3>Cloud Computing</h3>
+                        </div>
+                        <span class="skill-toggle">+</span>
+                    </div>
+                    <div class="skill-content">
+                        <div class="tools-section">
+                            <div class="tools-label">Platforms & Tools</div>
+                            <div class="tools-grid">
+                                <span class="tool-tag">AWS</span>
+                                <span class="tool-tag">Azure</span>
+                                <span class="tool-tag">Google Cloud</span>
+                                <span class="tool-tag">SSH</span>
+                                <span class="tool-tag">EC2</span>
+                                <span class="tool-tag">S3</span>
+                                <span class="tool-tag">IAM</span>
+                            </div>
+                        </div>
+                        <div class="skill-docs">
+                            <h4>Documentation</h4>
+                            <div class="doc-section">
+                                <h5>Why It Matters</h5>
+                                <p>Most modern infrastructure runs in the cloud. Understanding cloud architecture is essential for security assessments, incident response, and secure deployments.</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Cloud Service Models</h5>
+                                <p><strong>IaaS:</strong> Infrastructure as a Service (VMs, storage, networks)<br>
+                                <strong>PaaS:</strong> Platform as a Service (managed runtime, databases)<br>
+                                <strong>SaaS:</strong> Software as a Service (end-user applications)</p>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Cloud Resources</h5>
+                                <pre><span class="code-comment"># Common cloud resources</span>
+- Virtual Machines (EC2, Azure VMs)
+- Storage (S3, Blob Storage)
+- Databases (RDS, CosmosDB)
 - Networks (VPC, Virtual Networks)
 - Identity (IAM, Azure AD)
 
-                            <div class="notes-grid">
-                                <div class="notes-item">
-                                    <div class="notes-header" onclick="this.nextElementSibling.classList.toggle('open')">
-                                        <div class="notes-title">
-                                            <h4>Computer Fundamentals & OS Security</h4>
-                                            <span class="notes-type">📝 Notes</span>
-                                            <span class="notes-toggle">Expand</span>
-                                        </div>
-                                    </div>
-                                    <div class="notes-content">
-                                        <div class="notes-body">
-                                            <h5>Hardware Components</h5>
-                                            <table>
-                                                <tr><th>Component</th><th>Function</th></tr>
-                                                <tr><td>CPU</td><td>Executes instructions</td></tr>
-                                                <tr><td>RAM</td><td>Temporary volatile memory</td></tr>
-                                                <tr><td>Storage</td><td>Permanent data storage</td></tr>
-                                                <tr><td>GPU</td><td>Graphics/compute processing</td></tr>
-                                                <tr><td>PSU</td><td>Power supply</td></tr>
-                                                <tr><td>Motherboard</td><td>Component interconnection</td></tr>
-                                            </table>
-                                            <h5>Boot Sequence</h5>
-                                            <ol>
-                                                <li>Power on → BIOS/UEFI → POST → Bootloader → OS → Login</li>
-                                            </ol>
-                                            <h5>Virtualization</h5>
-                                            <ul>
-                                                <li>VM: Software-based computer inside host machine</li>
-                                                <li>Hypervisors: Type 1 (bare-metal), Type 2 (on top of OS)</li>
-                                                <li>Use Cases: Testing, isolation, malware analysis</li>
-                                            </ul>
-                                            <h5>Kernel vs User Space</h5>
-                                            <table>
-                                                <tr><th>Space</th><th>Access</th></tr>
-                                                <tr><td>Kernel</td><td>Full hardware access</td></tr>
-                                                <tr><td>User</td><td>Restricted (applications)</td></tr>
-                                            </table>
-                                            <h5>OS Security Components</h5>
-                                            <ul>
-                                                <li>User accounts & authentication</li>
-                                                <li>File permissions</li>
-                                                <li>Firewalls</li>
-                                                <li>Security updates/patches</li>
-                                            </ul>
-                                            <h5>CLI Quick Reference</h5>
-                                            <pre>pwd          # Current directory
+<span class="code-comment"># Remote access</span>
+ssh -i key.pem user@instance-ip</pre>
+                            </div>
+                            <div class="doc-section">
+                                <h5>Security Considerations</h5>
+                                <p>• <strong>IAM Policies:</strong> Principle of least privilege<br>
+                                • <strong>Security Groups:</strong> Cloud-based firewalls<br>
+                                • <strong>Encryption:</strong> Data at rest and in transit<br>
+                                • <strong>Logging:</strong> CloudTrail, Azure Monitor for audit<br>
+                                • <strong>Misconfigurations:</strong> #1 cloud vulnerability</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OS Security -->
+                <div class="skill-card">
+                    <div class="skill-header" onclick="toggleSkill(this.parentElement)">
+                        <div class="skill-info">
+                            <div class="skill-icon">🛡️</div>
                             <h3>OS Security</h3>
                         </div>
                         <span class="skill-toggle">+</span>
                     </div>
                     <div class="skill-content">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="notes-item">
-                                    <div class="notes-header" onclick="this.nextElementSibling.classList.toggle('open')">
-                                        <div class="notes-title">
-                                            <h4>Security Fundamentals, Crypto & Recon</h4>
-                                            <span class="notes-type">📝 Notes</span>
-                                            <span class="notes-toggle">Expand</span>
-                                        </div>
-                                    </div>
-                                    <div class="notes-content">
-                                        <div class="notes-body">
-                                            <h5>CIA Triad</h5>
-                                            <table>
-                                                <tr><th>Principle</th><th>Goal</th></tr>
-                                                <tr><td>Confidentiality</td><td>Prevent unauthorized disclosure</td></tr>
-                                                <tr><td>Integrity</td><td>Prevent tampering or unauthorized modification</td></tr>
-                                                <tr><td>Availability</td><td>Keep systems and services accessible</td></tr>
-                                            </table>
-                                            <h5>Cryptography</h5>
-                                            <table>
-                                                <tr><th>Type</th><th>Keys</th><th>Notes</th><th>Examples</th></tr>
-                                                <tr><td>Symmetric</td><td>One shared key</td><td>Fast, efficient, harder key distribution</td><td>AES, DES</td></tr>
-                                                <tr><td>Asymmetric</td><td>Public/private pair</td><td>Easier key exchange, slower</td><td>RSA, ECC</td></tr>
-                                            </table>
-                                            <ul>
-                                                <li><strong>Encryption:</strong> Protects confidentiality</li>
-                                                <li><strong>Encoding:</strong> Converts data format for transport</li>
-                                                <li><strong>Hashing:</strong> Supports integrity checks and password verification workflows</li>
-                                            </ul>
-                                            <h5>Packet Analysis</h5>
-                                            <p>Common Filters: <code>icmp</code>, <code>dns</code>, <code>http</code></p>
-                                            <ul>
-                                                <li>Frame</li>
-                                                <li>Ethernet</li>
-                                                <li>IP</li>
-                                                <li>TCP/UDP</li>
-                                                <li>DNS / HTTP</li>
-                                            </ul>
-                                            <h5>Reconnaissance</h5>
-                                            <ul>
-                                                <li>Identify live systems</li>
-                                                <li>Discover open ports</li>
-                                                <li>Recognize exposed services</li>
-                                                <li>Reduce unknown attack surface</li>
-                                            </ul>
-                                            <p>Common Tools: <code>nmap</code>, <code>curl</code>, <code>WhatWeb</code>, Browser developer tools</p>
-                                            <h5>Web Enumeration</h5>
-                                            <ul>
-                                                <li>Admin panels</li>
-                                                <li>Login routes</li>
-                                                <li>Upload directories</li>
-                                                <li>Backups</li>
-                                                <li>Static content folders</li>
-                                            </ul>
-                                            <p>Common Tools: <code>Gobuster</code>, <code>curl</code>, Browser inspection</p>
-                                            <h5>Password Attack Awareness</h5>
-                                            <ul>
-                                                <li>Strong password policy</li>
-                                                <li>MFA</li>
-                                                <li>Rate limiting</li>
-                                                <li>Account lockout controls</li>
-                                                <li>Log monitoring and alerting</li>
-                                            </ul>
-                                            <p>Common Tool: <code>Hydra</code> for credential attack simulation in authorized labs</p>
-                                            <h5>Data Representation & Encoding</h5>
-                                            <table>
-                                                <tr><th>Decimal</th><th>Binary</th><th>Character</th></tr>
-                                                <tr><td>65</td><td>01000001</td><td>A</td></tr>
-                                            </table>
-                                            <h5>Useful Commands</h5>
-                                            <pre>echo "Hello" | xxd
                         <div class="tools-section">
                             <div class="tools-label">Concepts & Tools</div>
                             <div class="tools-grid">
-                                            <h5>Programming Fundamentals</h5>
-                                            <ul>
-                                                <li><strong>Python:</strong> Networking automation, scripting, security tooling</li>
-                                                <li><strong>JavaScript:</strong> Browser execution, client-side logic, attack surface</li>
-                                                <li><strong>SQL:</strong> Database queries, injection risk awareness</li>
-                                                <li><strong>Node.js:</strong> Server-side JS, backend structure</li>
-                                            </ul>
-                                            <h5>Pentesting Workflow</h5>
-                                            <ol>
-                                                <li>Reconnaissance</li>
-                                                <li>Scanning</li>
-                                                <li>Enumeration</li>
-                                                <li>Fingerprinting</li>
-                                                <li>Validation</li>
-                                                <li>Reporting</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Add more notes cards for Web Fundamentals, Linux Security, etc. as needed -->
-                            </div>
                                 <span class="tool-tag">Kernel</span>
                                 <span class="tool-tag">User Space</span>
                                 <span class="tool-tag">Firewalls</span>
@@ -2871,6 +3027,10 @@ dirb http://target.com</pre>
         }
 
         function toggleSkill(element) {
+            element.classList.toggle('open');
+        }
+
+        function toggleNote(element) {
             element.classList.toggle('open');
         }
     </script>
