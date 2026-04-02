@@ -177,6 +177,17 @@
         .nav-links a:hover { color: var(--accent); }
         .nav-links a:hover::after { width: 100%; }
 
+        .nav-links a.active {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 12px rgba(0, 255, 255, 0.35);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.45);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -398,6 +409,18 @@
         .prompt { color: var(--accent-cyan); margin-right: 8px; }
         .command { color: var(--accent); }
         .output { color: var(--text-dim); display: block; padding-left: 0; }
+
+        .typing-cursor::after {
+            content: '▋';
+            margin-left: 3px;
+            color: var(--accent-cyan);
+            animation: blinkCursor 1s steps(1) infinite;
+        }
+
+        @keyframes blinkCursor {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
 
         /* Stats Grid */
         .stats-grid {
@@ -1182,7 +1205,7 @@
                         <div class="terminal-line"><span class="output">networking  enumeration  web_security  scripting</span></div>
                         <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">cat ./platforms</span></div>
                         <div class="terminal-line"><span class="output">pwn.college | TryHackMe | HackTheBox</span></div>
-                        <div class="terminal-line"><span class="prompt">└─$</span> <span class="command">_</span></div>
+                        <div class="terminal-line"><span class="prompt">└─$</span> <span id="terminal-typing" class="command typing-cursor"></span></div>
                     </div>
                 </div>
             </div>
@@ -3157,6 +3180,72 @@ dirb http://target.com</pre>
 
         function toggleNote(element) {
             element.classList.toggle('open');
+        }
+
+        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+        const trackedSections = Array.from(navLinks)
+            .map((link) => document.querySelector(link.getAttribute('href')))
+            .filter(Boolean);
+
+        function updateActiveNav() {
+            const offset = window.scrollY + 140;
+            let currentSectionId = '';
+
+            for (const section of trackedSections) {
+                if (offset >= section.offsetTop) {
+                    currentSectionId = section.id;
+                }
+            }
+
+            navLinks.forEach((link) => {
+                const sectionId = link.getAttribute('href').replace('#', '');
+                link.classList.toggle('active', sectionId === currentSectionId);
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav, { passive: true });
+        updateActiveNav();
+
+        const typingTarget = document.getElementById('terminal-typing');
+        const typingLines = [
+            'cat ./notes/intel_journal.md',
+            'tail -f /var/log/security/events.log',
+            'nmap -sV --reason target.internal',
+            'python3 recon.py --scope authorized',
+            'report --mode professional --audience leadership'
+        ];
+
+        if (typingTarget) {
+            let lineIndex = 0;
+            let charIndex = 0;
+            let deleting = false;
+
+            function typeLoop() {
+                const line = typingLines[lineIndex];
+
+                if (!deleting) {
+                    typingTarget.textContent = line.slice(0, charIndex + 1);
+                    charIndex++;
+
+                    if (charIndex === line.length) {
+                        deleting = true;
+                        setTimeout(typeLoop, 1500);
+                        return;
+                    }
+                } else {
+                    typingTarget.textContent = line.slice(0, charIndex - 1);
+                    charIndex--;
+
+                    if (charIndex === 0) {
+                        deleting = false;
+                        lineIndex = (lineIndex + 1) % typingLines.length;
+                    }
+                }
+
+                setTimeout(typeLoop, deleting ? 35 : 55);
+            }
+
+            typeLoop();
         }
     </script>
 </body>
