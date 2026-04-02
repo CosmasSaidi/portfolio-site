@@ -2130,24 +2130,27 @@ find -perm                <span class="code-comment"># Find special permissions<
                 <div class="notes-item">
                     <div class="notes-header" onclick="toggleNote(this.parentElement)">
                         <div class="notes-title">
-                            <h4>Foundations: OS, Shell, Linux Workflow</h4>
+                            <h4>Operating Systems, Shell, and Linux Control Surface</h4>
                             <span class="notes-type">Core</span>
                             <span class="notes-toggle">Expand</span>
                         </div>
                     </div>
                     <div class="notes-content">
                         <div class="notes-body">
+                            <p>This block captures system-control fundamentals used in both penetration testing and defensive hardening.</p>
                             <ul>
-                                <li>System model: User → Shell → Kernel → Hardware</li>
-                                <li>Shell practice across Bash/Zsh and command discipline</li>
-                                <li>Linux file operations, permissions, ownership, and process control</li>
-                                <li>Privilege context awareness with <code>sudo</code>, <code>su</code>, and identity checks</li>
+                                <li><strong>Execution model:</strong> User → Shell → Kernel → Hardware and privilege-boundary implications.</li>
+                                <li><strong>Linux operations:</strong> navigation, file manipulation, permission control, ownership, and process management.</li>
+                                <li><strong>Privilege context:</strong> repeatable checks with identity, group, and sudo scope inspection.</li>
+                                <li><strong>Operational discipline:</strong> least privilege, controlled script execution, and auditability.</li>
                             </ul>
-                            <pre>ls -la
+                            <pre>whoami
+id
+sudo -l
+ls -la
 chmod 640 notes.txt
 chown user:group notes.txt
-ps aux
-sudo -l</pre>
+ps aux</pre>
                         </div>
                     </div>
                 </div>
@@ -2155,23 +2158,25 @@ sudo -l</pre>
                 <div class="notes-item">
                     <div class="notes-header" onclick="toggleNote(this.parentElement)">
                         <div class="notes-title">
-                            <h4>Networking, Protocols, and Traffic Analysis</h4>
+                            <h4>Networking Fundamentals, Recon, and Service Enumeration</h4>
                             <span class="notes-type">Network</span>
                             <span class="notes-toggle">Expand</span>
                         </div>
                     </div>
                     <div class="notes-content">
                         <div class="notes-body">
+                            <p>Reconnaissance is treated as a structured intelligence phase for attack-surface definition and defensive visibility.</p>
                             <ul>
-                                <li>Client-server communication and packet-level behavior</li>
-                                <li>Protocols: HTTP/HTTPS, DNS, FTP, SMTP/POP3/IMAP, ICMP</li>
-                                <li>Packet inspection with Wireshark and tcpdump</li>
-                                <li>Reconnaissance methodology for host, port, and service visibility</li>
+                                <li><strong>Protocol literacy:</strong> HTTP/HTTPS, DNS, FTP, SMTP/POP3/IMAP, ICMP.</li>
+                                <li><strong>Discovery flow:</strong> host discovery → port exposure → service/version profiling.</li>
+                                <li><strong>Web surface mapping:</strong> technology fingerprinting and route/content enumeration.</li>
+                                <li><strong>Defensive value:</strong> confirms externally reachable assets and monitoring priorities.</li>
                             </ul>
-                            <pre>tcpdump -i eth0
-nmap 10.10.10.10
+                            <pre>nmap 10.10.10.10
 nmap -sV 10.10.10.10
-nslookup example.com</pre>
+nslookup example.com
+whatweb target
+gobuster dir -u http://target -w wordlist.txt</pre>
                         </div>
                     </div>
                 </div>
@@ -2179,22 +2184,51 @@ nslookup example.com</pre>
                 <div class="notes-item">
                     <div class="notes-header" onclick="toggleNote(this.parentElement)">
                         <div class="notes-title">
-                            <h4>Crypto, Hashing, and Authentication Risk</h4>
+                            <h4>Traffic Analysis and Protocol Inspection</h4>
+                            <span class="notes-type">Analysis</span>
+                            <span class="notes-toggle">Expand</span>
+                        </div>
+                    </div>
+                    <div class="notes-content">
+                        <div class="notes-body">
+                            <p>Packet analysis is used for troubleshooting, incident confirmation, and protocol-level anomaly detection.</p>
+                            <ul>
+                                <li><strong>Collection:</strong> capture live traffic with CLI and GUI tooling.</li>
+                                <li><strong>Filtering:</strong> isolate DNS, ICMP, HTTP, and session patterns quickly.</li>
+                                <li><strong>Interpretation:</strong> map packet behavior to user activity and potential attack paths.</li>
+                                <li><strong>IR context:</strong> supports triage for suspicious outbound connections and credential leakage patterns.</li>
+                            </ul>
+                            <pre>tcpdump -i eth0
+wireshark
+# common display filters
+icmp
+dns
+http</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-item">
+                    <div class="notes-header" onclick="toggleNote(this.parentElement)">
+                        <div class="notes-title">
+                            <h4>Cryptography, Hashing, and Password Security</h4>
                             <span class="notes-type">Security</span>
                             <span class="notes-toggle">Expand</span>
                         </div>
                     </div>
                     <div class="notes-content">
                         <div class="notes-body">
+                            <p>Focus is on practical security interpretation of confidentiality, integrity, and authentication controls.</p>
                             <ul>
-                                <li>CIA triad usage in practical security reasoning</li>
-                                <li>Symmetric vs asymmetric encryption fundamentals</li>
-                                <li>Hashing properties and password storage models</li>
-                                <li>NTLM/NetNTLMv2 exposure patterns and defensive implications</li>
+                                <li><strong>CIA triad:</strong> used as a control-quality evaluation lens.</li>
+                                <li><strong>Crypto models:</strong> symmetric (AES/DES) vs asymmetric (RSA/ECC) trade-offs.</li>
+                                <li><strong>Hashing:</strong> one-way, deterministic, fixed-length outputs for password and integrity workflows.</li>
+                                <li><strong>Credential risk:</strong> weak password policy increases offline cracking exposure.</li>
                             </ul>
                             <pre>echo "hello" | base64
 echo "aGVsbG8=" | base64 -d
-echo "hello" | xxd</pre>
+echo "hello" | xxd
+john --show hash.txt</pre>
                         </div>
                     </div>
                 </div>
@@ -2202,23 +2236,48 @@ echo "hello" | xxd</pre>
                 <div class="notes-item">
                     <div class="notes-header" onclick="toggleNote(this.parentElement)">
                         <div class="notes-title">
-                            <h4>Defensive Detection and Remediation Mindset</h4>
-                            <span class="notes-type">Blue Team</span>
+                            <h4>Authentication Risk: NTLM/NetNTLMv2 and Outlook Moniker Case</h4>
+                            <span class="notes-type">Threat</span>
                             <span class="notes-toggle">Expand</span>
                         </div>
                     </div>
                     <div class="notes-content">
                         <div class="notes-body">
+                            <p>High-level risk analysis of credential-exposure patterns and modern phishing-triggered authentication abuse.</p>
                             <ul>
-                                <li>Indicators: unusual NTLM flows, suspicious SMB activity, phishing-linked behavior</li>
-                                <li>Triage workflows using packet analysis and SIEM-oriented investigation</li>
-                                <li>Remediation priorities: patching, auth control improvement, egress controls, awareness training</li>
-                                <li>Documentation discipline: methodology only, no direct challenge solutions</li>
+                                <li><strong>NTLM model:</strong> challenge-response mechanics and captured-hash risk.</li>
+                                <li><strong>Capture simulation:</strong> authorized lab workflows using Responder.</li>
+                                <li><strong>CVE context:</strong> Outlook Moniker Link risk (CVE-2024-21413) as a credential-harvest case study.</li>
+                                <li><strong>Response priorities:</strong> patching, NTLM reduction, SMB egress control, user awareness.</li>
                             </ul>
-                            <pre># detection focus
-- unusual authentication traffic
-- anomalous outbound SMB
-- suspicious endpoint behaviors</pre>
+                            <pre>sudo responder -I eth0
+# analyze suspicious authentication behavior
+# validate outbound SMB controls</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-item">
+                    <div class="notes-header" onclick="toggleNote(this.parentElement)">
+                        <div class="notes-title">
+                            <h4>Practical Attack Lifecycle and Defensive Translation</h4>
+                            <span class="notes-type">Workflow</span>
+                            <span class="notes-toggle">Expand</span>
+                        </div>
+                    </div>
+                    <div class="notes-content">
+                        <div class="notes-body">
+                            <p>This section maps offensive workflow stages to concrete defensive controls and detection opportunities.</p>
+                            <ul>
+                                <li><strong>Lifecycle:</strong> recon → scanning → enumeration → validation → post-exploitation reasoning.</li>
+                                <li><strong>Lab scope:</strong> MS17-010/EternalBlue-class exposure awareness in authorized environments.</li>
+                                <li><strong>Platform practice:</strong> Metasploitable and virtualized labs for controlled service abuse simulation.</li>
+                                <li><strong>Blue-team translation:</strong> monitor auth anomalies, harden credentials, and reduce lateral-movement paths.</li>
+                            </ul>
+                            <pre># workflow discipline
+recon -> enumerate -> validate -> report
+# defensive translation
+patch -> harden auth -> monitor -> contain</pre>
                         </div>
                     </div>
                 </div>
