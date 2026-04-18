@@ -1,0 +1,301 @@
+{
+  "generatedAt": "local-build",
+  "writeups": [
+    {
+      "id": "writeups:README.md",
+      "title": "Readme",
+      "section": "root",
+      "sourcePath": "cybersecurity-writeups/README.md",
+      "contentPath": "assets/content/writeups/README.md"
+    },
+    {
+      "id": "writeups:http-basics:http-requests.md",
+      "title": "Http Requests",
+      "section": "http-basics",
+      "sourcePath": "cybersecurity-writeups/http-basics/http-requests.md",
+      "contentPath": "assets/content/writeups/http-basics/http-requests.md"
+    },
+    {
+      "id": "writeups:linux-luminarium:environment-variables.md",
+      "title": "Environment Variables",
+      "section": "linux-luminarium",
+      "sourcePath": "cybersecurity-writeups/linux-luminarium/environment-variables.md",
+      "contentPath": "assets/content/writeups/linux-luminarium/environment-variables.md"
+    },
+    {
+      "id": "writeups:linux-luminarium:file-permissions.md",
+      "title": "File Permissions",
+      "section": "linux-luminarium",
+      "sourcePath": "cybersecurity-writeups/linux-luminarium/file-permissions.md",
+      "contentPath": "assets/content/writeups/linux-luminarium/file-permissions.md"
+    },
+    {
+      "id": "writeups:linux-luminarium:path-manipulation.md",
+      "title": "Path Manipulation",
+      "section": "linux-luminarium",
+      "sourcePath": "cybersecurity-writeups/linux-luminarium/path-manipulation.md",
+      "contentPath": "assets/content/writeups/linux-luminarium/path-manipulation.md"
+    },
+    {
+      "id": "writeups:linux-luminarium:piping.md",
+      "title": "Piping",
+      "section": "linux-luminarium",
+      "sourcePath": "cybersecurity-writeups/linux-luminarium/piping.md",
+      "contentPath": "assets/content/writeups/linux-luminarium/piping.md"
+    },
+    {
+      "id": "writeups:linux-luminarium:process-control.md",
+      "title": "Process Control",
+      "section": "linux-luminarium",
+      "sourcePath": "cybersecurity-writeups/linux-luminarium/process-control.md",
+      "contentPath": "assets/content/writeups/linux-luminarium/process-control.md"
+    },
+    {
+      "id": "writeups:linux-luminarium:shell-scripting.md",
+      "title": "Shell Scripting",
+      "section": "linux-luminarium",
+      "sourcePath": "cybersecurity-writeups/linux-luminarium/shell-scripting.md",
+      "contentPath": "assets/content/writeups/linux-luminarium/shell-scripting.md"
+    },
+    {
+      "id": "writeups:playing-with-programs:data-dealings.md",
+      "title": "Data Dealings",
+      "section": "playing-with-programs",
+      "sourcePath": "cybersecurity-writeups/playing-with-programs/data-dealings.md",
+      "contentPath": "assets/content/writeups/playing-with-programs/data-dealings.md"
+    },
+    {
+      "id": "writeups:scripts:README.md",
+      "title": "Readme",
+      "section": "scripts",
+      "sourcePath": "cybersecurity-writeups/scripts/README.md",
+      "contentPath": "assets/content/writeups/scripts/README.md"
+    },
+    {
+      "id": "writeups:tryhackme:computer-fundamentals-virtualization-os-security.md",
+      "title": "Computer Fundamentals Virtualization Os Security",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/computer-fundamentals-virtualization-os-security.md",
+      "contentPath": "assets/content/writeups/tryhackme/computer-fundamentals-virtualization-os-security.md"
+    },
+    {
+      "id": "writeups:tryhackme:file-upload-and-web-shells.md",
+      "title": "File Upload and Web Shells",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/file-upload-and-web-shells.md",
+      "contentPath": "assets/content/writeups/tryhackme/file-upload-and-web-shells.md"
+    },
+    {
+      "id": "writeups:tryhackme:gobuster-enumeration-methodology.md",
+      "title": "Gobuster Enumeration Methodology",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/gobuster-enumeration-methodology.md",
+      "contentPath": "assets/content/writeups/tryhackme/gobuster-enumeration-methodology.md"
+    },
+    {
+      "id": "writeups:tryhackme:ntlm-credential-exposure-and-moniker-link-risk.md",
+      "title": "NTLM Credential Exposure and Moniker Link Risk",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/ntlm-credential-exposure-and-moniker-link-risk.md",
+      "contentPath": "assets/content/writeups/tryhackme/ntlm-credential-exposure-and-moniker-link-risk.md"
+    },
+    {
+      "id": "writeups:tryhackme:offensive-defensive-security-intro.md",
+      "title": "Offensive Defensive Security Intro",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/offensive-defensive-security-intro.md",
+      "contentPath": "assets/content/writeups/tryhackme/offensive-defensive-security-intro.md"
+    },
+    {
+      "id": "writeups:tryhackme:practical-attack-lifecycle-summary.md",
+      "title": "Practical Attack Lifecycle Summary",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/practical-attack-lifecycle-summary.md",
+      "contentPath": "assets/content/writeups/tryhackme/practical-attack-lifecycle-summary.md"
+    },
+    {
+      "id": "writeups:tryhackme:security-fundamentals-crypto-recon-programming.md",
+      "title": "Security Fundamentals Crypto Recon Programming",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/security-fundamentals-crypto-recon-programming.md",
+      "contentPath": "assets/content/writeups/tryhackme/security-fundamentals-crypto-recon-programming.md"
+    },
+    {
+      "id": "writeups:tryhackme:sql-injection-authentication-bypass.md",
+      "title": "SQL Injection Authentication Bypass",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/sql-injection-authentication-bypass.md",
+      "contentPath": "assets/content/writeups/tryhackme/sql-injection-authentication-bypass.md"
+    },
+    {
+      "id": "writeups:tryhackme:web-enumeration-and-reconnaissance.md",
+      "title": "Web Enumeration and Reconnaissance",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/web-enumeration-and-reconnaissance.md",
+      "contentPath": "assets/content/writeups/tryhackme/web-enumeration-and-reconnaissance.md"
+    },
+    {
+      "id": "writeups:tryhackme:web-fundamentals-networking-http-security.md",
+      "title": "Web Fundamentals Networking Http Security",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/web-fundamentals-networking-http-security.md",
+      "contentPath": "assets/content/writeups/tryhackme/web-fundamentals-networking-http-security.md"
+    },
+    {
+      "id": "writeups:tryhackme:xss-cross-site-scripting-fundamentals.md",
+      "title": "XSS Cross Site Scripting Fundamentals",
+      "section": "tryhackme",
+      "sourcePath": "cybersecurity-writeups/tryhackme/xss-cross-site-scripting-fundamentals.md",
+      "contentPath": "assets/content/writeups/tryhackme/xss-cross-site-scripting-fundamentals.md"
+    }
+  ],
+  "notes": [
+    {
+      "id": "notes:INDEX.md",
+      "title": "Index",
+      "section": "root",
+      "sourcePath": "security-notes/INDEX.md",
+      "contentPath": "assets/content/notes/INDEX.md"
+    },
+    {
+      "id": "notes:README.md",
+      "title": "Readme",
+      "section": "root",
+      "sourcePath": "security-notes/README.md",
+      "contentPath": "assets/content/notes/README.md"
+    },
+    {
+      "id": "notes:enumeration:linux-enumeration.md",
+      "title": "Linux Enumeration",
+      "section": "enumeration",
+      "sourcePath": "security-notes/enumeration/linux-enumeration.md",
+      "contentPath": "assets/content/notes/enumeration/linux-enumeration.md"
+    },
+    {
+      "id": "notes:fundamentals:computer-os-security-reference.md",
+      "title": "Computer Os Security Reference",
+      "section": "fundamentals",
+      "sourcePath": "security-notes/fundamentals/computer-os-security-reference.md",
+      "contentPath": "assets/content/notes/fundamentals/computer-os-security-reference.md"
+    },
+    {
+      "id": "notes:fundamentals:security-fundamentals-crypto-recon-reference.md",
+      "title": "Security Fundamentals Crypto Recon Reference",
+      "section": "fundamentals",
+      "sourcePath": "security-notes/fundamentals/security-fundamentals-crypto-recon-reference.md",
+      "contentPath": "assets/content/notes/fundamentals/security-fundamentals-crypto-recon-reference.md"
+    },
+    {
+      "id": "notes:fundamentals:terminal-bandit-session-journal.md",
+      "title": "Terminal Bandit Session Journal",
+      "section": "fundamentals",
+      "sourcePath": "security-notes/fundamentals/terminal-bandit-session-journal.md",
+      "contentPath": "assets/content/notes/fundamentals/terminal-bandit-session-journal.md"
+    },
+    {
+      "id": "notes:linux-security:environment-variables.md",
+      "title": "Environment Variables",
+      "section": "linux-security",
+      "sourcePath": "security-notes/linux-security/environment-variables.md",
+      "contentPath": "assets/content/notes/linux-security/environment-variables.md"
+    },
+    {
+      "id": "notes:linux-security:file-permissions.md",
+      "title": "File Permissions",
+      "section": "linux-security",
+      "sourcePath": "security-notes/linux-security/file-permissions.md",
+      "contentPath": "assets/content/notes/linux-security/file-permissions.md"
+    },
+    {
+      "id": "notes:linux-security:fundamentals.md",
+      "title": "Fundamentals",
+      "section": "linux-security",
+      "sourcePath": "security-notes/linux-security/fundamentals.md",
+      "contentPath": "assets/content/notes/linux-security/fundamentals.md"
+    },
+    {
+      "id": "notes:linux-security:path-and-execution.md",
+      "title": "Path and Execution",
+      "section": "linux-security",
+      "sourcePath": "security-notes/linux-security/path-and-execution.md",
+      "contentPath": "assets/content/notes/linux-security/path-and-execution.md"
+    },
+    {
+      "id": "notes:linux-security:permissions.md",
+      "title": "Permissions",
+      "section": "linux-security",
+      "sourcePath": "security-notes/linux-security/permissions.md",
+      "contentPath": "assets/content/notes/linux-security/permissions.md"
+    },
+    {
+      "id": "notes:linux-security:process-management.md",
+      "title": "Process Management",
+      "section": "linux-security",
+      "sourcePath": "security-notes/linux-security/process-management.md",
+      "contentPath": "assets/content/notes/linux-security/process-management.md"
+    },
+    {
+      "id": "notes:linux-security:processes-and-jobs.md",
+      "title": "Processes and Jobs",
+      "section": "linux-security",
+      "sourcePath": "security-notes/linux-security/processes-and-jobs.md",
+      "contentPath": "assets/content/notes/linux-security/processes-and-jobs.md"
+    },
+    {
+      "id": "notes:linux-security:su-sudo-and-privilege.md",
+      "title": "Su Sudo and Privilege",
+      "section": "linux-security",
+      "sourcePath": "security-notes/linux-security/su-sudo-and-privilege.md",
+      "contentPath": "assets/content/notes/linux-security/su-sudo-and-privilege.md"
+    },
+    {
+      "id": "notes:linux-security:user-management.md",
+      "title": "User Management",
+      "section": "linux-security",
+      "sourcePath": "security-notes/linux-security/user-management.md",
+      "contentPath": "assets/content/notes/linux-security/user-management.md"
+    },
+    {
+      "id": "notes:methodology:linux-privesc.md",
+      "title": "Linux Privesc",
+      "section": "methodology",
+      "sourcePath": "security-notes/methodology/linux-privesc.md",
+      "contentPath": "assets/content/notes/methodology/linux-privesc.md"
+    },
+    {
+      "id": "notes:shell-scripting:command-substitution.md",
+      "title": "Command Substitution",
+      "section": "shell-scripting",
+      "sourcePath": "security-notes/shell-scripting/command-substitution.md",
+      "contentPath": "assets/content/notes/shell-scripting/command-substitution.md"
+    },
+    {
+      "id": "notes:shell-scripting:pipes-and-redirection.md",
+      "title": "Pipes and Redirection",
+      "section": "shell-scripting",
+      "sourcePath": "security-notes/shell-scripting/pipes-and-redirection.md",
+      "contentPath": "assets/content/notes/shell-scripting/pipes-and-redirection.md"
+    },
+    {
+      "id": "notes:web-security:http-fundamentals.md",
+      "title": "Http Fundamentals",
+      "section": "web-security",
+      "sourcePath": "security-notes/web-security/http-fundamentals.md",
+      "contentPath": "assets/content/notes/web-security/http-fundamentals.md"
+    },
+    {
+      "id": "notes:web-security:web-discovery-detection-response.md",
+      "title": "Web Discovery Detection Response",
+      "section": "web-security",
+      "sourcePath": "security-notes/web-security/web-discovery-detection-response.md",
+      "contentPath": "assets/content/notes/web-security/web-discovery-detection-response.md"
+    },
+    {
+      "id": "notes:web-security:web-fundamentals-reference.md",
+      "title": "Web Fundamentals Reference",
+      "section": "web-security",
+      "sourcePath": "security-notes/web-security/web-fundamentals-reference.md",
+      "contentPath": "assets/content/notes/web-security/web-fundamentals-reference.md"
+    }
+  ]
+}
