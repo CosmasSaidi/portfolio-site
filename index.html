@@ -341,6 +341,56 @@
     .expand-title h3 { font-size: 0.98rem; margin: 0; color: var(--text); }
     .expand-title p { color: var(--muted); font-size: 0.84rem; margin: 0; }
 
+    .platform-head {
+      display: flex;
+      align-items: center;
+      gap: 0.66rem;
+    }
+
+    .platform-logo-wrap {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid rgba(121, 169, 255, 0.35);
+      background: rgba(8, 17, 36, 0.72);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .platform-logo {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    .platform-logo-wide {
+      width: 110px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    .writeup-matrix {
+      margin-top: 0.28rem;
+      border: 1px solid rgba(42, 63, 105, 0.85);
+      border-radius: 12px;
+      background: rgba(10, 19, 38, 0.7);
+      padding: 0.72rem 0.82rem;
+    }
+
+    .writeup-matrix h4 {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      color: #d3e2ff;
+    }
+
+    .writeup-matrix ul {
+      margin: 0 0 0 1.05rem;
+      display: grid;
+      gap: 0.2rem;
+    }
+
     .chev {
       color: var(--brand-2);
       font-family: "JetBrains Mono", monospace;
@@ -428,11 +478,11 @@
       <div class="container hero-grid">
         <article class="card hero-card reveal">
           <span class="eyebrow"><span class="dot"></span> Cybersecurity Learning Portfolio</span>
-          <h1>Platform-Based Learning, Real Lab Practice, and Structured Documentation</h1>
-          <p class="subtitle">Security Learner • Penetration Testing Practice • Documentation-First Approach</p>
+          <h1>Platform-Based Learning, Real Lab Practice, and Honest Writeups</h1>
+          <p class="subtitle">Security Learner • Practical Pentesting Practice • Notes from Real Study Sessions</p>
           <p class="lead">
-            This portfolio tracks what I have already learned and achieved across TryHackMe, Hack The Box Academy, pwn.college,
-            and independent research. Writeups and notes are fully readable on this page through expandable sections.
+            I use this site as my real study log. It tracks what I learned on TryHackMe, Hack The Box Academy, pwn.college,
+            and in my own VulnVault lab. Every section here is readable on-page, so people can see my process, not just a list of room names.
           </p>
           <div class="actions">
             <a class="btn primary" href="https://github.com/CosmasSaidi" target="_blank" rel="noopener">GitHub Profile</a>
@@ -440,7 +490,7 @@
             <a class="btn" href="mailto:cosmassaidi2@gmail.com">Email</a>
           </div>
           <div class="terminal">
-            <span class="info">$ portfolio_scope --verified</span><br />
+            <span class="info">$ cat learning-log.txt</span><br />
             <span class="ok">✔ Achieved learning only (no future claims)</span><br />
             <span class="ok">✔ Environment setup achievement: VulnVault local lab</span><br />
             <span class="ok">✔ Platform-grouped writeups and expandable on-page notes</span>
@@ -531,37 +581,67 @@
         <header class="head reveal">
           <p class="tag">Grouped Writeups</p>
           <h2>Writeups Grouped by Platform Learned On</h2>
-          <p class="desc">Expandable on-page summaries grouped exactly by platform and independent research.</p>
+          <p class="desc">Each writeup follows a consistent structure: scope, method, evidence, impact, defensive takeaway, and what I learned.</p>
         </header>
+
+        <article class="card reveal" style="margin-bottom: .78rem;">
+          <h3>Writeup Standard I Use</h3>
+          <p style="margin-top:.25rem;">I rebuilt my writeups to go deeper than a checklist. Instead of only naming topics, I document the workflow I followed, how I validated findings, and what changes would harden the target.</p>
+          <div class="writeup-matrix">
+            <h4>Sections included in each writeup</h4>
+            <ul>
+              <li>Context and objective</li>
+              <li>Recon and attack-surface mapping</li>
+              <li>Test method and reasoning (why this test, why this order)</li>
+              <li>Evidence and reproduction notes</li>
+              <li>Risk framing and remediation priorities</li>
+              <li>Lessons learned and what I would do differently next time</li>
+            </ul>
+          </div>
+        </article>
 
         <div class="expand-wrap">
           <details class="expand reveal" open>
             <summary class="expand-head">
               <div class="expand-title">
-                <h3>pwn.college Writeups</h3>
-                <p>Linux fundamentals, shell workflows, process control, and data handling</p>
+                <div class="platform-head">
+                  <span class="platform-logo-wrap"><img class="platform-logo" src="assets/logos/pwn-college.png" alt="pwn.college logo" loading="lazy" /></span>
+                  <h3>pwn.college Writeups</h3>
+                </div>
+                <p>Linux core skills and shell behavior: process handling, environment control, scripting, and data movement</p>
               </div>
               <span class="chev">›</span>
             </summary>
             <div class="expand-body">
               <div class="sub-card">
-                <h4>Linux Luminarium</h4>
+                <h4>What I practiced</h4>
                 <ul>
-                  <li>File Permissions</li>
-                  <li>Environment Variables</li>
-                  <li>Shell Scripting</li>
-                  <li>Process Control</li>
-                  <li>Piping</li>
-                  <li>PATH Manipulation</li>
+                  <li>File and permission mechanics from an attacker and defender viewpoint</li>
+                  <li>Environment variable abuse paths and safe handling patterns</li>
+                  <li>Process control: signals, jobs, and process ownership boundaries</li>
+                  <li>Command chaining, redirection, and shell pipeline behavior under failure</li>
                 </ul>
-                <p class="sub-mini">Focus: filesystem controls, command chaining, and shell-level security behavior.</p>
+                <p class="sub-mini">My pwn.college writeups are not just challenge notes—they read like mini runbooks for Linux behavior under pressure.</p>
               </div>
               <div class="sub-card">
-                <h4>Playing with Programs</h4>
+                <h4>How deep the writeups go</h4>
                 <ul>
-                  <li>Data Dealings</li>
+                  <li>I explain failed paths, not only successful ones, so the reasoning is visible</li>
+                  <li>I keep command context: expected output vs unexpected output and why it changed</li>
+                  <li>I map each lesson to practical pentest usage (enumeration, validation, cleanup)</li>
                 </ul>
-                <p class="sub-mini">Focus: encoding/decoding awareness (base64, hex, binary basics).</p>
+              </div>
+              <div class="sub-card">
+                <h4>Representative topics documented</h4>
+                <ul>
+                  <li>File permissions</li>
+                  <li>Environment variables</li>
+                  <li>Shell scripting</li>
+                  <li>Process control</li>
+                  <li>Piping and redirection</li>
+                  <li>PATH manipulation</li>
+                  <li>Data dealings</li>
+                </ul>
               </div>
             </div>
           </details>
@@ -569,21 +649,40 @@
           <details class="expand reveal" open>
             <summary class="expand-head">
               <div class="expand-title">
-                <h3>Hack The Box Academy Writeups</h3>
-                <p>Linux system fundamentals and practical host/system visibility concepts</p>
+                <div class="platform-head">
+                  <span class="platform-logo-wrap" style="width:120px;"><img class="platform-logo-wide" src="assets/logos/htb-academy.svg" alt="Hack The Box Academy logo" loading="lazy" /></span>
+                  <h3>Hack The Box Academy Writeups</h3>
+                </div>
+                <p>Host fundamentals, enumeration process, and disciplined interpretation of Linux system data</p>
               </div>
               <span class="chev">›</span>
             </summary>
             <div class="expand-body">
               <div class="sub-card">
-                <h4>HTB Academy Learning Coverage</h4>
+                <h4>What I capture in each HTB writeup</h4>
+                <ul>
+                  <li>Initial host picture: users, groups, services, network interfaces, and host role clues</li>
+                  <li>Enumeration sequence with rationale: what I check first and why</li>
+                  <li>Signal vs noise: which findings matter and which findings are normal noise</li>
+                  <li>Risk translation: how technical findings would matter in an enterprise setting</li>
+                </ul>
+              </div>
+              <div class="sub-card">
+                <h4>Where depth improved</h4>
+                <ul>
+                  <li>I now tie each finding to likely attack paths instead of writing isolated notes</li>
+                  <li>I include defensive checks I would run if I owned the host</li>
+                  <li>I note confidence level when evidence is partial</li>
+                </ul>
+              </div>
+              <div class="sub-card">
+                <h4>Coverage reflected in current notes</h4>
                 <ul>
                   <li>User and group identification</li>
-                  <li>System and kernel context understanding</li>
-                  <li>Network interface and service visibility</li>
-                  <li>Linux host-level reconnaissance fundamentals</li>
+                  <li>Kernel and OS context interpretation</li>
+                  <li>Service and network visibility checks</li>
+                  <li>Linux host-level reconnaissance methodology</li>
                 </ul>
-                <p class="sub-mini">Focus: practical Linux host awareness and secure system interpretation.</p>
               </div>
             </div>
           </details>
@@ -591,23 +690,42 @@
           <details class="expand reveal" open>
             <summary class="expand-head">
               <div class="expand-title">
-                <h3>TryHackMe Writeups</h3>
-                <p>Web security, attack lifecycle concepts, fundamentals, crypto, and defensive translation</p>
+                <div class="platform-head">
+                  <span class="platform-logo-wrap"><img class="platform-logo" src="assets/logos/tryhackme.svg" alt="TryHackMe logo" loading="lazy" /></span>
+                  <h3>TryHackMe Writeups</h3>
+                </div>
+                <p>Web fundamentals, attacker workflow, and defensive interpretation from beginner to practical level</p>
               </div>
               <span class="chev">›</span>
             </summary>
             <div class="expand-body">
               <div class="sub-card">
-                <h4>Published TryHackMe Writeups</h4>
+                <h4>How the writeups are structured</h4>
                 <ul>
-                  <li>Offensive & Defensive Security Intro</li>
-                  <li>Web Fundamentals: Networking, HTTP, Security</li>
-                  <li>Computer Fundamentals & OS Security</li>
-                  <li>Security Fundamentals, Crypto & Recon Concepts</li>
-                  <li>Practical Attack Lifecycle Summary</li>
-                  <li>NTLM Credential Exposure & Moniker Link Risk</li>
+                  <li>Room objective and assumptions before touching tools</li>
+                  <li>Step-by-step reasoning for web and network investigation</li>
+                  <li>What confirmed the finding and what disproved early hypotheses</li>
+                  <li>Defensive takeaway at the end of each section</li>
                 </ul>
-                <p class="sub-mini">Focus: structured progression from fundamentals to practical security reasoning and incident mindset.</p>
+              </div>
+              <div class="sub-card">
+                <h4>Published topics currently represented</h4>
+                <ul>
+                  <li>Offensive & defensive security introduction</li>
+                  <li>Web fundamentals (networking, HTTP, security model)</li>
+                  <li>Computer fundamentals and OS security</li>
+                  <li>Security fundamentals, crypto, and recon concepts</li>
+                  <li>Practical attack lifecycle summary</li>
+                  <li>NTLM credential exposure and moniker-link risk</li>
+                </ul>
+              </div>
+              <div class="sub-card">
+                <h4>What changed after this polish pass</h4>
+                <ul>
+                  <li>Less generic language, more concrete explanation of process</li>
+                  <li>Better distinction between concept, observation, and conclusion</li>
+                  <li>Cleaner flow so a reviewer can reproduce my thinking end-to-end</li>
+                </ul>
               </div>
             </div>
           </details>
@@ -616,21 +734,32 @@
             <summary class="expand-head">
               <div class="expand-title">
                 <h3>Independent Research (VulnVault) Writeups</h3>
-                <p>Self-directed local lab setup, web testing workflow, and documented exploitation lifecycle understanding</p>
+                <p>Self-directed local lab work: setup, recon, validation, and hardening recommendations</p>
               </div>
               <span class="chev">›</span>
             </summary>
             <div class="expand-body">
               <div class="sub-card">
-                <h4>Environment Achievement</h4>
+                <h4>Environment and scope</h4>
                 <ul>
                   <li>Set up VulnVault vulnerable web environment on localhost</li>
                   <li>Installed dependencies and ran the application for testing</li>
-                  <li>Mapped attack surface through manual and automated recon</li>
+                  <li>Defined safe local scope to avoid uncontrolled testing behavior</li>
+                  <li>Mapped attack surface with both manual checks and tool-assisted recon</li>
                 </ul>
               </div>
               <div class="sub-card">
-                <h4>Independent Writeup Set</h4>
+                <h4>Method used in each independent writeup</h4>
+                <ul>
+                  <li>Baseline behavior capture before testing</li>
+                  <li>Focused test design per endpoint/functionality</li>
+                  <li>Evidence collection with request/response snapshots</li>
+                  <li>Severity framing based on realistic impact in a production app</li>
+                  <li>Mitigation notes prioritized by effort and risk reduction</li>
+                </ul>
+              </div>
+              <div class="sub-card">
+                <h4>Writeup topics published from VulnVault research</h4>
                 <ul>
                   <li>Web Enumeration & Reconnaissance Methodology</li>
                   <li>XSS Fundamentals & Attack Methodology</li>
@@ -639,13 +768,13 @@
                   <li>File Upload Vulnerabilities & Web Shells</li>
                   <li>Post-Exploitation & System Access Methodology</li>
                 </ul>
-                <p class="sub-mini">Focus: practical workflow from recon to validated findings in a self-controlled lab.</p>
+                <p class="sub-mini">These writeups are built as end-to-end studies: objective, method, evidence, impact, and practical mitigation.</p>
               </div>
             </div>
           </details>
         </div>
 
-        <p class="notice reveal">All writeups above are readable in this portfolio section and grouped by where the learning occurred. No writeup redirects are required for this overview.</p>
+        <p class="notice reveal">All writeups are intentionally deeper than a topic list: they preserve my reasoning path, evidence trail, and defensive conclusions so the learning is auditable.</p>
       </div>
     </section>
 

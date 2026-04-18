@@ -13,11 +13,13 @@ Cybersecurity portfolio website for **Cosmas Saidi**, focused on verified learni
 	- `Hack The Box Academy`
 	- `TryHackMe`
 	- Independent research (`VulnVault`)
+- Writeups use a deeper format: context, method, evidence, impact, mitigation, lessons learned.
 - Expandable notes sections readable directly on the site.
 
 ## Structure
 
 - `index.html` — complete single-page portfolio (HTML/CSS/JS).
+- `assets/logos/` — platform logos used in the writeups section.
 
 Main navigation sections:
 
