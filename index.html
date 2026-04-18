@@ -3,52 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cosmas Saidi - Cybersecurity Portfolio, Writeups, and Security Notes" />
+  <meta name="description" content="Cosmas Saidi — Cybersecurity portfolio with platform-grouped writeups and on-page expandable security notes." />
   <title>Cosmas Saidi | Cybersecurity Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #070c18;
-      --bg-soft: #0f1b32;
-      --card: #121f3a;
-      --card-soft: #172746;
-      --line: #2a3d63;
-      --text: #e7efff;
-      --text-soft: #b3c3e8;
-      --muted: #8fa4d1;
-      --brand: #78a9ff;
-      --brand-2: #66f0d2;
-      --glow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      --bg: #0a1224;
+      --bg-soft: #111c36;
+      --card: #142241;
+      --line: #2a3f69;
+      --text: #e8efff;
+      --text-soft: #b4c4eb;
+      --muted: #8fa6d6;
+      --brand: #79a9ff;
+      --brand-2: #66efd1;
+      --ok: #93ffbe;
       --radius: 16px;
+      --shadow: 0 20px 55px rgba(0, 0, 0, 0.35);
       --max: 1200px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background:
-        radial-gradient(950px 500px at 100% 0%, rgba(102, 240, 210, 0.12), transparent 60%),
-        radial-gradient(900px 500px at 0% 0%, rgba(120, 169, 255, 0.14), transparent 62%),
-        var(--bg);
       color: var(--text);
+      background:
+        radial-gradient(1100px 520px at 95% -5%, rgba(102, 239, 209, 0.12), transparent 60%),
+        radial-gradient(1000px 560px at 0% 0%, rgba(121, 169, 255, 0.14), transparent 62%),
+        var(--bg);
       line-height: 1.7;
+      min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       width: min(100% - 2rem, var(--max));
@@ -59,9 +50,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(7, 12, 24, 0.82);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(42, 61, 99, 0.7);
+      backdrop-filter: blur(12px);
+      background: rgba(10, 18, 36, 0.84);
+      border-bottom: 1px solid rgba(42, 63, 105, 0.8);
     }
 
     .nav {
@@ -75,7 +66,7 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.62rem;
       font-weight: 700;
       letter-spacing: 0.2px;
     }
@@ -85,7 +76,7 @@
       height: 34px;
       border-radius: 10px;
       border: 1px solid var(--line);
-      background: linear-gradient(145deg, #1f3156, #12213d);
+      background: linear-gradient(145deg, #20345f, #132243);
       display: grid;
       place-content: center;
       color: var(--brand-2);
@@ -95,60 +86,78 @@
 
     .menu {
       display: flex;
-      gap: 1.2rem;
+      gap: 1.1rem;
       flex-wrap: wrap;
     }
 
     .menu a {
       color: var(--text-soft);
       font-weight: 500;
-      font-size: 0.92rem;
-      transition: 0.2s;
+      font-size: 0.9rem;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -7px;
+      height: 2px;
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: center;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      transition: transform 0.2s ease;
     }
 
     .menu a:hover,
-    .menu a.active {
-      color: var(--text);
-    }
+    .menu a.active { color: var(--text); }
+
+    .menu a:hover::after,
+    .menu a.active::after { transform: scaleX(1); }
 
     section {
-      padding: 4.2rem 0 1.2rem;
+      padding: 4.2rem 0 1.35rem;
+      border-bottom: 1px solid rgba(42, 63, 105, 0.45);
     }
 
-    .hero {
-      padding-top: 5.2rem;
-    }
+    .hero { padding-top: 5.3rem; }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 1rem;
-      align-items: stretch;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 0.9rem;
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(23, 39, 70, 0.96), rgba(18, 31, 58, 0.96));
+      background: linear-gradient(180deg, rgba(20, 34, 65, 0.98), rgba(17, 28, 54, 0.98));
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      box-shadow: var(--glow);
-      padding: 1.1rem;
+      box-shadow: var(--shadow);
+      padding: 1.15rem;
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
-    .hero-card {
-      padding: 2rem;
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(121, 169, 255, 0.65);
     }
+
+    .hero-card { padding: 1.9rem; }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.42rem;
       padding: 0.28rem 0.72rem;
-      border: 1px solid rgba(102, 240, 210, 0.35);
       border-radius: 999px;
+      border: 1px solid rgba(102, 239, 209, 0.35);
+      background: rgba(102, 239, 209, 0.08);
       color: var(--brand-2);
-      background: rgba(102, 240, 210, 0.08);
-      font-size: 0.78rem;
       font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
       margin-bottom: 0.95rem;
     }
 
@@ -156,143 +165,103 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #8bffb8;
-      box-shadow: 0 0 12px rgba(139, 255, 184, 0.75);
+      background: var(--ok);
+      box-shadow: 0 0 12px rgba(147, 255, 190, 0.8);
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(1.95rem, 5.2vw, 3.1rem);
       line-height: 1.13;
       letter-spacing: -0.02em;
-      margin-bottom: 0.55rem;
+      margin-bottom: 0.58rem;
     }
 
     .subtitle {
       color: var(--brand);
       font-weight: 700;
       margin-bottom: 0.9rem;
-      font-size: 1.04rem;
+      font-size: 1.02rem;
     }
 
     .lead {
       color: var(--text-soft);
-      margin-bottom: 1.2rem;
-      max-width: 68ch;
+      margin-bottom: 1.15rem;
+      max-width: 70ch;
     }
 
-    .action-row {
+    .actions {
       display: flex;
-      gap: 0.68rem;
+      gap: 0.64rem;
       flex-wrap: wrap;
     }
 
     .btn {
       border: 1px solid var(--line);
-      background: #132340;
+      background: #162847;
       border-radius: 12px;
       color: var(--text);
-      padding: 0.64rem 0.92rem;
+      padding: 0.63rem 0.9rem;
       font-weight: 600;
-      font-size: 0.92rem;
-      transition: 0.2s;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
     }
 
     .btn:hover {
-      border-color: rgba(120, 169, 255, 0.75);
       transform: translateY(-1px);
+      border-color: rgba(121, 169, 255, 0.8);
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, var(--brand), #9ac0ff);
-      color: #071327;
+      background: linear-gradient(135deg, var(--brand), #a2c3ff);
+      color: #0b1730;
       border-color: transparent;
     }
 
-    .stats-grid {
+    .stats {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
+      gap: 0.72rem;
     }
 
     .stat-title {
-      font-size: 1.2rem;
+      font-size: 1.16rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.12rem;
     }
 
-    .stat-text {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
+    .stat-text { color: var(--muted); font-size: 0.9rem; }
 
-    .section-head {
-      margin-bottom: 1rem;
-    }
+    .head { margin-bottom: 1.1rem; }
 
-    .section-tag {
+    .tag {
       color: var(--brand-2);
       font-family: "JetBrains Mono", monospace;
       letter-spacing: 0.11em;
       text-transform: uppercase;
       font-size: 0.76rem;
-      margin-bottom: 0.28rem;
+      margin-bottom: 0.3rem;
     }
 
     h2 {
-      font-size: clamp(1.35rem, 3.5vw, 2rem);
-      line-height: 1.2;
+      font-size: clamp(1.32rem, 3.5vw, 2rem);
       letter-spacing: -0.02em;
+      line-height: 1.2;
       margin-bottom: 0.42rem;
     }
 
-    .section-desc {
-      color: var(--text-soft);
-      max-width: 80ch;
-    }
+    .desc { color: var(--text-soft); max-width: 82ch; }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.78rem;
-    }
+    .grid-3,.grid-2,.grid-4 { display: grid; gap: 0.78rem; }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.78rem;
-    }
+    .card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .card p,.card li { color: var(--text-soft); font-size: 0.93rem; }
 
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.78rem;
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.38rem;
-    }
-
-    .card p,
-    .card li {
-      color: var(--text-soft);
-      font-size: 0.94rem;
-    }
-
-    ul.clean {
-      list-style: none;
-      display: grid;
-      gap: 0.45rem;
-      margin-top: 0.4rem;
-    }
-
-    ul.clean li {
-      display: flex;
-      gap: 0.5rem;
-      align-items: flex-start;
-    }
-
+    ul.clean { list-style: none; display: grid; gap: 0.45rem; margin-top: 0.38rem; }
+    ul.clean li { display: flex; gap: 0.48rem; align-items: flex-start; }
     ul.clean li::before {
       content: "▹";
       color: var(--brand-2);
@@ -300,104 +269,141 @@
       margin-top: 0.03rem;
     }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
+    .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.45rem; }
     .pill {
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 0.3rem 0.62rem;
-      color: var(--text-soft);
       background: rgba(23, 39, 70, 0.72);
-      font-size: 0.83rem;
+      color: var(--text-soft);
+      padding: 0.28rem 0.62rem;
+      font-size: 0.82rem;
       font-family: "JetBrains Mono", monospace;
-    }
-
-    .repo-link {
-      display: inline-block;
-      margin-top: 0.45rem;
-      color: var(--brand-2);
-      font-weight: 600;
-      font-size: 0.93rem;
-    }
-
-    .note {
-      margin-top: 0.95rem;
-      border: 1px solid rgba(120, 169, 255, 0.42);
-      border-radius: 12px;
-      background: rgba(120, 169, 255, 0.08);
-      color: #d8e7ff;
-      padding: 0.86rem 0.95rem;
-      font-size: 0.93rem;
-    }
-
-    .mini {
-      color: var(--muted);
-      font-size: 0.84rem;
-      margin-top: 0.2rem;
     }
 
     .terminal {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.85rem;
-      line-height: 1.75;
-      color: #c7d6ff;
-      background: #0b1530;
-      border: 1px solid rgba(42, 61, 99, 0.9);
+      margin-top: 0.7rem;
+      border: 1px solid rgba(42, 63, 105, 0.95);
       border-radius: 12px;
-      padding: 0.85rem 0.95rem;
-      margin-top: 0.65rem;
+      background: #0d1934;
+      color: #c8d7ff;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.84rem;
+      line-height: 1.75;
+      padding: 0.82rem 0.94rem;
     }
 
-    .terminal .ok {
-      color: #8bffb8;
+    .terminal .ok { color: var(--ok); }
+    .terminal .info { color: #7fd8ff; }
+
+    .notice {
+      margin-top: 0.9rem;
+      border: 1px solid rgba(121, 169, 255, 0.45);
+      border-radius: 12px;
+      background: rgba(121, 169, 255, 0.09);
+      color: #d8e6ff;
+      padding: 0.84rem 0.95rem;
+      font-size: 0.93rem;
     }
 
-    .terminal .info {
-      color: #7fd5ff;
+    .expand-wrap { display: grid; gap: 0.72rem; }
+
+    details.expand {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(20, 34, 65, 0.96), rgba(17, 28, 54, 0.96));
+      overflow: hidden;
+      transition: border-color 0.2s ease;
     }
+
+    details.expand[open] { border-color: rgba(121, 169, 255, 0.68); }
+
+    summary.expand-head {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.9rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.9rem;
+      background: rgba(19, 33, 61, 0.86);
+      border-bottom: 1px solid transparent;
+      transition: background 0.2s ease;
+    }
+
+    details.expand[open] summary.expand-head {
+      border-bottom-color: var(--line);
+      background: rgba(22, 38, 71, 0.9);
+    }
+
+    summary.expand-head::-webkit-details-marker { display: none; }
+
+    .expand-title { display: grid; gap: 0.12rem; }
+    .expand-title h3 { font-size: 0.98rem; margin: 0; color: var(--text); }
+    .expand-title p { color: var(--muted); font-size: 0.84rem; margin: 0; }
+
+    .chev {
+      color: var(--brand-2);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    details.expand[open] .chev { transform: rotate(90deg); }
+
+    .expand-body { padding: 0.9rem 1rem 1rem; display: grid; gap: 0.85rem; }
+
+    .sub-card {
+      border: 1px solid rgba(42, 63, 105, 0.9);
+      border-radius: 12px;
+      background: rgba(14, 24, 48, 0.85);
+      padding: 0.78rem 0.82rem;
+    }
+
+    .sub-card h4 { font-size: 0.92rem; margin-bottom: 0.35rem; color: var(--text); }
+    .sub-card p,.sub-card li { font-size: 0.9rem; color: var(--text-soft); }
+    .sub-card ul { margin: 0.25rem 0 0 1.05rem; display: grid; gap: 0.24rem; }
+    .sub-mini { color: var(--muted); font-size: 0.83rem; margin-top: 0.28rem; }
 
     footer {
       margin-top: 2rem;
-      padding: 1.3rem 0 2.6rem;
-      border-top: 1px solid var(--line);
+      padding: 1.25rem 0 2.55rem;
+      border-top: 1px solid rgba(42, 63, 105, 0.7);
       color: var(--muted);
       font-size: 0.9rem;
     }
 
-    @media (max-width: 1024px) {
-      .hero-grid,
-      .grid-3,
-      .grid-4 {
-        grid-template-columns: 1fr 1fr;
-      }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.52s ease, transform 0.52s ease;
     }
 
-    @media (max-width: 760px) {
-      .menu {
-        display: none;
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1024px) {
+      .hero-grid,.grid-3,.grid-4 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 780px) {
+      .menu { display: none; }
+      .hero,section { padding-top: 3.55rem; }
+      .hero-grid,.stats,.grid-3,.grid-2,.grid-4 { grid-template-columns: 1fr; }
+      .hero-card { padding: 1.3rem; }
+      .actions { gap: 0.52rem; }
+      .actions .btn { flex: 1 1 calc(50% - 0.52rem); text-align: center; }
+      h1 { font-size: clamp(1.72rem, 8.3vw, 2.35rem); }
+      h2 { font-size: clamp(1.18rem, 6.2vw, 1.52rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
 
-      .hero,
-      section {
-        padding-top: 3.6rem;
-      }
-
-      .hero-grid,
-      .stats-grid,
-      .grid-3,
-      .grid-2,
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card {
-        padding: 1.35rem;
-      }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -410,11 +416,9 @@
       </a>
       <nav class="menu">
         <a href="#overview">Overview</a>
-        <a href="#skills">Skills</a>
-        <a href="#journey">Journey</a>
+        <a href="#achievements">Achievements</a>
         <a href="#writeups">Writeups</a>
         <a href="#notes">Notes</a>
-        <a href="#roadmap">Roadmap</a>
       </nav>
     </div>
   </header>
@@ -422,272 +426,365 @@
   <main id="top">
     <section class="hero" id="overview">
       <div class="container hero-grid">
-        <article class="card hero-card">
+        <article class="card hero-card reveal">
           <span class="eyebrow"><span class="dot"></span> Cybersecurity Learning Portfolio</span>
-          <h1>Professional, Structured, and Practical Security Journey</h1>
-          <p class="subtitle">Security Analyst • Penetration Testing Learner • Documentation-First Builder</p>
+          <h1>Platform-Based Learning, Real Lab Practice, and Structured Documentation</h1>
+          <p class="subtitle">Security Learner • Penetration Testing Practice • Documentation-First Approach</p>
           <p class="lead">
-            This portfolio presents platform-based learning and independent research across Linux security, web security fundamentals,
-            reconnaissance, and methodology notes. It is designed to communicate technical growth clearly and professionally.
+            This portfolio tracks what I have already learned and achieved across TryHackMe, Hack The Box Academy, pwn.college,
+            and independent research. Writeups and notes are fully readable on this page through expandable sections.
           </p>
-          <div class="action-row">
+          <div class="actions">
             <a class="btn primary" href="https://github.com/CosmasSaidi" target="_blank" rel="noopener">GitHub Profile</a>
             <a class="btn" href="https://www.linkedin.com/in/cosmas-saidi-5965212a8" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="mailto:cosmassaidi2@gmail.com">Email</a>
           </div>
           <div class="terminal">
-            <span class="info">$ learning_focus --current</span><br />
-            <span class="ok">✔ Platform-Based Writeups (TryHackMe / HTB / pwn.college)</span><br />
-            <span class="ok">✔ Security Notes and Methodology Documentation</span><br />
-            <span class="ok">✔ Practical Lab Work and Defensive Understanding</span>
+            <span class="info">$ portfolio_scope --verified</span><br />
+            <span class="ok">✔ Achieved learning only (no future claims)</span><br />
+            <span class="ok">✔ Environment setup achievement: VulnVault local lab</span><br />
+            <span class="ok">✔ Platform-grouped writeups and expandable on-page notes</span>
           </div>
         </article>
 
-        <aside class="stats-grid">
+        <aside class="stats reveal">
           <article class="card">
-            <p class="stat-title">Dual-Boot Lab</p>
-            <p class="stat-text">Kali Linux + Windows operational setup</p>
+            <p class="stat-title">VulnVault Setup</p>
+            <p class="stat-text">Configured and ran local vulnerable web app environment for practical testing</p>
           </article>
           <article class="card">
             <p class="stat-title">Core Tooling</p>
-            <p class="stat-text">Python, Git, Nmap, Burp, Gobuster workflow</p>
+            <p class="stat-text">Python, Git, Nmap, Burp Suite, Gobuster, Wireshark</p>
           </article>
           <article class="card">
-            <p class="stat-title">Portfolio Scope</p>
-            <p class="stat-text">Writeups, concepts, and structured notes</p>
+            <p class="stat-title">Learning Sources</p>
+            <p class="stat-text">TryHackMe, HTB Academy, pwn.college, and independent research</p>
           </article>
           <article class="card">
-            <p class="stat-title">Current Stage</p>
-            <p class="stat-text">Beginner → Early practical pentesting</p>
+            <p class="stat-title">Current Level</p>
+            <p class="stat-text">Beginner to early practical pentesting with documented methodology</p>
           </article>
         </aside>
       </div>
     </section>
 
-    <section id="skills">
+    <section id="achievements">
       <div class="container">
-        <header class="section-head">
-          <p class="section-tag">Capability Profile</p>
-          <h2>Skills, Tools, and Security Foundations</h2>
-          <p class="section-desc">Balanced technical profile built from platform labs and practical documentation.</p>
+        <header class="head reveal">
+          <p class="tag">Achievements</p>
+          <h2>What I Have Already Achieved</h2>
+          <p class="desc">Focused on completed learning outcomes and practical accomplishments only.</p>
         </header>
 
         <div class="grid-3">
-          <article class="card">
-            <h3>Linux & System Security</h3>
+          <article class="card reveal">
+            <h3>Environment Setup & Operations</h3>
             <ul class="clean">
-              <li>Shell navigation, permissions, and process visibility</li>
-              <li>Environment context, PATH behavior, and execution flow</li>
-              <li>Structured command-line troubleshooting and hardening mindset</li>
+              <li>Set up and operated VulnVault as a local vulnerable web environment</li>
+              <li>Configured Python dependencies and ran the application locally</li>
+              <li>Used controlled environment for repeated web security practice</li>
             </ul>
           </article>
 
-          <article class="card">
-            <h3>Web Security Fundamentals</h3>
+          <article class="card reveal">
+            <h3>Web Security Learning Achievements</h3>
             <ul class="clean">
-              <li>HTTP request/response analysis and attack-surface understanding</li>
-              <li>Injection-risk concepts (SQLi/XSS) and input-handling awareness</li>
-              <li>Client-side vs server-side impact interpretation</li>
+              <li>Studied and practiced XSS, SQLi, and web enumeration concepts</li>
+              <li>Applied request analysis using Burp Suite and browser tooling</li>
+              <li>Documented offensive-to-defensive understanding in writeups</li>
             </ul>
           </article>
 
-          <article class="card">
-            <h3>Reconnaissance & Enumeration</h3>
+          <article class="card reveal">
+            <h3>Documentation Discipline</h3>
             <ul class="clean">
-              <li>Resource discovery and endpoint mapping strategy</li>
-              <li>Status-code interpretation and service exposure awareness</li>
-              <li>Methodical recon before testing workflow</li>
+              <li>Created structured platform-grouped writeups</li>
+              <li>Maintained reusable security notes and methodology references</li>
+              <li>Kept work focused on concepts, skills, and practical learning records</li>
             </ul>
           </article>
         </div>
 
-        <div class="card" style="margin-top: .78rem;">
+        <article class="card reveal" style="margin-top: .78rem;">
           <h3>Tools Practiced</h3>
-          <div class="pill-row">
+          <div class="pills">
             <span class="pill">Linux CLI</span>
             <span class="pill">Bash</span>
             <span class="pill">Python</span>
             <span class="pill">Git</span>
-            <span class="pill">Nmap</span>
-            <span class="pill">Gobuster</span>
             <span class="pill">Burp Suite</span>
+            <span class="pill">Gobuster</span>
+            <span class="pill">Nmap</span>
             <span class="pill">Wireshark</span>
-            <span class="pill">curl</span>
             <span class="pill">WhatWeb</span>
+            <span class="pill">curl</span>
             <span class="pill">Hydra</span>
             <span class="pill">Hashcat</span>
             <span class="pill">John the Ripper</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="journey">
-      <div class="container">
-        <header class="section-head">
-          <p class="section-tag">Learning Platforms</p>
-          <h2>Platform-Based Progress + Independent Research</h2>
-          <p class="section-desc">Core learning anchored in TryHackMe, HTB, pwn.college, and documented independent research workflow.</p>
-        </header>
-
-        <div class="grid-2">
-          <article class="card">
-            <h3>pwn.college</h3>
-            <p>Linux command line, shell workflows, process handling, and binary/data fundamentals.</p>
-          </article>
-          <article class="card">
-            <h3>TryHackMe</h3>
-            <p>Web fundamentals, attack lifecycle concepts, recon practices, and defensive translation.</p>
-          </article>
-          <article class="card">
-            <h3>Hack The Box Academy</h3>
-            <p>System fundamentals, enumeration thinking, and host-level security context.</p>
-          </article>
-          <article class="card">
-            <h3>Independent Research</h3>
-            <p>Local lab setup, practical observation, workflow discipline, and structured writeup creation.</p>
-          </article>
-        </div>
+        </article>
       </div>
     </section>
 
     <section id="writeups">
       <div class="container">
-        <header class="section-head">
-          <p class="section-tag">Writeups Repository</p>
-          <h2>Documented Learning Writeups</h2>
-          <p class="section-desc">Practical writeups and concept summaries maintained in `cybersecurity-writeups`.</p>
+        <header class="head reveal">
+          <p class="tag">Grouped Writeups</p>
+          <h2>Writeups Grouped by Platform Learned On</h2>
+          <p class="desc">Expandable on-page summaries grouped exactly by platform and independent research.</p>
         </header>
 
-        <div class="grid-3">
-          <article class="card">
-            <h3>Linux Luminarium Track</h3>
-            <ul class="clean">
-              <li>File Permissions</li>
-              <li>Environment Variables</li>
-              <li>Shell Scripting</li>
-              <li>Process Control</li>
-              <li>Piping & PATH Manipulation</li>
-            </ul>
-          </article>
+        <div class="expand-wrap">
+          <details class="expand reveal" open>
+            <summary class="expand-head">
+              <div class="expand-title">
+                <h3>pwn.college Writeups</h3>
+                <p>Linux fundamentals, shell workflows, process control, and data handling</p>
+              </div>
+              <span class="chev">›</span>
+            </summary>
+            <div class="expand-body">
+              <div class="sub-card">
+                <h4>Linux Luminarium</h4>
+                <ul>
+                  <li>File Permissions</li>
+                  <li>Environment Variables</li>
+                  <li>Shell Scripting</li>
+                  <li>Process Control</li>
+                  <li>Piping</li>
+                  <li>PATH Manipulation</li>
+                </ul>
+                <p class="sub-mini">Focus: filesystem controls, command chaining, and shell-level security behavior.</p>
+              </div>
+              <div class="sub-card">
+                <h4>Playing with Programs</h4>
+                <ul>
+                  <li>Data Dealings</li>
+                </ul>
+                <p class="sub-mini">Focus: encoding/decoding awareness (base64, hex, binary basics).</p>
+              </div>
+            </div>
+          </details>
 
-          <article class="card">
-            <h3>Web Security Track</h3>
-            <ul class="clean">
-              <li>Web Fundamentals & HTTP</li>
-              <li>Web Enumeration Methodology</li>
-              <li>XSS Fundamentals</li>
-              <li>SQL Injection Fundamentals</li>
-              <li>File Upload and Web Shell Concepts</li>
-            </ul>
-          </article>
+          <details class="expand reveal" open>
+            <summary class="expand-head">
+              <div class="expand-title">
+                <h3>Hack The Box Academy Writeups</h3>
+                <p>Linux system fundamentals and practical host/system visibility concepts</p>
+              </div>
+              <span class="chev">›</span>
+            </summary>
+            <div class="expand-body">
+              <div class="sub-card">
+                <h4>HTB Academy Learning Coverage</h4>
+                <ul>
+                  <li>User and group identification</li>
+                  <li>System and kernel context understanding</li>
+                  <li>Network interface and service visibility</li>
+                  <li>Linux host-level reconnaissance fundamentals</li>
+                </ul>
+                <p class="sub-mini">Focus: practical Linux host awareness and secure system interpretation.</p>
+              </div>
+            </div>
+          </details>
 
-          <article class="card">
-            <h3>Foundational Security Track</h3>
-            <ul class="clean">
-              <li>Offensive & Defensive Security Intro</li>
-              <li>Computer Fundamentals & OS Security</li>
-              <li>Crypto, Recon, and Programming Concepts</li>
-              <li>Practical Attack Lifecycle Summary</li>
-              <li>NTLM/Moniker Risk Overview</li>
-            </ul>
-          </article>
+          <details class="expand reveal" open>
+            <summary class="expand-head">
+              <div class="expand-title">
+                <h3>TryHackMe Writeups</h3>
+                <p>Web security, attack lifecycle concepts, fundamentals, crypto, and defensive translation</p>
+              </div>
+              <span class="chev">›</span>
+            </summary>
+            <div class="expand-body">
+              <div class="sub-card">
+                <h4>Published TryHackMe Writeups</h4>
+                <ul>
+                  <li>Offensive & Defensive Security Intro</li>
+                  <li>Web Fundamentals: Networking, HTTP, Security</li>
+                  <li>Computer Fundamentals & OS Security</li>
+                  <li>Security Fundamentals, Crypto & Recon Concepts</li>
+                  <li>Practical Attack Lifecycle Summary</li>
+                  <li>NTLM Credential Exposure & Moniker Link Risk</li>
+                </ul>
+                <p class="sub-mini">Focus: structured progression from fundamentals to practical security reasoning and incident mindset.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="expand reveal" open>
+            <summary class="expand-head">
+              <div class="expand-title">
+                <h3>Independent Research (VulnVault) Writeups</h3>
+                <p>Self-directed local lab setup, web testing workflow, and documented exploitation lifecycle understanding</p>
+              </div>
+              <span class="chev">›</span>
+            </summary>
+            <div class="expand-body">
+              <div class="sub-card">
+                <h4>Environment Achievement</h4>
+                <ul>
+                  <li>Set up VulnVault vulnerable web environment on localhost</li>
+                  <li>Installed dependencies and ran the application for testing</li>
+                  <li>Mapped attack surface through manual and automated recon</li>
+                </ul>
+              </div>
+              <div class="sub-card">
+                <h4>Independent Writeup Set</h4>
+                <ul>
+                  <li>Web Enumeration & Reconnaissance Methodology</li>
+                  <li>XSS Fundamentals & Attack Methodology</li>
+                  <li>SQL Injection Fundamentals & Authentication Bypass</li>
+                  <li>Gobuster Enumeration Methodology</li>
+                  <li>File Upload Vulnerabilities & Web Shells</li>
+                  <li>Post-Exploitation & System Access Methodology</li>
+                </ul>
+                <p class="sub-mini">Focus: practical workflow from recon to validated findings in a self-controlled lab.</p>
+              </div>
+            </div>
+          </details>
         </div>
 
-        <article class="card" style="margin-top: .78rem;">
-          <h3>Repository Link</h3>
-          <p>All platform-based writeups and research notes are tracked in the repository below.</p>
-          <a class="repo-link" href="https://github.com/CosmasSaidi/cybersecurity-writeups" target="_blank" rel="noopener">Open `cybersecurity-writeups` →</a>
-        </article>
+        <p class="notice reveal">All writeups above are readable in this portfolio section and grouped by where the learning occurred. No writeup redirects are required for this overview.</p>
       </div>
     </section>
 
     <section id="notes">
       <div class="container">
-        <header class="section-head">
-          <p class="section-tag">Security Notes Repository</p>
-          <h2>Reference Notes and Methodology Base</h2>
-          <p class="section-desc">Structured notes from practical learning to support repeatable assessment and revision.</p>
+        <header class="head reveal">
+          <p class="tag">Expandable Notes</p>
+          <h2>Security Notes Readable Directly on the Portfolio Site</h2>
+          <p class="desc">Core notes are expanded here by domain so they can be read without leaving this page.</p>
         </header>
 
-        <div class="grid-4">
-          <article class="card">
-            <h3>Linux Security</h3>
-            <p>Permissions, users, process management, environment security, and execution flow.</p>
-          </article>
-          <article class="card">
-            <h3>Enumeration</h3>
-            <p>Host and service visibility, user context mapping, and post-exploitation checks.</p>
-          </article>
-          <article class="card">
-            <h3>Web Security</h3>
-            <p>Discovery detection patterns, web fundamentals, and defensive perspective.</p>
-          </article>
-          <article class="card">
-            <h3>Methodology</h3>
-            <p>Privilege escalation checklisting, workflow consistency, and reporting discipline.</p>
-          </article>
+        <div class="expand-wrap">
+          <details class="expand reveal" open>
+            <summary class="expand-head">
+              <div class="expand-title">
+                <h3>Linux Security Notes</h3>
+                <p>Fundamentals, permissions, process management, environment, and user controls</p>
+              </div>
+              <span class="chev">›</span>
+            </summary>
+            <div class="expand-body">
+              <div class="sub-card">
+                <h4>Topics Covered</h4>
+                <ul>
+                  <li>Linux fundamentals and filesystem structure</li>
+                  <li>Permissions and access control modeling</li>
+                  <li>Process/job management and signal context</li>
+                  <li>Environment variables and execution impact</li>
+                  <li>User/group and privilege handling</li>
+                </ul>
+              </div>
+              <div class="sub-card">
+                <h4>Practical Command Reference</h4>
+                <p><code>ls -la</code>, <code>chmod</code>, <code>ps aux</code>, <code>env</code>, <code>id</code>, <code>sudo -l</code></p>
+              </div>
+            </div>
+          </details>
+
+          <details class="expand reveal" open>
+            <summary class="expand-head">
+              <div class="expand-title">
+                <h3>Enumeration Notes</h3>
+                <p>System/user/network discovery and high-signal host inspection checklisting</p>
+              </div>
+              <span class="chev">›</span>
+            </summary>
+            <div class="expand-body">
+              <div class="sub-card">
+                <h4>Enumeration Coverage</h4>
+                <ul>
+                  <li>System context collection (<code>uname</code>, OS release)</li>
+                  <li>User and privilege context review</li>
+                  <li>Service/listening port visibility checks</li>
+                  <li>Interesting file and permission discovery patterns</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="expand reveal" open>
+            <summary class="expand-head">
+              <div class="expand-title">
+                <h3>Web Security Notes</h3>
+                <p>Web discovery detection/response and HTTP/web fundamentals references</p>
+              </div>
+              <span class="chev">›</span>
+            </summary>
+            <div class="expand-body">
+              <div class="sub-card">
+                <h4>Web Security Reference Areas</h4>
+                <ul>
+                  <li>Directory discovery behavior and detection cues</li>
+                  <li>DNS/ICMP/HTTP/OSI foundation reference</li>
+                  <li>Cookie/session and input-risk context</li>
+                  <li>Containment and hardening thinking</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="expand reveal" open>
+            <summary class="expand-head">
+              <div class="expand-title">
+                <h3>Fundamentals, Methodology, and Scripting Notes</h3>
+                <p>Computer/OS security, crypto/recon basics, PrivEsc methodology, shell scripting references</p>
+              </div>
+              <span class="chev">›</span>
+            </summary>
+            <div class="expand-body">
+              <div class="sub-card">
+                <h4>Consolidated Coverage</h4>
+                <ul>
+                  <li>Computer architecture, virtualization, cloud, and OS security principles</li>
+                  <li>CIA triad, cryptography models, recon and packet-awareness concepts</li>
+                  <li>Linux privilege escalation checklist methodology</li>
+                  <li>Shell scripting, binary basics, and reverse engineering starter notes</li>
+                </ul>
+              </div>
+            </div>
+          </details>
         </div>
 
-        <article class="card" style="margin-top: .78rem;">
-          <h3>Repository Link</h3>
-          <p>Complete index and notes collection are available in your documentation repository.</p>
-          <a class="repo-link" href="https://github.com/CosmasSaidi/CYBERSECURITY-NOTES" target="_blank" rel="noopener">Open `security-notes` →</a>
-        </article>
-      </div>
-    </section>
-
-    <section id="roadmap">
-      <div class="container">
-        <header class="section-head">
-          <p class="section-tag">Next Progress Phase</p>
-          <h2>Balanced Growth Roadmap</h2>
-          <p class="section-desc">Focused progression path to deepen core web assessment and practical reporting quality.</p>
-        </header>
-
-        <div class="grid-4">
-          <article class="card">
-            <h3>01 · XSS Mastery</h3>
-            <p>Reflected vs stored vs DOM analysis and stronger defensive controls understanding.</p>
-          </article>
-          <article class="card">
-            <h3>02 · SQLi Depth</h3>
-            <p>Authentication logic analysis, safer query models, and risk articulation.</p>
-          </article>
-          <article class="card">
-            <h3>03 · Burp Fluency</h3>
-            <p>Improved request inspection, repeater workflows, and clear result documentation.</p>
-          </article>
-          <article class="card">
-            <h3>04 · Recon Precision</h3>
-            <p>Richer interpretation of enumeration outputs and better prioritization practices.</p>
-          </article>
-        </div>
-
-        <p class="note">This portfolio is intentionally balanced around concepts, practical skills, platform-based writeups, and technical notes for professional presentation readiness.</p>
+        <p class="notice reveal">Notes are included directly in expandable sections on this site so readers can review content here without being redirected.</p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      © 2026 Cosmas Saidi · Cybersecurity Portfolio · Built with HTML/CSS and documentation-first approach.
-    </div>
+    <div class="container">© 2026 Cosmas Saidi · Cybersecurity Portfolio · Platform-grouped writeups and on-page expandable notes.</div>
   </footer>
 
   <script>
-    const links = document.querySelectorAll('.menu a');
-    const sections = [...links].map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const navLinks = document.querySelectorAll('.menu a');
+    const navSections = [...navLinks]
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
 
-    const observer = new IntersectionObserver((entries) => {
+    const navObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        const id = `#${entry.target.id}`;
-        links.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === id));
+        const currentId = `#${entry.target.id}`;
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === currentId);
+        });
       });
     }, { threshold: 0.35 });
 
-    sections.forEach((section) => observer.observe(section));
+    navSections.forEach((section) => navObserver.observe(section));
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach((element) => revealObserver.observe(element));
   </script>
 </body>
 </html>
