@@ -9,6 +9,7 @@ Cybersecurity portfolio website for **Cosmas Saidi**, focused on practical learn
 - Professional dark “hacker-mode” portfolio layout.
 - Full markdown content from `cybersecurity-writeups` mirrored into this site.
 - Full markdown content from `security-notes` mirrored into this site.
+- Networking and Internet infrastructure learning from Internet Society and Cisco Networking Academy.
 - Dedicated on-page `VulnVault` lab documentation section.
 - Expandable grouped sections, so content is readable without leaving the page.
 - Practical setup and tooling context (VulnVault local lab, Linux/web testing workflow).
