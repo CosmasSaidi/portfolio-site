@@ -9,6 +9,13 @@
       "contentPath": "assets/content/writeups/README.md"
     },
     {
+      "id": "writeups:cisco-networking:enterprise-lan-design-packet-tracer.md",
+      "title": "Enterprise Lan Design Packet Tracer",
+      "section": "cisco-networking",
+      "sourcePath": "cybersecurity-writeups/cisco-networking/enterprise-lan-design-packet-tracer.md",
+      "contentPath": "assets/content/writeups/cisco-networking/enterprise-lan-design-packet-tracer.md"
+    },
+    {
       "id": "writeups:http-basics:http-requests.md",
       "title": "Http Requests",
       "section": "http-basics",
