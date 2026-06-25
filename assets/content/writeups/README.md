@@ -44,7 +44,7 @@ Technical writeups and methodology documentation from hands-on security training
 
 ---
 
-## 🧭 Cisco Networking Academy
+## 🧭 Cisco Packet Tracer
 
 **Focus Area:** hands-on network design, Packet Tracer simulation, and core routing and switching concepts.
 
@@ -372,7 +372,7 @@ Successfully designed, deployed, tested, and fully documented a complete attack-
 
 | Tool | Purpose | Usage |
 |------|---------|-------|
-| Cisco Packet Tracer | Network topology design and simulation | Internet Society, Cisco Networking Academy |
+| Cisco Packet Tracer | Network topology design and simulation | Internet Society, Cisco Packet Tracer |
 | Linux CLI | System interaction, command-line operations | All platforms |
 | Bash Shell | Scripting, automation, command execution | All platforms |
 | Browser DevTools | Web security testing, request inspection | TryHackMe, VulnVault |
@@ -392,7 +392,7 @@ Successfully designed, deployed, tested, and fully documented a complete attack-
 
 - **Network engineering growth:** Linux systems administration, virtualization, enterprise infrastructure, Active Directory, and cloud fundamentals
 - **Platform-based learning:** TryHackMe, pwn.college, Hack The Box Academy
-- **Internet infrastructure:** Internet Society and Cisco Networking Academy coursework
+- **Internet infrastructure:** Internet Society and Cisco Packet Tracer coursework
 - **Self-directed lab work:** VulnVault independent research and exploitation
 - **Advanced web security:** XSS, SQLi, file uploads, RCE, post-exploitation
 - **System enumeration:** User discovery, privilege escalation vectors, credential hunting

@@ -6,7 +6,7 @@ Technical documentation and methodology notes from hands-on cybersecurity practi
 
 ## 🌐 Networking & Internet Infrastructure
 
-Core networking and Internet architecture study built through Internet Society and Cisco Networking Academy learning.
+Core networking and Internet architecture study built through Internet Society and Cisco Packet Tracer learning.
 
 ### Completed / Participated Courses
 
@@ -175,7 +175,7 @@ Understanding program behavior.
 | Platform | Focus |
 |----------|-------|
 | [Internet Society](https://www.internetsociety.org/) | Internet architecture, governance, trust and safety |
-| [Cisco Networking Academy](https://www.netacad.com/) | Routing, switching, Packet Tracer, deployment basics |
+| Cisco Packet Tracer | Routing, switching, Packet Tracer, deployment basics |
 | [pwn.college](https://pwn.college) | Linux, binary basics |
 | [TryHackMe](https://tryhackme.com) | Web security, PrivEsc |
 | [Hack The Box](https://hackthebox.com) | Real-world scenarios |
